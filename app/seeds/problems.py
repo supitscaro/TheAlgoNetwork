@@ -508,6 +508,35 @@ def seed_problems():
         solved=False
     )
 
+    # Trees - Hard
+
+    problem53 = Problem(
+        category='Trees',
+        difficulty='Hard',
+        title='Serialize and Deserialize Binary Tree',
+        description='Serialization is the process of converting a data structure or object into a sequence of bits so that it can be stored in a file or memory buffer, or transmitted across a network connection link to be reconstructed later in the same or another computer environment. Design an algorithm to serialize and deserialize a binary tree. There is no restriction on how your serialization/deserialization algorithm should work. You just need to ensure that a binary tree can be serialized to a string and this string can be deserialized to the original tree structure.',
+        solution='class Codec: def serialize(self, root): def dfs(root): if not root: res.append("None,") return  res.append(str(root.val)+",") dfs(root.left) dfs(root.right) res = [] dfs(root) return "".join(res) def deserialize(self, data): def helper(q): if q[0] == "None": q.popleft() return root = TreeNode(q.popleft()) l = helper(q) r = helper(q) root.left = l root.right = r return root lst = data.split(",") q = collections.deque(lst) return helper(q)',
+        solved=False
+    )
+
+    problem54 = Problem(
+        category='Trees',
+        difficulty='Hard',
+        title='Binary Tree Maximum Path Sum',
+        description='A path in a binary tree is a sequence of nodes where each pair of adjacent nodes in the sequence has an edge connecting them. A node can only appear in the sequence at most once. Note that the path does not need to pass through the root. The path sum of a path is the sum of the node\'s values in the path. Given the root of a binary tree, return the maximum path sum of any path.',
+        solution="class Solution: def maxPathSum(self, root): def maxSum(root): if not root: return 0 l_sum = maxSum(root.left) r_sum = maxSum(root.right) l = max(0, l_sum) r = max(0, r_sum) res[0] = max(res[0], root.val + l + r) return root.val + max(l, r) res = [-float('inf')] maxSum(root) return res[0]",
+        solved=False
+    )
+
+    problem55 = Problem(
+        category='Trees',
+        difficulty='Hard',
+        title='Vertical Order Traversal of a Binary Tree',
+        description='Given the root of a binary tree, calculate the vertical order traversal of the binary tree. For each node at position (row, col), its left and right children will be at positions (row + 1, col - 1) and (row + 1, col + 1) respectively. The root of the tree is at (0, 0). The vertical order traversal of a binary tree is a list of top-to-bottom orderings for each column index starting from the leftmost column and ending on the rightmost column. There may be multiple nodes in the same row and same column. In such a case, sort these nodes by their values. Return the vertical order traversal of the binary tree.',
+        solution="class Solution(object): def verticalTraversal(self, root): res = [] frontier = [(root, 0)] h = collections.defaultdict(list) while frontier: next = [] for u, x in frontier: h[x].append(u.val) if u.left: next.append((u.left, x-1))  if u.right: next.append((u.right, x+1)) next.sort(key = lambda x: (x[1], x[0].val)) frontier = next for k in sorted(h): res.append(h[k]) return res",
+        solved=False
+    )
+
     # Graphs
 
     db.session.add(demo)
