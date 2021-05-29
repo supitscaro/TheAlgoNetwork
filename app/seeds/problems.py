@@ -606,25 +606,54 @@ def seed_problems():
 
     problem63 = Problem(
         category='Hash Tables',
-        difficulty='Easy',
-        title='',
-        description='',
-        solution="",
+        difficulty='Medium',
+        title='Top K Frequent Words',
+        description='Given a non-empty list of words, return the k most frequent elements. Your answer should be sorted by frequency from highest to lowest. If two words have the same frequency, then the word with the lower alphabetical order comes first.',
+        solution="import heapq import collections class Solution: def topKFrequent(self, words: List[str], k: int) -> List[str]: word_count = self.calc_count(words) word_count_pairs = [] for word, count in word_count.items(): word_count_pairs.append((-count, word)) heapq.heapify(word_count_pairs) result = [] for _ in range(k): result.append(heapq.heappop(word_count_pairs)[1]) return result def calc_count(self, words): result = collections.defaultdict(int) for word in words: result[word] += 1 return result",
         solved=False
     )
 
     problem64 = Problem(
         category='Hash Tables',
-        difficulty='Easy',
+        difficulty='Medium',
+        title='Daily Temperatures',
+        description='Given a list of daily temperatures temperatures, return a list such that, for each day in the input, tells you how many days you would have to wait until a warmer temperature. If there is no future day for which this is possible, put 0 instead.',
+        solution="class Solution(object): def dailyTemperatures(self, temperatures): res = [0]*len(temperatures) T = [-1]*71 for i in range(len(temperatures)-1, -1, -1): t = temperatures[i] for j in range(t-1, 29, -1): T[j-30] = i if T[t-30] != -1: res[i] = T[t-30]-i return res",
+        solved=False
+    )
+
+    problem65 = Problem(
+        category='Hash Tables',
+        difficulty='Medium',
         title='',
         description='',
         solution="",
         solved=False
     )
 
-    problem65 = Problem(
+    # Hash Tables - Hard
+
+    problem66 = Problem(
         category='Hash Tables',
-        difficulty='Easy',
+        difficulty='Hard',
+        title='Group Anagrams',
+        description='Given an array of strings strs, group the anagrams together. You can return the answer in any order. An Anagram is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all the original letters exactly once.',
+        solution="class Solution(object): def groupAnagrams(self, strs): def convert(s): res = [0]*26 for char in s: res[ord(char)-ord('a')] += 1 return tuple(res) rec = {} res = [] for s in strs: t = convert(s) if t in rec: res[rec[t]].append(s) else: res.append([s]) rec[t] = len(res)-1 return res",
+        solved=False
+    )
+
+    problem67 = Problem(
+        category='Hash Tables',
+        difficulty='Hard',
+        title='',
+        description='',
+        solution="",
+        solved=False
+    )
+
+    problem68 = Problem(
+        category='Hash Tables',
+        difficulty='Hard',
         title='',
         description='',
         solution="",
