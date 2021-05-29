@@ -537,7 +537,99 @@ def seed_problems():
         solved=False
     )
 
-    # Graphs
+    # Hash Table
+    # Hash Table - Easy
+    problem56 = Problem(
+        category='Hash Tables',
+        difficulty='Easy',
+        title='Number of Good Pairs',
+        description='Given an array of integers nums. A pair (i,j) is called good if nums[i] == nums[j] and i < j. Return the number of good pairs.',
+        solution="class Solution: def numIdenticalPairs(self, nums: List[int]) -> int: ans = 0 d = defaultdict(list) for i in range(len(nums)): d[nums[i]].append(i) for k,v in d.items(): n = len(v) if n > 1: ans += ((n-1) * n) // 2 return ans",
+        solved=False
+    )
+
+    problem57 = Problem(
+        category='Hash Tables',
+        difficulty='Easy',
+        title='Jewels and Stones',
+        description='You\'re given strings jewels representing the types of stones that are jewels, and stones representing the stones you have. Each character in stones is a type of stone you have. You want to know how many of the stones you have are also jewels. Letters are case sensitive, so "a" is considered a different type of stone from "A".',
+        solution="class Solution: def numJewelsInStones(self, J: str, S: str) -> int: jewels = set(J) count_of_jewel = 0 for item in S: if item in jewels: count_of_jewel += 1 return count_of_jewel",
+        solved=False
+    )
+
+    problem58 = Problem(
+        category='Hash Tables',
+        difficulty='Easy',
+        title='How Many Numbers Are Smaller Than the Current Number',
+        description='Given the array nums, for each nums[i] find out how many numbers in the array are smaller than it. That is, for each nums[i] you have to count the number of valid j\'s such that j != i and nums[j] < nums[i]. Return the answer in an array.',
+        solution="class Solution: def smallerNumbersThanCurrent(self, nums: List[int]) -> List[int]: indexes = {} for idx,val in enumerate(nums): if val in indexes: indexes[val].append(idx) else: indexes[val] = [idx] lst = sorted(list(set(nums))) ans = [None for x in nums] count_smaller = 0 for x in lst: for idx in indexes[x]: ans[idx] = count_smaller count_smaller += len(indexes[x]) return ans",
+        solved=False
+    )
+
+    problem59 = Problem(
+        category='Hash Tables',
+        difficulty='Easy',
+        title='Subdomain Visit Count',
+        description='A website domain like "discuss.leetcode.com" consists of various subdomains. At the top level, we have "com", at the next level, we have "leetcode.com", and at the lowest level, "discuss.leetcode.com". When we visit a domain like "discuss.leetcode.com", we will also visit the parent domains "leetcode.com" and "com" implicitly. Now, call a "count-paired domain" to be a count (representing the number of visits this domain received), followed by a space, followed by the address. An example of a count-paired domain might be "9001 discuss.leetcode.com". We are given a list cpdomains of count-paired domains. We would like a list of count-paired domains, (in the same format as the input, and in any order), that explicitly counts the number of visits to each subdomain.',
+        solution='class Solution(object): def subdomainVisits(self, cpdomains): res = [] dic = {} for item in cpdomains: count, domain = item.split() dlst = domain.split(".") summ = dlst[-1] if summ in dic: dic[summ] += int(count) else: dic[summ] = int(count) for i in range(len(dlst)-2, -1, -1): summ = dlst[i] + "." + summ if summ in dic: dic[summ] += int(count) else: dic[summ] = int(count) for key, val in dic.items(): res.append(str(val) + " " + key) return res',
+        solved=False
+    )
+
+    problem60 = Problem(
+        category='Hash Tables',
+        difficulty='Easy',
+        title='Design HashMap',
+        description='Design a HashMap without using any built-in hash table libraries.',
+        solution="class MyHashMap(object): def __init__(self): self.map = [[] for i in xrange(1024)] def put(self, key, value): self.remove(key) self.map[key & 1023].append((key, value)) def get(self, key): values = [x[1] for x in self.map[key & 1023] if x[0] == key] return -1 if len(values) == 0 else values[0] def remove(self, key): self.map[key & 1023] = [x for x in self.map[key & 1023] if x[0] != key]",
+        solved=False
+    )
+
+    problem61 = Problem(
+        category='Hash Tables',
+        difficulty='Easy',
+        title='Single Number',
+        description='Given a non-empty array of integers nums, every element appears twice except for one. Find that single one. You must implement a solution with a linear runtime complexity and use only constant extra space.',
+        solution="class Solution: def singleNumber(self, nums): res = nums[0] for i in range(1, len(nums)): res ^= nums[i] return res",
+        solved=False
+    )
+
+    problem62 = Problem(
+        category='Hash Tables',
+        difficulty='Easy',
+        title='Verifying an Alien Dictionary',
+        description='In an alien language, surprisingly they also use english lowercase letters, but possibly in a different order. The order of the alphabet is some permutation of lowercase letters.Given a sequence of words written in the alien language, and the order of the alphabet, return true if and only if the given words are sorted lexicographicaly in this alien language.',
+        solution='class Solution: def isAlienSorted(self, words, order): dic = {} for i, c in enumerate(order): dic[c] = i for i in range(len(words)-1): cur = words[i] nex = words[i+1] for i in range(min(len(cur), len(nex))): if cur[i] != nex[i]: if dic[cur[i]] > dic[nex[i]]: return False break else: if len(cur) > len(nex): return False return True',
+        solved=False
+    )
+
+    # Hash Table - Medium
+
+    problem63 = Problem(
+        category='Hash Tables',
+        difficulty='Easy',
+        title='',
+        description='',
+        solution="",
+        solved=False
+    )
+
+    problem64 = Problem(
+        category='Hash Tables',
+        difficulty='Easy',
+        title='',
+        description='',
+        solution="",
+        solved=False
+    )
+
+    problem65 = Problem(
+        category='Hash Tables',
+        difficulty='Easy',
+        title='',
+        description='',
+        solution="",
+        solved=False
+    )
 
     db.session.add(demo)
 
