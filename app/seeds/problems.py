@@ -208,6 +208,108 @@ def seed_problems():
     )
 
     # Strings
+    # Strings - Easy
+
+    problem23 = Problem(
+        category='Strings',
+        difficulty='Easy',
+        title='Reverse String',
+        description='Write a function that reverses a string. The input string is given as an array of characters s.',
+        solution="class Solution(object): def reverseString(self, s): return s[::-1]",
+        solved=False
+    )
+
+    problem24 = Problem(
+        category='Strings',
+        difficulty='Easy',
+        title='Count Binary Substrings',
+        description='Give a binary string s, return the number of non-empty substrings that have the same number of 0\'s and 1\'s, and all the 0\'s and all the 1\'s in these substrings are grouped consecutively. Substrings that occur multiple times are counted the number of times they occur.',
+        solution="class Solution(object): def countBinarySubstrings(self, s): res = 0 prev = 0 tmp = 1 for i in range(1, len(s)): if s[i] != s[i-1]: res += min(prev, tmp) prev = tmp tmp = 1 else: tmp += 1 res += min(prev, tmp) return res",
+        solved=False
+    )
+
+    problem25 = Problem(
+        category='Strings',
+        difficulty='Easy',
+        title='Valid Parentheses',
+        description='Given a string s containing just the characters "(", ")", "{", "}", "[" and "]", determine if the input string is valid. An input string is valid if: Open brackets must be closed by the same type of brackets. Open brackets must be closed in the correct order.',
+        solution='class Solution: def isValid(self, s: str) -> bool: if len(s)%2!=0: return False stack = list() dic = {"(":")","{":"}","[":"]"} for i, c in enumerate(s): if s[i] in dic: stack.append(s[i]) else: if len(stack)!=0 and dic[stack[-1]] == s[i]: stack.pop() else: return False if stack: return False else: return True',
+        solved=False
+    )
+
+    problem26 = Problem(
+        category='Strings',
+        difficulty='Easy',
+        title='Valid Palindrome',
+        description='Given a string s, determine if it is a palindrome, considering only alphanumeric characters and ignoring cases.',
+        solution="class Solution(object): def isPalindrome(self, s): if not s: return True i, j = 0, len(s) - 1 while i < j: while i < j and not s[i].isalnum(): i += 1 while i < j and not s[j].isalnum(): j -= 1 if s[i].lower() != s[j].lower(): return False i += 1; j -= 1 return True",
+        solved=False
+    )
+
+    problem27 = Problem(
+        category='Strings',
+        difficulty='Easy',
+        title='Add Binary',
+        description='Given two binary strings a and b, return their sum as a binary string.',
+        solution="class Solution(object): def addBinary(self, a, b): return bin(int(a,2) + int(b,2))[2:]",
+        solved=False
+    )
+
+    problem28 = Problem(
+        category='Strings',
+        difficulty='Easy',
+        title='Add Strings',
+        description='Given two non-negative integers, num1 and num2 represented as string, return the sum of num1 and num2 as a string.',
+        solution="class Solution: def addStrings(self, num1: str, num2: str) -> str: L1, L2, n1, n2 = len(num1), len(num2), [int(i) for i in num1], [int(i) for i in num2] if L1 < L2: n2, n1 = n1, n2 n1, n2, n3 = [0] + n1, [0]*(abs(L1-L2)+1) + n2, [0]*(len(n1)+1) for i in range(len(n1)-1,-1,-1): s = n1[i]+n2[i] n3[i] = s % 10 if s > 9: n1[i-1] += int(s/10) if n3[0] == 0: n3 = n3[1:] return "".join([str(i) for i in n3])",
+        solved=False
+    )
+
+    problem29 = Problem(
+        category='Strings',
+        difficulty='Easy',
+        title='Valid Palindrome II',
+        description='Given a string s, return true if the s can be palindrome after deleting at most one character from it.',
+        solution="class Solution(object): def validPalindrome(self, s): left, right = 0, len(s) - 1 while left < right: if s[left] != s[right]: one, two = s[left:right], s[left + 1:right + 1] return one == one[::-1] or two == two[::-1] left, right = left + 1, right - 1 return True",
+        solved=False
+    )
+
+    problem30 = Problem(
+        category='Strings',
+        difficulty='Easy',
+        title='Consecutive Characters',
+        description='Given a string s, the power of the string is the maximum length of a non-empty substring that contains only one unique character. Return the power of the string.',
+        solution="class Solution: def maxPower(self, s: str) -> int: cnt = ans = 1 for i in range(1, len(s)): if s[i] == s[i - 1]: cnt += 1 ans = max(cnt, ans) else: cnt = 1 return ans",
+        solved=False
+    )
+
+    problem31 = Problem(
+        category='Strings',
+        difficulty='Easy',
+        title='Greatest Common Divisor of Strings',
+        description='For two strings s and t, we say "t divides s" if and only if s = t + ... + t  (t concatenated with itself 1 or more times) Given two strings str1 and str2, return the largest string x such that x divides both str1 and str2.',
+        solution="class Solution: def gcdOfStrings(self, s1: str, s2: str) -> str: return s1[:math.gcd(len(s1), len(s2))] if s1 + s2 == s2 + s1 else ''",
+        solved=False
+    )
+
+    problem32 = Problem(
+        category='Strings',
+        difficulty='Easy',
+        title='Longest Common Prefix',
+        description='Write a function to find the longest common prefix string amongst an array of strings. If there is no common prefix, return an empty string "".',
+        solution='class Solution(object): def longestCommonPrefix(self, strs): result = "" for n in zip(*strs): if len(set(n)) == 1: result += n[0] else: return result return result',
+        solved=False
+    )
+
+    # Strings - Medium
+
+    problem33 = Problem(
+        category='Strings',
+        difficulty='Easy',
+        title='Generate Parentheses',
+        description='Given n pairs of parentheses, write a function to generate all combinations of well-formed parentheses.',
+        solution="class Solution: def generateParenthesis(self, n: int) -> List[str]: bfs = [(0, 0, '')] for _ in range(n * 2): new = [] for l, r, s in bfs: if l + 1 <= n: new.append((l + 1, r, s + '(')) if l - r: new.append((l, r + 1, s + ')')) bfs = new return [s for l, r, s in bfs]",
+        solved=False
+    )
 
     # Trees
 
