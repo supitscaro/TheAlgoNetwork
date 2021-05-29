@@ -11,6 +11,7 @@ class Problem(db.Model):
     description = Column(db.String, nullable=False)
     solution = Column(db.String, nullable=False)
     solved = Column(db.Boolean, nullable=True)
+    review = Column(db.Boolean, nullable=True)
 
     # assets = db.relationship("Asset", back_populates="problems")
     # user = db.relationship("User", back_populates="problems")
@@ -24,5 +25,6 @@ class Problem(db.Model):
             "title": self.title,
             "description": self.description,
             "solution": self.solution,
+            "review": self.review,
             "solved": self.solved
         }
