@@ -645,18 +645,18 @@ def seed_problems():
     problem67 = Problem(
         category='Hash Tables',
         difficulty='Hard',
-        title='',
-        description='',
-        solution="",
+        title='Minimum Window Substring',
+        description='Given two strings s and t of lengths m and n respectively, return the minimum window substring of s such that every character in t (including duplicates) is included in the window. If there is no such substring, return the empty string "". The testcases will be generated such that the answer is unique. A substring is a contiguous sequence of characters within the string.',
+        solution="class Solution: def minWindow(self, s, t): dicT = collections.Counter(t) dicS = {} rec = set() j = 0 res = float('inf') for i, c in enumerate(s): if c not in dicS: dicS[c] = 1 else: dicS[c] += 1 if c in dicT and dicT[c] <= dicS[c]: rec.add(c) while len(rec) == len(dicT): dicS[s[j]] -= 1 if s[j] in dicT and dicT[s[j]] > dicS[s[j]]: rec.remove(s[j]) if res > i-j+1: start = j end = i res = i-j+1 j += 1 if res == float('inf'): return "" return s[start:end+1]",
         solved=False
     )
 
     problem68 = Problem(
         category='Hash Tables',
         difficulty='Hard',
-        title='',
-        description='',
-        solution="",
+        title='Palindrome Pairs',
+        description='Given a list of unique words, return all the pairs of the distinct indices (i, j) in the given list, so that the concatenation of the two words words[i] + words[j] is a palindrome.',
+        solution='class Solution: def palindromePairs(self, words: List[str]) -> List[List[int]]: if len(words) == 0: return [] res = [] mapping = {word: i for i, word in enumerate(words)} for i, word in enumerate(words): for j in range(len(word)+1): s1, s2 = word[:j], word[j:] if self.valid(s1): tmp = s2[::-1] if tmp in mapping and mapping[tmp] != i: res.append([mapping[tmp], i]) if len(s2) > 0 and self.valid(s2): tmp = s1[::-1] if tmp in mapping and mapping[tmp] != i: res.append([i, mapping[tmp]]) return res def valid(self, s): start, end = 0, len(s)-1 while start < end: if s[start] != s[end]: return False start += 1 end -= 1 return True',
         solved=False
     )
 
