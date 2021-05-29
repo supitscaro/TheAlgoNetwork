@@ -11,3 +11,17 @@ class Problems(db.Model):
     description = Column(db.String, nullable=False)
     solution = Column(db.String, nullable=False)
     solved = Column(db.Boolean, nullable=True)
+
+    # assets = db.relationship("Asset", back_populates="problems")
+    user = db.relationship("User", back_populates="problems")
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "category": self.category,
+            "difficulty": self.difficulty,
+            "title": self.title,
+            "description": self.description,
+            "solution": self.solution,
+            "solved": self.solved
+        }
