@@ -1,7 +1,7 @@
 from .db import db
 
 
-class Problems(db.Model):
+class Problem(db.Model):
     __tablename__ = 'problems'
 
     id = Column(db.Integer, primary_key=True)
@@ -13,7 +13,8 @@ class Problems(db.Model):
     solved = Column(db.Boolean, nullable=True)
 
     # assets = db.relationship("Asset", back_populates="problems")
-    user = db.relationship("User", back_populates="problems")
+    # user = db.relationship("User", back_populates="problems")
+    review = db.relationship("Review", back_populates="problems")
 
     def to_dict(self):
         return {
