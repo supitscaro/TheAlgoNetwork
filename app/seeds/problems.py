@@ -1,6 +1,6 @@
 from app.models import db, Problem
 
-# Adds a demo user, you can add other users here if you want
+# Adds problems for the users to look over
 
 
 def seed_problems():
@@ -730,15 +730,78 @@ def seed_problems():
         solved=False
     )
 
-    db.session.add(demo)
+    db.session.add(problem1)
+    db.session.add(problem2)
+    db.session.add(problem3)
+    db.session.add(problem4)
+    db.session.add(problem5)
+    db.session.add(problem6)
+    db.session.add(problem7)
+    db.session.add(problem8)
+    db.session.add(problem9)
+    db.session.add(problem10)
+    db.session.add(problem11)
+    db.session.add(problem12)
+    db.session.add(problem13)
+    db.session.add(problem14)
+    db.session.add(problem15)
+    db.session.add(problem16)
+    db.session.add(problem17)
+    db.session.add(problem18)
+    db.session.add(problem19)
+    db.session.add(problem20)
+    db.session.add(problem21)
+    db.session.add(problem22)
+    db.session.add(problem23)
+    db.session.add(problem24)
+    db.session.add(problem25)
+    db.session.add(problem26)
+    db.session.add(problem27)
+    db.session.add(problem28)
+    db.session.add(problem29)
+    db.session.add(problem30)
+    db.session.add(problem31)
+    db.session.add(problem32)
+    db.session.add(problem33)
+    db.session.add(problem34)
+    db.session.add(problem35)
+    db.session.add(problem36)
+    db.session.add(problem37)
+    db.session.add(problem38)
+    db.session.add(problem39)
+    db.session.add(problem40)
+    db.session.add(problem41)
+    db.session.add(problem42)
+    db.session.add(problem43)
+    db.session.add(problem44)
+    db.session.add(problem45)
+    db.session.add(problem46)
+    db.session.add(problem47)
+    db.session.add(problem48)
+    db.session.add(problem49)
+    db.session.add(problem50)
+    db.session.add(problem51)
+    db.session.add(problem52)
+    db.session.add(problem53)
+    db.session.add(problem54)
+    db.session.add(problem55)
+    db.session.add(problem56)
+    db.session.add(problem57)
+    db.session.add(problem58)
+    db.session.add(problem59)
+    db.session.add(problem60)
+    db.session.add(problem61)
+    db.session.add(problem62)
+    db.session.add(problem63)
+    db.session.add(problem64)
+    db.session.add(problem65)
+    db.session.add(problem66)
+    db.session.add(problem67)
+    db.session.add(problem68)
 
     db.session.commit()
 
 
-# Uses a raw SQL query to TRUNCATE the users table.
-# SQLAlchemy doesn't have a built in function to do this
-# TRUNCATE Removes all the data from the table, and resets
-# the auto incrementing primary key
 def undo_problems():
     db.session.execute('TRUNCATE problems;')
     db.session.commit()
