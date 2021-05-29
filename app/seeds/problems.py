@@ -452,6 +452,62 @@ def seed_problems():
         solved=False
     )
 
+    problem48 = Problem(
+        category='Trees',
+        difficulty='Easy',
+        title='Subtree of Another Tree',
+        description='Given the roots of two binary trees root and subRoot, return true if there is a subtree of root with the same structure and node values of subRoot and false otherwise. A subtree of a binary tree tree is a tree that consists of a node in tree and all of this node\'s descendants. The tree tree could also be considered as a subtree of itself.',
+        solution='class Solution: def isSubtree(self, s, t): def isSame(s,t): if not s and not t: return True elif not s or not t: return False return s.val == t.val and isSame(s.left,t.left) and isSame(s.right,t.right) def traverse(s,t): if not s and not t: return True elif not s and t: return False elif s and not t: return False else: if s.val != t.val: return traverse(s.left,t) or traverse(s.right,t) else: if traverse(s.left,t) or traverse(s.right,t): return True else: return isSame(s,t) return traverse(s,t)',
+        solved=False
+    )
+
+    # Trees - Medium
+
+    problem48 = Problem(
+        category='Trees',
+        difficulty='Medium',
+        title='Insert into a Binary Search Tree',
+        description='You are given the root node of a binary search tree (BST) and a value to insert into the tree. Return the root node of the BST after the insertion. It is guaranteed that the new value does not exist in the original BST. Notice that there may exist multiple valid ways for the insertion, as long as the tree remains a BST after insertion. You can return any of them.',
+        solution='class Solution: def insertIntoBST(self, root, val): if val < root.val: if not root.left: root.left = TreeNode(val) else: self.insertIntoBST(root.left, val) else: if not root.right: root.right = TreeNode(val) else: self.insertIntoBST(root.right, val) return root',
+        solved=False
+    )
+
+    problem49 = Problem(
+        category='Trees',
+        difficulty='Medium',
+        title='Count Good Nodes in Binary Tree',
+        description='Given a binary tree root, a node X in the tree is named good if in the path from root to X there are no nodes with a value greater than X. Return the number of good nodes in the binary tree.',
+        solution="class Solution: def goodNodes(self, root: TreeNode) -> int: self.cnt = 0 def dfs(node, v): if not node: return if node.val >= v: self.cnt += 1 v = max(v, node.val) dfs(node.left, v) dfs(node.right, v) dfs(root,-float('inf')) return self.cnt",
+        solved=False
+    )
+
+    problem50 = Problem(
+        category='Trees',
+        difficulty='Medium',
+        title='Construct Binary Tree from Preorder and Postorder Traversal',
+        description='Return any binary tree that matches the given preorder and postorder traversals. Values in the traversals pre and post are distinct positive integers.',
+        solution='class Solution: def constructFromPrePost(self, pre, post): if pre: root = TreeNode(pre.pop(0)) post.pop() if pre: if pre[0] == post[-1]: root.left = self.constructFromPrePost(pre, post) else: l, r = post.index(pre[0]), pre.index(post[-1]) root.left = self.constructFromPrePost(pre[:r], post[:l + 1]) root.right = self.constructFromPrePost(pre[r:], post[l + 1:]) return root',
+        solved=False
+    )
+
+    problem51 = Problem(
+        category='Trees',
+        difficulty='Medium',
+        title='All Nodes Distance K in Binary Tree',
+        description='We are given a binary tree (with root node root), a target node, and an integer value k. Return a list of the values of all nodes that have a distance k from the target node.  The answer can be returned in any order.',
+        solution='class Solution: def distanceK(self, root, target, K): def dfs(root, d): if not root: return  if d == 0: res.append(root.val) return  if root.left: dfs(root.left, d-1) if root.right: dfs(root.right, d-1) parent = {} q = collections.deque([root]) while q: u = q.popleft() if u == target: break if u.left: parent[u.left] = u q.append(u.left) if u.right: parent[u.right] = u q.append(u.right) res = [] trav = target d = K while trav != root and d > 0: tmp = parent[trav] d -= 1 if d == 0: res.append(tmp.val) break if tmp.left == trav: dfs(tmp.right, d-1) else: dfs(tmp.left, d-1) trav = tmp dfs(target, K) return res',
+        solved=False
+    )
+
+    problem52 = Problem(
+        category='Trees',
+        difficulty='Medium',
+        title='Binary Tree Right Side View',
+        description='Given the root of a binary tree, imagine yourself standing on the right side of it, return the values of the nodes you can see ordered from top to bottom.',
+        solution='class Solution(object): def rightSideView(self, root): if root == None: return [] ans = [root.val] left = ans + self.rightSideView(root.left) right = ans + self.rightSideView(root.right) if len(right) >= len(left): return right return right + left[len(right):]',
+        solved=False
+    )
+
     # Graphs
 
     db.session.add(demo)
