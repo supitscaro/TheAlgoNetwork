@@ -378,6 +378,80 @@ def seed_problems():
 
     # Trees
 
+    # Trees - Easy
+
+    problem40 = Problem(
+        category='Trees',
+        difficulty='Easy',
+        title='Range Sum of BST',
+        description='Given the root node of a binary search tree and two integers low and high, return the sum of values of all nodes with a value in the inclusive range [low, high].',
+        solution='class Solution: def rangeSumBST(self, root, L, R): def dfs(root): if not root: return if L <= root.val <= R: self.res += root.val if L <= root.val: dfs(root.left) if R >= root.val: dfs(root.right) self.res = 0 dfs(root) return self.res',
+        solved=False
+    )
+
+    problem41 = Problem(
+        category='Trees',
+        difficulty='Easy',
+        title='Maximum Depth of Binary Tree',
+        description='Given the root of a binary tree, return its maximum depth. A binary tree\'s maximum depth is the number of nodes along the longest path from the root node down to the farthest leaf node.',
+        solution='class Solution(object): def maxDepth(self, root): if root == None: return 0 return 1 + max(self.maxDepth(root.left),self.maxDepth(root.right))',
+        solved=False
+    )
+
+    problem42 = Problem(
+        category='Trees',
+        difficulty='Easy',
+        title='Invert Binary Tree',
+        description='Given the root of a binary tree, invert the tree, and return its root.',
+        solution='class Solution: def invertTree(self, root): if root: invert = self.invertTree root.left, root.right = invert(root.right), invert(root.left) return root',
+        solved=False
+    )
+
+    problem43 = Problem(
+        category='Trees',
+        difficulty='Easy',
+        title='Binary Tree Postorder Traversal',
+        description='Given the root of a binary tree, return the postorder traversal of its nodes\' values.',
+        solution='class Solution(object): def postorderTraversal(self, root): def dfs(root): if not root: return dfs(root.left) dfs(root.right) res.append(root.val) res = [] dfs(root) return res',
+        solved=False
+    )
+
+    problem44 = Problem(
+        category='Trees',
+        difficulty='Easy',
+        title='Binary Tree Preorder Traversal',
+        description='Given the root of a binary tree, return the preorder traversal of its nodes\' values.',
+        solution='class Solution(object): def preorderTraversal(self, root): if not root: return [] elif not root.left and not root.right: return [root.val] l = self.preorderTraversal(root.left) r = self.preorderTraversal(root.right) return [root.val]+l+r',
+        solved=False
+    )
+
+    problem45 = Problem(
+        category='Trees',
+        difficulty='Easy',
+        title='Diameter of Binary Tree',
+        description='Given the root of a binary tree, return the length of the diameter of the tree. The diameter of a binary tree is the length of the longest path between any two nodes in a tree. This path may or may not pass through the root. The length of a path between two nodes is represented by the number of edges between them.',
+        solution='class Solution(object): def diameterOfBinaryTree(self, root): self.ans = 0 def depth(p): if not p: return 0 left, right = depth(p.left), depth(p.right) self.ans = max(self.ans, left+right) return 1 + max(left, right) depth(root) return self.ans',
+        solved=False
+    )
+
+    problem46 = Problem(
+        category='Trees',
+        difficulty='Easy',
+        title='Symmetric Tree',
+        description='Given the root of a binary tree, check whether it is a mirror of itself (i.e., symmetric around its center).',
+        solution='class Solution(object): def isSymmetric(self, root): def isSym(root1, root2): if root1 == None and root2 == None: return True elif root1 == None and root2 != None: return False elif root1 != None and root2 == None: return False else: if root1.val != root2.val: return False else: return isSym(root1.left, root2.right) and isSym(root1.right,root2.left) return root == None or isSym(root.left,root.right)',
+        solved=False
+    )
+
+    problem47 = Problem(
+        category='Trees',
+        difficulty='Easy',
+        title='Same Tree',
+        description='Given the roots of two binary trees p and q, write a function to check if they are the same or not. Two binary trees are considered the same if they are structurally identical, and the nodes have the same value.',
+        solution='class Solution(object): def isSameTree(self, p, q): if p == None and q == None: return True elif p == None and q != None: return False elif p != None and q == None: return False else: if p.val != q.val: return False else: return self.isSameTree(p.left,q.left) and self.isSameTree(p.right,q.right)',
+        solved=False
+    )
+
     # Graphs
 
     db.session.add(demo)
