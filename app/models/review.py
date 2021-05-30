@@ -5,11 +5,12 @@ class Review(db.Model):
     __tablename__ = 'reviews'
 
     # id, users_id, problems_id
-    id = Column(db.Integer, primary_key=True)
-    users_id = Column(db.Integer, nullable=False)
-    problems_id = Column(db.Integer, nullable=False)
+    id = db.Column(db.Integer, primary_key=True)
+    users_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
+    problems_id = db.Column(db.Integer, db.ForeignKey(
+        "problems.id"), nullable=False)
 
-    user = db.relationship("User", back_populates="reviews")
+    user = db.relationship("User", back_populates="review")
     problem = db.relationship("Problem", back_populates="reviews")
 
     def to_dict(self):

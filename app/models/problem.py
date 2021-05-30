@@ -1,21 +1,23 @@
 from .db import db
+from .problems_joins import solved
+from .reviews_joined import review_problem
 
 
 class Problem(db.Model):
     __tablename__ = 'problems'
 
-    id = Column(db.Integer, primary_key=True)
-    category = Column(db.String, nullable=False)
-    difficulty = Column(db.String, nullable=False)
-    title = Column(db.String, nullable=False)
-    description = Column(db.String, nullable=False)
-    solution = Column(db.String, nullable=False)
-    solved = Column(db.Boolean, nullable=True)
-    review = Column(db.Boolean, nullable=True)
+    id = db.Column(db.Integer, primary_key=True)
+    category = db.Column(db.String, nullable=False)
+    difficulty = db.Column(db.String, nullable=False)
+    title = db.Column(db.String, nullable=False)
+    description = db.Column(db.String, nullable=False)
+    solution = db.Column(db.String, nullable=False)
+    # reviews_id = db.Column(db.Boolean, nullable=True)
+    solved = db.Column(db.Boolean, nullable=True)
 
-    # assets = db.relationship("Asset", back_populates="problems")
-    # user = db.relationship("User", back_populates="problems")
-    review = db.relationship("Review", back_populates="problems")
+    user = db.relationship("User", secondary=solved, back_populates="problems")
+    reviews = db.relationship(
+        "Review", secondary=review_problem, back_populates="problem")
 
     def to_dict(self):
         return {

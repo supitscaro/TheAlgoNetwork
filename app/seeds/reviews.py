@@ -38,6 +38,6 @@ def seed_reviews():
     db.session.commit()
 
 
-def undo_problems():
-    db.session.execute('TRUNCATE problems;')
+def undo_reviews():
+    db.session.execute('TRUNCATE reviews;')
     db.session.commit()
