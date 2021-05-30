@@ -13,9 +13,12 @@ class Problem(db.Model):
     description = db.Column(db.String, nullable=False)
     solution = db.Column(db.String, nullable=False)
 
-    user = db.relationship("User", secondary=Solved, back_populates="problems")
-    reviews = db.relationship("User", secondary=Review,
-                              back_populates="reviews")
+    users = db.relationship("User", secondary="solved",
+                            back_populates="problems")
+    reviews = db.relationship("User", secondary="reviews",
+                              back_populates="problem_reviews")
+
+    # reviews = db.relationship("Review")
 
     def to_dict(self):
         return {

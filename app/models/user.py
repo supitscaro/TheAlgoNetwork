@@ -2,7 +2,7 @@ from .db import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 from .solved import Solved
-from .review import Review
+# from .review import Review
 
 
 class User(db.Model, UserMixin):
@@ -13,10 +13,10 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
 
-    reviews = db.relationship(
-        "Problem", secondary=Review, back_populates="reviews")
+    problem_reviews = db.relationship(
+        "Problem", secondary="reviews", back_populates="reviews")
     problems = db.relationship(
-        "Problem", secondary=Solved, back_populates="user")
+        "Problem", secondary="solved", back_populates="users")
 
     @property
     def password(self):

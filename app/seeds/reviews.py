@@ -1,43 +1,15 @@
-from app.models import db, Review
+from app.models import db, Problem, User, Review
 
 
 def seed_reviews():
 
-    review1 = Review(
-        review_problems=True,
-        users_id=1,
-        problems_id=4
-    )
+    user1 = User.query.get(1)
+    problem1 = Problem.query.get(1)
+    review1 = Review(review_problems=True, users_id=user1.id,
+                     problems_id=problem1.id)
 
-    review2 = Review(
-        review_problems=True,
-        users_id=1,
-        problems_id=12
-    )
-
-    review3 = Review(
-        review_problems=True,
-        users_id=1,
-        problems_id=18
-    )
-
-    review4 = Review(
-        review_problems=True,
-        users_id=1,
-        problems_id=19
-    )
-
-    review5 = Review(
-        review_problems=True,
-        users_id=1,
-        problems_id=23
-    )
-
-    review6 = Review(
-        review_problems=True,
-        users_id=1,
-        problems_id=26
-    )
+    db.session.add(review1)
+    db.session.commit()
 
 
 def undo_reviews():

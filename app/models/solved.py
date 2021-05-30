@@ -10,6 +10,9 @@ class Solved(db.Model):
     problems_id = db.Column(db.Integer, db.ForeignKey(
         "problems.id"), nullable=False)
 
+    user = db.relationship('User', foreign_keys=users_id)
+    problem = db.relationship('Problem', foreign_keys=problems_id)
+
     def to_dict(self):
         return {
             "id": self.id,
@@ -17,3 +20,14 @@ class Solved(db.Model):
             "users_id": self.users_id,
             "problems_id": self.problems_id
         }
+
+
+# Solved = db.Table(
+#     'Solved',
+#     db.Column('id', db.Integer, primary_key=True),
+#     db.Column('problem_solved', db.Boolean, nullable=False),
+#     db.Column('users_id', db.Integer, db.ForeignKey(
+#         "users.id"), nullable=False),
+#     db.Column('problems_id', db.Integer, db.ForeignKey(
+#         "problems.id"), nullable=False),
+# )

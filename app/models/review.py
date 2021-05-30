@@ -1,5 +1,5 @@
 from .db import db
-from .solved import Solved
+# from .review import Review
 
 
 class Review(db.Model):
@@ -11,6 +11,9 @@ class Review(db.Model):
     users_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
     problems_id = db.Column(db.Integer, db.ForeignKey(
         "problems.id"), nullable=False)
+
+    user = db.relationship('User', foreign_keys=users_id)
+    problem = db.relationship('Problem', foreign_keys=problems_id)
 
     def to_dict(self):
         return {
