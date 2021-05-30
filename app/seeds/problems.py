@@ -483,7 +483,7 @@ def seed_problems():
     # Hash Table
     # Hash Table - Easy
     problem56 = Problem(
-        category='Hash Tables',
+        category='Hash',
         difficulty='Easy',
         title='Number of Good Pairs',
         description='Given an array of integers nums. A pair (i,j) is called good if nums[i] == nums[j] and i < j. Return the number of good pairs.',
@@ -491,7 +491,7 @@ def seed_problems():
     )
 
     problem57 = Problem(
-        category='Hash Tables',
+        category='Hash',
         difficulty='Easy',
         title='Jewels and Stones',
         description='You\'re given strings jewels representing the types of stones that are jewels, and stones representing the stones you have. Each character in stones is a type of stone you have. You want to know how many of the stones you have are also jewels. Letters are case sensitive, so "a" is considered a different type of stone from "A".',
@@ -499,7 +499,7 @@ def seed_problems():
     )
 
     problem58 = Problem(
-        category='Hash Tables',
+        category='Hash',
         difficulty='Easy',
         title='How Many Numbers Are Smaller Than the Current Number',
         description='Given the array nums, for each nums[i] find out how many numbers in the array are smaller than it. That is, for each nums[i] you have to count the number of valid j\'s such that j != i and nums[j] < nums[i]. Return the answer in an array.',
@@ -507,7 +507,7 @@ def seed_problems():
     )
 
     problem59 = Problem(
-        category='Hash Tables',
+        category='Hash',
         difficulty='Easy',
         title='Subdomain Visit Count',
         description='A website domain like "discuss.leetcode.com" consists of various subdomains. At the top level, we have "com", at the next level, we have "leetcode.com", and at the lowest level, "discuss.leetcode.com". When we visit a domain like "discuss.leetcode.com", we will also visit the parent domains "leetcode.com" and "com" implicitly. Now, call a "count-paired domain" to be a count (representing the number of visits this domain received), followed by a space, followed by the address. An example of a count-paired domain might be "9001 discuss.leetcode.com". We are given a list cpdomains of count-paired domains. We would like a list of count-paired domains, (in the same format as the input, and in any order), that explicitly counts the number of visits to each subdomain.',
@@ -515,7 +515,7 @@ def seed_problems():
     )
 
     problem60 = Problem(
-        category='Hash Tables',
+        category='Hash',
         difficulty='Easy',
         title='Design HashMap',
         description='Design a HashMap without using any built-in hash table libraries.',
@@ -523,7 +523,7 @@ def seed_problems():
     )
 
     problem61 = Problem(
-        category='Hash Tables',
+        category='Hash',
         difficulty='Easy',
         title='Single Number',
         description='Given a non-empty array of integers nums, every element appears twice except for one. Find that single one. You must implement a solution with a linear runtime complexity and use only constant extra space.',
@@ -531,7 +531,7 @@ def seed_problems():
     )
 
     problem62 = Problem(
-        category='Hash Tables',
+        category='Hash',
         difficulty='Easy',
         title='Verifying an Alien Dictionary',
         description='In an alien language, surprisingly they also use english lowercase letters, but possibly in a different order. The order of the alphabet is some permutation of lowercase letters.Given a sequence of words written in the alien language, and the order of the alphabet, return true if and only if the given words are sorted lexicographicaly in this alien language.',
@@ -541,7 +541,7 @@ def seed_problems():
     # Hash Table - Medium
 
     problem63 = Problem(
-        category='Hash Tables',
+        category='Hash',
         difficulty='Medium',
         title='Top K Frequent Words',
         description='Given a non-empty list of words, return the k most frequent elements. Your answer should be sorted by frequency from highest to lowest. If two words have the same frequency, then the word with the lower alphabetical order comes first.',
@@ -549,7 +549,7 @@ def seed_problems():
     )
 
     problem64 = Problem(
-        category='Hash Tables',
+        category='Hash',
         difficulty='Medium',
         title='Daily Temperatures',
         description='Given a list of daily temperatures temperatures, return a list such that, for each day in the input, tells you how many days you would have to wait until a warmer temperature. If there is no future day for which this is possible, put 0 instead.',
@@ -557,7 +557,7 @@ def seed_problems():
     )
 
     problem65 = Problem(
-        category='Hash Tables',
+        category='Hash',
         difficulty='Medium',
         title='Subarray Sum Equals K',
         description='Given an array of integers nums and an integer k, return the total number of continuous subarrays whose sum equals to k.',
@@ -567,7 +567,7 @@ def seed_problems():
     # Hash Tables - Hard
 
     problem66 = Problem(
-        category='Hash Tables',
+        category='Hash',
         difficulty='Hard',
         title='Group Anagrams',
         description='Given an array of strings strs, group the anagrams together. You can return the answer in any order. An Anagram is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all the original letters exactly once.',
@@ -575,7 +575,7 @@ def seed_problems():
     )
 
     problem67 = Problem(
-        category='Hash Tables',
+        category='Hash',
         difficulty='Hard',
         title='Minimum Window Substring',
         description='Given two strings s and t of lengths m and n respectively, return the minimum window substring of s such that every character in t (including duplicates) is included in the window. If there is no such substring, return the empty string "". The testcases will be generated such that the answer is unique. A substring is a contiguous sequence of characters within the string.',
@@ -583,7 +583,7 @@ def seed_problems():
     )
 
     problem68 = Problem(
-        category='Hash Tables',
+        category='Hash',
         difficulty='Hard',
         title='Palindrome Pairs',
         description='Given a list of unique words, return all the pairs of the distinct indices (i, j) in the given list, so that the concatenation of the two words words[i] + words[j] is a palindrome.',
