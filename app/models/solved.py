@@ -7,7 +7,7 @@ class Solved(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     problem_solved = db.Column(db.Boolean, nullable=True)
     users_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
-    problems_id = db.Column(db.Integer, db. ForeignKey(
+    problems_id = db.Column(db.Integer, db.ForeignKey(
         "problems.id"), nullable=False)
 
     def to_dict(self):
