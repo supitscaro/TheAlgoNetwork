@@ -1,7 +1,9 @@
 from flask.cli import AppGroup
 from .users import seed_users, undo_users
 from .problems import seed_problems, undo_problems
-from .reviews import seed_reviews, undo_reviews
+# from .reviews import seed_reviews, undo_reviews
+from .review_problems import seed_review_problems, undo_review_problems
+from .solved import seed_solved, undo_solved
 
 # Creates a seed group to hold our commands
 # So we can type `flask seed --help`
@@ -13,7 +15,8 @@ seed_commands = AppGroup('seed')
 def seed():
     seed_users()
     seed_problems()
-    seed_reviews()
+    seed_review_problems()
+    seed_solved()
     # Add other seed functions here
 
 # Creates the `flask seed undo` command
@@ -23,5 +26,6 @@ def seed():
 def undo():
     undo_users()
     undo_problems()
-    undo_reviews()
+    undo_review_problems()
+    undo_solved()
     # Add other undo functions here

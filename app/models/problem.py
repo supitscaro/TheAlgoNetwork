@@ -1,6 +1,6 @@
 from .db import db
-from .problems_joins import solved
-from .reviews_joined import review_problem
+from .solved import Solved
+from .review_problem import Review_Problem
 
 
 class Problem(db.Model):
@@ -12,12 +12,10 @@ class Problem(db.Model):
     title = db.Column(db.String, nullable=False)
     description = db.Column(db.String, nullable=False)
     solution = db.Column(db.String, nullable=False)
-    # reviews_id = db.Column(db.Boolean, nullable=True)
-    solved = db.Column(db.Boolean, nullable=True)
 
-    user = db.relationship("User", secondary=solved, back_populates="problems")
+    user = db.relationship("User", secondary=Solved, back_populates="problems")
     reviews = db.relationship(
-        "Review", secondary=review_problem, back_populates="problem")
+        "Review", secondary=Review_Problem, back_populates="problem")
 
     def to_dict(self):
         return {
