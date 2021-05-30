@@ -12,7 +12,6 @@ def get_problems(category):
     print(category)
     problems = Problem.query.filter(
         Problem.category == category.capitalize()).all()
-    print('YOOOOOOO', problems)
     problems_dict_ = {}
 
     id = 0
