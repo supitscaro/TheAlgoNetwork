@@ -28,6 +28,4 @@ class Problem(db.Model):
             "title": self.title,
             "description": self.description,
             "solution": self.solution,
-            "review": self.review,
-            "solved": self.solved
         }
