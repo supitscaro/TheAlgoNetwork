@@ -1,6 +1,6 @@
 from .db import db
 from .solved import Solved
-from .review_problem import Review_Problem
+from .review import Review
 
 
 class Problem(db.Model):
@@ -14,8 +14,8 @@ class Problem(db.Model):
     solution = db.Column(db.String, nullable=False)
 
     user = db.relationship("User", secondary=Solved, back_populates="problems")
-    reviews = db.relationship(
-        "Review", secondary=Review_Problem, back_populates="problem")
+    reviews = db.relationship("User", secondary=Review,
+                              back_populates="reviews")
 
     def to_dict(self):
         return {

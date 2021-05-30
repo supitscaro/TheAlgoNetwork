@@ -1,45 +1,45 @@
-from app.models import db, Review_Problem
+from app.models import db, Review
 
 
-def seed_review_problems():
+def seed_reviews():
 
-    review1 = Solved(
+    review1 = Review(
         review_problems=True,
         users_id=1,
         problems_id=4
     )
 
-    review2 = Solved(
+    review2 = Review(
         review_problems=True,
         users_id=1,
         problems_id=12
     )
 
-    review3 = Solved(
+    review3 = Review(
         review_problems=True,
         users_id=1,
         problems_id=18
     )
 
-    review4 = Solved(
+    review4 = Review(
         review_problems=True,
         users_id=1,
         problems_id=19
     )
 
-    review5 = Solved(
+    review5 = Review(
         review_problems=True,
         users_id=1,
         problems_id=23
     )
 
-    review6 = Solved(
+    review6 = Review(
         review_problems=True,
         users_id=1,
         problems_id=26
     )
 
 
-def undo_review_problems():
-    db.session.execute('TRUNCATE review_problems RESTART IDENTITY')
+def undo_reviews():
+    db.session.execute('TRUNCATE reviews RESTART IDENTITY')
     db.session.commit()
