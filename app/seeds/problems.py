@@ -104,7 +104,7 @@ def seed_problems():
         title='Find All Duplicates in an Array',
         description='Given an integer array nums of length n where all the integers of nums are in the range [1, n] and each integer appears once or twice, return an array of all the integers that appears twice.',
         language="Python",
-        solution='def findDuplicates(self, nums): result = [] for x in nums: if nums[abs(x)-1] < 0: result.append(abs(x)) else: nums[abs(x)-1] = -1*nums[abs(x)-1] return result',
+        solution='class Solution(object):\n    def findDuplicates(self, nums):\n        result = []\n        for x in nums:\n            if nums[abs(x)-1] < 0:\n                result.append(abs(x))\n            else:\n                nums[abs(x)-1] = -1*nums[abs(x)-1]\n        return result',
     )
 
     problem12 = Problem(
@@ -113,7 +113,7 @@ def seed_problems():
         title='Max Area of Island',
         description='You are given an m x n binary matrix grid. An island is a group of 1\'s (representing land) connected 4-directionally (horizontal or vertical.) You may assume all four edges of the grid are surrounded by water. The area of an island is the number of cells with a value 1 in the island. Return the maximum area of an island in grid. If there is no island, return 0',
         language="Python",
-        solution='def maxAreaOfIsland(self, grid): m, n = len(grid), len(grid[0]) def dfs(i, j): if 0 <= i < m and 0 <= j < n and grid[i][j]: grid[i][j] = 0 return 1 + dfs(i - 1, j) + dfs(i, j + 1) + dfs(i + 1, j) + dfs(i, j - 1) return 0 areas = [dfs(i, j) for i in range(m) for j in range(n) if grid[i][j]] return max(areas) if areas else 0',
+        solution='class Solution:\n    def maxAreaOfIsland(self, grid):\n        return max([self.dfs(r, c, grid) for r in range(len(grid)) for c in range(len(grid[0]))])\n    def dfs(self, r, c, grid):\n        if not (0 <= r < len(grid) and (0 <= c < len(grid[0])) and grid[r][c]):\n            return 0\n        grid[r][c] = 0\n        return 1 + sum([self.dfs(r + x[0], c + x[1], grid) for x in [(0, 1), (0, -1), (1, 0), (-1, 0)]])',
     )
 
     problem13 = Problem(
@@ -122,7 +122,7 @@ def seed_problems():
         title='Rotate Image',
         description='You are given an n x n 2D matrix representing an image, rotate the image by 90 degrees (clockwise). You have to rotate the image in-place, which means you have to modify the input 2D matrix directly. DO NOT allocate another 2D matrix and do the rotation.',
         language="Python",
-        solution='def rotate(self, matrix): n = len(matrix) for i in range(n): for k in xrange(0, n - 1 - i): matrix[i][k], matrix[n - 1 - k][n - 1 - i] = matrix[n - 1 - k][n - 1 - i], matrix[i][k] for j in range(n): for k in range(n/2): matrix[k][j], matrix[n - 1 - k][j] = matrix[n - 1 - k][j], matrix[k][j]',
+        solution='class Solution(object):\n    def transpose(self, matrix):\n        M,N = len(matrix), len(matrix[0])\n        cols = 1\n        for i in range(M):\n            for j in range(cols):\n                matrix[i][j], matrix[j][i] = matrix[j][i], matrix[i][j]\n            cols += 1\n        return\n\n    def rotate(self, matrix):\n        if matrix == []:\n            return matrix\n        self.transpose(matrix)\n        for r in matrix:\n            r.reverse()\n        return',
     )
 
     problem14 = Problem(
@@ -131,7 +131,7 @@ def seed_problems():
         title='Product of Array Except Self',
         description='Given an integer array nums, return an array answer such that answer[i] is equal to the product of all the elements of nums except nums[i]. The product of any prefix or suffix of nums is guaranteed to fit in a 32-bit integer',
         language="Python",
-        solution='def productExceptSelf(self, nums: List[int]) -> List[int]: res = [1] * len(nums) left = 1 right = 1 for i in range(1, len(nums)): left *= nums[i - 1] res[i] *= left right *= nums[~i + 1] res[~i] *= right return res',
+        solution='class Solution:\n    def productExceptSelf(self, nums):\n        res = [1]*len(nums)\n        lprod = 1\n        rprod = 1\n        for i in range(len(nums)):\n            res[i] *= lprod\n            lprod *= nums[i]\n            res[~i] *= rprod\n            rprod *= nums[~i]\n        return res',
     )
 
     problem15 = Problem(
@@ -140,7 +140,7 @@ def seed_problems():
         title='Combination Sum',
         description='Given an array of distinct integers candidates and a target integer target, return a list of all unique combinations of candidates where the chosen numbers sum to target. You may return the combinations in any order. The same number may be chosen from candidates an unlimited number of times. Two combinations are unique if the frequency of at least one of the chosen numbers is different. It is guaranteed that the number of unique combinations that sum up to target is less than 150 combinations for the given input.',
         language="Python",
-        solution='class Solution(object): def combinationSum(self, candidates, target): ret = [] self.dfs(candidates, target, [], ret) return ret def dfs(self, nums, target, path, ret): if target < 0: return if target == 0: ret.append(path) return for i in range(len(nums)): self.dfs(nums[i:], target-nums[i], path+[nums[i]], ret)',
+        solution='class Solution(object):\n    def combinationSum(self, candidates, target):\n        ret = []\n        self.dfs(candidates, target, [], ret)\n        return ret\n\n    def dfs(self, nums, target, path, ret):\n        if target < 0:\n            return\n        if target == 0:\n            ret.append(path)\n            return\n        for i in range(len(nums)):\n            self.dfs(nums[i:], target-nums[i], path+[nums[i]], ret)',
     )
 
     problem16 = Problem(
@@ -149,7 +149,7 @@ def seed_problems():
         title='Find the Duplicate Number',
         description='Given an array of integers nums containing n + 1 integers where each integer is in the range [1, n] inclusive. There is only one repeated number in nums, return this repeated number.',
         language="Python",
-        solution='class Solution(object): def findDuplicate(self, nums): if len(nums) == 0: return 0 low = 1 high = len(nums) while low < high: mid = low + int((high-low)>>1) count = 0 for x in nums: if x <= mid: count = count + 1 if count > mid: high = mid else: low = mid+1 return low',
+        solution='class Solution(object):\n    def findDuplicate(self, nums):\n        if len(nums) == 0:\n            return 0\n        low = 1\n        high = len(nums)\n        while low < high:\n            mid = low + int((high-low)>>1)\n            count = 0\n            for x in nums:\n                if x <= mid:\n                    count = count + 1\n            if count > mid:\n                high = mid\n            else:\n                low = mid+1\n        return low',
     )
 
     problem17 = Problem(
@@ -158,7 +158,7 @@ def seed_problems():
         title='Container With Most Water',
         description='Given n non-negative integers a1, a2, ..., an , where each represents a point at coordinate (i, ai). n vertical lines are drawn such that the two endpoints of the line i is at (i, ai) and (i, 0). Find two lines, which, together with the x-axis forms a container, such that the container contains the most water. Notice that you may not slant the container.',
         language="Python",
-        solution='class Solution: def maxArea(self, height: List[int]) -> int: l = 0 r = len(height)-1 res = 0 while l < r: area = (r - l) * min(height[l], height[r]) res = max(area,res) if height[l]<height[r]: l = l+1 else: r = r-1 return res',
+        solution='class Solution:\n    def maxArea(self, height: List[int]) -> int:\n        l = 0\n        r = len(height)-1\n        res = 0\n        while l < r:\n            area = (r - l) * min(height[l], height[r])\n            res = max(area,res)\n            if height[l]<height[r]:\n                l = l+1\n            else:\n                r = r-1\n        return res',
     )
 
     problem18 = Problem(
