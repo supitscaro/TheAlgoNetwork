@@ -1,5 +1,5 @@
 {
-    "python.pythonPath": "/Users/carolinemendez/.pyenv/versions/3.9.4/bin/python",
+    "python.pythonPath": "/home/caroline/.pyenv/versions/3.9.4/bin/python",
     "python.linting.pylintEnabled": false,
     "python.linting.enabled": false,
     "python.linting.pycodestyleEnabled": false

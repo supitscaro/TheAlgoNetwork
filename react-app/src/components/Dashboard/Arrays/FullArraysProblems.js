@@ -4,15 +4,15 @@ import { useParams, Link } from "react-router-dom";
 import { getAllProblems } from "../../../store/problems";
 
 const ArrayProblems = () => {
-    const { id } = useParams();
-    const dispatch = useDispatch();
-    const all_problems = useSelector(state => state.problems.problems);
+    // const { id } = useParams();
+    // const dispatch = useDispatch();
+    // const all_problems = useSelector(state => state.problems.problems);
 
-    console.log('probleeeeeeeems', Object.values(all_problems));
+    // console.log('probleeeeeeeems', Object.values(all_problems));
 
-    useEffect( () => {
-        dispatch(getAllProblems(arrays))
-    }, [dispatch])
+    // useEffect( () => {
+    //     dispatch(getAllProblems(arrays))
+    // }, [dispatch])
     
     return (
         <div>
