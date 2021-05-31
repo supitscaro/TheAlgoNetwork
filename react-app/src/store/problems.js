@@ -1,4 +1,5 @@
 const GET_ALL_PROBLEMS = "problems/GET_ALL_PROBLEMS";
+const GET_SPECIFIC_PROBLEM = "problems/GET_SPECIFIC_PROBLEM";
 
 
 // ACTIONS
@@ -8,9 +9,15 @@ const getProblems = (problems) => ({
     problems
 });
 
+const getProblem = (problem) => ({
+    type: GET_SPECIFIC_PROBLEM,
+    problem
+});
+
 
 // THUNKS
 
+// gets all problems based on category
 export const getAllProblems = (category) => async (dispatch) => {
     const res = await fetch(`/api/problems/${category}`);
 
@@ -21,10 +28,22 @@ export const getAllProblems = (category) => async (dispatch) => {
 };
 
 
+// gets all problems based on category and id
+export const getSpecificProblem = (category, id) => async (dispatch) => {
+    const res = await fetch(`/api/problems/${category}/${id}`);
+
+    if (res.ok) {
+        let data = await res.json();
+        dispatch(getProblem(data));
+    }
+};
+
+
 // REDUCER
 
 let initialState = {
-    problems: {}
+    problems: {},
+    problem: {}
 }
 
 export default function reducer(state = initialState, action) {
@@ -33,6 +52,11 @@ export default function reducer(state = initialState, action) {
             return {
                 ...state,
                 problems: action.problems
+            }
+        case GET_SPECIFIC_PROBLEM:
+            return {
+                ...state,
+                problem: action.problem
             }
         default:
             return state;
