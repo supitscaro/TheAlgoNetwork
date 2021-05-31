@@ -186,7 +186,7 @@ def seed_problems():
         title='First Missing Positive',
         description='Given an unsorted integer array nums, find the smallest missing positive integer.',
         language="Python",
-        solution='class Solution(object): def firstMissingPositive(self, nums): N, i = len(nums), 0 while i < N: while 1<=nums[i]<=N: idx_expected = nums[i]-1 if nums[i] == nums[idx_expected]: break nums[i], nums[idx_expected] = nums[idx_expected], nums[i] i = i + 1 for i in range(N): if nums[i] != i+1: return i+1 return N+1',
+        solution='class Solution(object)\n:    def firstMissingPositive(self, nums):\n        N, i = len(nums), 0\n        while i < N:\n        while 1<=nums[i]<=N:\n            idx_expected = nums[i]-1\n                if nums[i] == nums[idx_expected]:\n                    break\n                nums[i], nums[idx_expected] = nums[idx_expected], nums[i]\n            i = i + 1\n        for i in range(N):\n            if nums[i] != i+1:\n                return i+1\n        return N+1',
     )
 
     problem21 = Problem(
@@ -195,7 +195,7 @@ def seed_problems():
         title='Median of Two Sorted Arrays',
         description='Given two sorted arrays nums1 and nums2 of size m and n respectively, return the median of the two sorted arrays.',
         language="Python",
-        solution='class Solution: def findMedianSortedArrays(self, nums1, nums2): a, b = sorted((nums1, nums2), key=len) m, n = len(a), len(b) after = (m + n - 1) / 2 lo, hi = 0, m while lo < hi: i = (lo + hi) / 2 if after-i-1 < 0 or a[i] >= b[after-i-1]: hi = i else: lo = i + 1 i = lo nextfew = sorted(a[i:i+2] + b[after-i:after-i+2]) return (nextfew[0] + nextfew[1 - (m+n)%2]) / 2.0',
+        solution='class Solution:\n    def findMedianSortedArrays(self, nums1, nums2):\n        a, b = sorted((nums1, nums2), key=len)\n        m, n = len(a), len(b)\n        after = (m + n - 1) / 2\n        lo, hi = 0, m\n        while lo < hi: \n            i = (lo + hi) / 2\n            if after-i-1 < 0 or a[i] >= b[after-i-1]:\n                hi = i\n            else:\n                lo = i + 1\n        i = lo\n        nextfew = sorted(a[i:i+2] + b[after-i:after-i+2])\n        return (nextfew[0] + nextfew[1 - (m+n)%2]) / 2.0',
     )
 
     problem22 = Problem(
@@ -204,7 +204,7 @@ def seed_problems():
         title='Max Chunks To Make Sorted II',
         description='Given an array arr of integers (not necessarily distinct), we split the array into some number of "chunks" (partitions), and individually sort each chunk.  After concatenating them, the result equals the sorted array. What is the most number of chunks we could have made?',
         language="Python",
-        solution="class Solution: def maxChunksToSorted(self, arr): min_elements = [float('inf')] * len(arr) for i in range(len(arr) - 2, -1, -1): min_elements[i] = min(min_elements[i + 1], arr[i + 1]) count = 0 max_n = arr[0] for i, n in enumerate(arr): max_n = max(max_n, arr[i]) if min_elements[i] >= max_n: count += 1 return countfor a, b in zip(arr, sorted(arr)): c1[a] += 1 c2[b] += 1 res += c1 == c2 return res",
+        solution="class Solution(object):\n    def maxChunksToSorted(self, arr):\n        n = len(arr)\n        min_right = [0]*n\n        max_left = [0]*n\n        for i in range(n):\n            if i == 0:\n                max_left[i] = arr[i]\n            else:\n                max_left[i] = max(arr[i], max_left[i-1])\n        for i in range(n-1, -1, -1):\n            if i == n-1:\n                min_right[i] = arr[i]\n            else:\n                min_right[i] = min(arr[i], min_right[i+1])\n        res = 1\n        for i in range(n-1):\n            if max_left[i] <= min_right[i+1]:\n                res += 1\n        return res",
     )
 
     # Strings
