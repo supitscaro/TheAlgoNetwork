@@ -9,6 +9,7 @@ import UsersList from "./components/UsersList";
 import User from "./components/User";
 import { authenticate } from "./store/session";
 import Dashboard from "./components/Dashboard";
+import ArraysComponent from "./components/Dashboard/Arrays";
 
 function App() {
   const user = useSelector(state => state.session.user)
@@ -38,6 +39,9 @@ function App() {
         </Route>
         <Route exact path="/">
           <Dashboard />
+        </Route>
+        <Route path="/:arrays">
+          <ArraysComponent/>
         </Route>
       </Switch>
     </BrowserRouter>

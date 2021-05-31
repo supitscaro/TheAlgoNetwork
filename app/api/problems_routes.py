@@ -9,7 +9,7 @@ problems_routes = Blueprint("problems", __name__)
 
 @problems_routes.route('/<string:category>')
 def get_problems(category):
-    print(category)
+    print('teeeeeeeeeeeeeest', category)
     problems = Problem.query.filter(
         Problem.category == category.capitalize()).all()
     problems_dict_ = {}
