@@ -167,7 +167,7 @@ def seed_problems():
         title='Subarray Sum Equals K',
         description='Given an array of integers nums and an integer k, return the total number of continuous subarrays whose sum equals to k.',
         language="Python",
-        solution='def subarraySum(self, nums, k): preSums = {0: 1} s = 0 res = 0 for num in nums: s += num res += preSums.get(s - k, 0) preSums[s] = preSums.get(s, 0) + 1 return res',
+        solution='class Solution:\n    def subarraySum(self, nums, k):\n        preSums = {0: 1}\n        s = 0\n        res = 0\n        for num in nums:\n            s += num\n            res += preSums.get(s - k, 0)\n            preSums[s] = preSums.get(s, 0) + 1\n        return res',
     )
 
     # Array - Hard
@@ -177,7 +177,7 @@ def seed_problems():
         title='Trapping Rain Water',
         description='Given n non-negative integers representing an elevation map where the width of each bar is 1, compute how much water it can trap after raining.',
         language="Python",
-        solution='class Solution: def trap(self, height): water, left_highest, right_highest, j = 0, [0]*len(height), [0]*len(height), len(height)-2 for i in xrange(1, len(height)): left_highest[i] = max(left_highest[i-1], height[i-1]) right_highest[j] = max(right_highest[j+1], height[j+1]) j -= 1 for i in xrange(1, len(height)-1): water += max(min(left_highest[i], right_highest[i]) - height[i], 0) return water',
+        solution='class Solution:\n    def trap(self, height: List[int]) -> int:\n        stack =[]\n        area = 0\n        for i in range(len(height)):\n            offset = 0\n            while(stack and height[i] >= height[stack[-1]]):\n                pre_i = stack.pop()\n                area += (height[pre_i]-offset) * (i-pre_i-1)\n                offset = height[pre_i]\n            if stack:\n                area += (height[i]-offset) * (i-stack[-1]-1)\n            stack.append(i)\        return area',
     )
 
     problem20 = Problem(
