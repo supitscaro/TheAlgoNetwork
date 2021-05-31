@@ -1,22 +1,34 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams, Link } from "react-router-dom";
-import { getAllProblems } from "../../../store/problems";
+import { getSpecificProblem } from "../../../store/problems";
 
 const ArrayProblems = () => {
-    // const { id } = useParams();
-    // const dispatch = useDispatch();
-    // const all_problems = useSelector(state => state.problems.problems);
+    const { arrays, problemId } = useParams();
+    const dispatch = useDispatch();
+    const all_problems = useSelector(state => state.problems.problem);
 
-    // console.log('probleeeeeeeems', Object.values(all_problems));
+    console.log('diiiiiiiiiiiiiiiiiick', all_problems);
 
-    // useEffect( () => {
-    //     dispatch(getAllProblems(arrays))
-    // }, [dispatch])
+    let problems = [];
+
+    for (let key in all_problems) {
+        problems.push(all_problems[key])
+    }
+
+    useEffect( () => {
+        dispatch(getSpecificProblem(arrays, problemId))
+    }, [dispatch, arrays, problemId])
     
     return (
         <div>
-            Array Problem
+            {problems.map((problem) => (
+                <div>
+                    <div>{problem.title}</div>
+                    <div>{problem.category}</div>
+                    <div>{problem.description}</div>
+                </div>
+            ))}
         </div>
     )
 }

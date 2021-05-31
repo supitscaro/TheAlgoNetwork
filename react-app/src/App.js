@@ -41,10 +41,10 @@ function App() {
         <Route exact path="/">
           <Dashboard />
         </Route>
-        <Route path="/:arrays">
+        <Route exact path="/:arrays">
           <ArraysComponent/>
         </Route>
-        <Route path="/:arrays/:id">
+        <Route exact path="/:arrays/:problemId">
           <ArrayProblems/>
         </Route>
       </Switch>

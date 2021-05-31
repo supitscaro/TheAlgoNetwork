@@ -8,14 +8,15 @@ const ArraysComponent = () => {
     const dispatch = useDispatch();
     const all_problems = useSelector(state => state.problems.problems);
 
-    console.log('probleeeeeeeems', Object.values(all_problems));
+    console.log('teeeeeeeeeeeeeeeest', all_problems)
 
     let problems = []
 
     for (let key in all_problems) {
-        console.log('tetestesteet', all_problems[key])
         problems.push(all_problems[key])
     }
+
+    console.log('probleeeeeeeeeeeems', problems)
 
     useEffect( () => {
         dispatch(getAllProblems(arrays))
@@ -24,7 +25,7 @@ const ArraysComponent = () => {
     return (
         <div>
             {problems.map((problem) => (
-                <Link to="/arrays/:id">
+                <Link to={`/${problem.category}/${problem.id}`}>
                     <div>{problem.title}</div>
                 </Link>
             ))}
