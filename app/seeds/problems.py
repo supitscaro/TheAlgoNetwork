@@ -261,7 +261,7 @@ def seed_problems():
         title='Add Strings',
         description='Given two non-negative integers, num1 and num2 represented as string, return the sum of num1 and num2 as a string.',
         language="Python",
-        solution="class Solution: def addStrings(self, num1: str, num2: str) -> str: L1, L2, n1, n2 = len(num1), len(num2), [int(i) for i in num1], [int(i) for i in num2] if L1 < L2: n2, n1 = n1, n2 n1, n2, n3 = [0] + n1, [0]*(abs(L1-L2)+1) + n2, [0]*(len(n1)+1) for i in range(len(n1)-1,-1,-1): s = n1[i]+n2[i] n3[i] = s % 10 if s > 9: n1[i-1] += int(s/10) if n3[0] == 0: n3 = n3[1:] return "".join([str(i) for i in n3])",
+        solution='def addString(num1, num2):\n    i, j, carrier, res = len(num1)-1, len(num2)-1, 0, ""\n    while i >= 0 or j >=0 or carrier:\n        if i >= 0:\n            carrier += int(num1[i])\n            i -= 1\n        if j >= 0:\n            carrier += int(num2[j])\n            j -= 1\n        res += str(carrier % 10)\n        carrier //= 10\n    return "".join(res[::-1])',
     )
 
     problem29 = Problem(
@@ -270,7 +270,7 @@ def seed_problems():
         title='Valid Palindrome II',
         description='Given a string s, return true if the s can be palindrome after deleting at most one character from it.',
         language="Python",
-        solution="class Solution(object): def validPalindrome(self, s): left, right = 0, len(s) - 1 while left < right: if s[left] != s[right]: one, two = s[left:right], s[left + 1:right + 1] return one == one[::-1] or two == two[::-1] left, right = left + 1, right - 1 return True",
+        solution="class Solution:\n    def validPalindrome(self, s):\n        left, right = 0, len(s)-1\n        while left < right:\n            if s[left] == s[right]:\n                left += 1\n                right -= 1\n            else:\n                tmp1 = s[:left]+s[left+1:]\n                tmp2 = s[:right]+s[right+1:]\n                return tmp1 == tmp1[::-1] or tmp2 == tmp2[::-1]\n        return True",
     )
 
     problem30 = Problem(
@@ -279,7 +279,7 @@ def seed_problems():
         title='Consecutive Characters',
         description='Given a string s, the power of the string is the maximum length of a non-empty substring that contains only one unique character. Return the power of the string.',
         language="Python",
-        solution="class Solution: def maxPower(self, s: str) -> int: cnt = ans = 1 for i in range(1, len(s)): if s[i] == s[i - 1]: cnt += 1 ans = max(cnt, ans) else: cnt = 1 return ans",
+        solution="class Solution:\n    def maxPower(self, s: str) -> int:\n        cnt = ans = 1\n        for i in range(1, len(s)):\n            if s[i] == s[i - 1]:\n                cnt += 1\n                ans = max(cnt, ans)\n            else:\n                cnt = 1\n        return ans",
     )
 
     problem31 = Problem(
@@ -288,7 +288,7 @@ def seed_problems():
         title='Greatest Common Divisor of Strings',
         description='For two strings s and t, we say "t divides s" if and only if s = t + ... + t  (t concatenated with itself 1 or more times) Given two strings str1 and str2, return the largest string x such that x divides both str1 and str2.',
         language="Python",
-        solution="class Solution: def gcdOfStrings(self, s1: str, s2: str) -> str: return s1[:math.gcd(len(s1), len(s2))] if s1 + s2 == s2 + s1 else ''",
+        solution="class Solution:\n    def gcdOfStrings(self, s1: str, s2: str) -> str:\n        return s1[:math.gcd(len(s1), len(s2))] if s1 + s2 == s2 + s1 else ''",
     )
 
     problem32 = Problem(
@@ -297,7 +297,7 @@ def seed_problems():
         title='Longest Common Prefix',
         description='Write a function to find the longest common prefix string amongst an array of strings. If there is no common prefix, return an empty string "".',
         language="Python",
-        solution='class Solution(object): def longestCommonPrefix(self, strs): result = "" for n in zip(*strs): if len(set(n)) == 1: result += n[0] else: return result return result',
+        solution='class Solution(object):\n    def longestCommonPrefix(self, strs):\n        result = ""\n        for n in zip(*strs):\n            if len(set(n)) == 1:\n                result += n[0]\n            else:\n                return result\n        return result',
     )
 
     # Strings - Medium
@@ -308,7 +308,7 @@ def seed_problems():
         title='Generate Parentheses',
         description='Given n pairs of parentheses, write a function to generate all combinations of well-formed parentheses.',
         language="Python",
-        solution="class Solution: def generateParenthesis(self, n: int) -> List[str]: bfs = [(0, 0, '')] for _ in range(n * 2): new = [] for l, r, s in bfs: if l + 1 <= n: new.append((l + 1, r, s + '(')) if l - r: new.append((l, r + 1, s + ')')) bfs = new return [s for l, r, s in bfs]",
+        solution="class Solution:\n    def generateParenthesis(self, n: int) -> List[str]:\n        bfs = [(0, 0, '')]\n        for _ in range(n * 2):\n            new = []\n            for l, r, s in bfs:\n                if l + 1 <= n:\n                    new.append((l + 1, r, s + '('))\n                if l - r:\n                    new.append((l, r + 1, s + ')'))\n            bfs = new\n        return [s for l, r, s in bfs]",
     )
 
     problem34 = Problem(
@@ -317,7 +317,7 @@ def seed_problems():
         title='Palindromic Substrings',
         description='Given a string s, return the number of palindromic substrings in it. A string is a palindrome when it reads the same backward as forward. A substring is a contiguous sequence of characters within the string.',
         language="Python",
-        solution="class Solution(object): def countSubstrings(self, s): n = len(s) dp = [[0] * n for i in xrange(n)] count = 0 for end in xrange(n): dp[end][end] = 1 count += 1 for start in xrange(end): if s[start] == s[end] and (start+1 >= end-1 or dp[start+1][end-1]): count += 1 dp[start][end] = 1 return count",
+        solution="class Solution:\n    def countSubstrings(self, s: str) -> int:\n        self.res = 0\n        def helper(s, l, r):\n            while l >= 0 and r < len(s) and s[l] == s[r]:\n                l -= 1\n                r += 1\n                self.res += 1\n		for i in range(len(s)):\n			helper(s, i, i)\n			helper(s, i, i + 1)\n		return self.res",
     )
 
     problem35 = Problem(
@@ -326,7 +326,7 @@ def seed_problems():
         title='Group Anagrams',
         description='Given an array of strings strs, group the anagrams together. You can return the answer in any order. An Anagram is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all the original letters exactly once.',
         language="Python",
-        solution="class Solution(object): def groupAnagrams(self, strs): def convert(s): res = [0]*26 for char in s: res[ord(char)-ord('a')] += 1 return tuple(res) rec = {} res = [] for s in strs: t = convert(s) if t in rec: res[rec[t]].append(s) else: res.append([s]) rec[t] = len(res)-1 return res",
+        solution="class Solution(object):\n    def groupAnagrams(self, strs):\n        def convert(s):\n            res = [0]*26\n            for char in s:\n                res[ord(char)-ord('a')] += 1\n            return tuple(res)\n        rec = {}\n        res = []\n        for s in strs:\n            t = convert(s)\n            if t in rec:\n                res[rec[t]].append(s)\n            else:\n                res.append([s])\n                rec[t] = len(res)-1\n        return res",
     )
 
     problem36 = Problem(
@@ -335,7 +335,7 @@ def seed_problems():
         title='Reorganize String',
         description='Given a string s, check if the letters can be rearranged so that two characters that are adjacent to each other are not the same. If possible, output any possible result.  If not possible, return the empty string.',
         language="Python",
-        solution="class Solution: def reorganizeString(self, S): res, c = [], Counter(S) pq = [(-value,key) for key,value in c.items()] heapq.heapify(pq) p_a, p_b = 0, '' while pq: a, b = heapq.heappop(pq) res += [b] if p_a < 0: heapq.heappush(pq, (p_a, p_b)) a += 1 p_a, p_b = a, b res = ''.join(res) if len(res) != len(S): return "" return res",
+        solution="class Solution:\n    def reorganizeString(self, S):\n        res, c = [], Counter(S)\n        pq = [(-value,key) for key,value in c.items()]\n        heapq.heapify(pq)\n        p_a, p_b = 0, ''\n        while pq:\n            a, b = heapq.heappop(pq)\n            res += [b]\n            if p_a < 0:\n                heapq.heappush(pq, (p_a, p_b))\n            a += 1\n            p_a, p_b = a, b\n        res = ''.join(res)\n        if len(res) != len(S): return ''\n        return res",
     )
 
     problem37 = Problem(
@@ -344,7 +344,7 @@ def seed_problems():
         title='Basic Calculator II',
         description='Given a string s which represents an expression, evaluate this expression and return its value. The integer division should truncate toward zero.',
         language="Python",
-        solution='class Solution: def calculate(self, s): num, stack, sign = 0, [], "+" for i in range(len(s)): if s[i].isdigit(): num = num * 10 + int(s[i]) if s[i] in "+-*/" or i == len(s) - 1: if sign == "+": stack.append(num) elif sign == "-": stack.append(-num) elif sign == "*": stack.append(stack.pop()*num) else: stack.append(int(stack.pop()/num)) num = 0 sign = s[i] return sum(stack)',
+        solution='class Solution:def calculate(self, s): num, stack, sign = 0, [], "+" for i in range(len(s)): if s[i].isdigit(): num = num * 10 + int(s[i]) if s[i] in "+-*/" or i == len(s) - 1: if sign == "+": stack.append(num) elif sign == "-": stack.append(-num) elif sign == "*": stack.append(stack.pop()*num) else: stack.append(int(stack.pop()/num)) num = 0 sign = s[i] return sum(stack)',
     )
 
     problem38 = Problem(
