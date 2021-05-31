@@ -10,6 +10,7 @@ import User from "./components/User";
 import { authenticate } from "./store/session";
 import Dashboard from "./components/Dashboard";
 import ArraysComponent from "./components/Dashboard/Arrays";
+import ArrayProblems from "./components/Dashboard/Arrays/FullArraysProblems";
 
 function App() {
   const user = useSelector(state => state.session.user)
@@ -42,6 +43,9 @@ function App() {
         </Route>
         <Route path="/:arrays">
           <ArraysComponent/>
+        </Route>
+        <Route path="/:arrays/:id">
+          <ArrayProblems/>
         </Route>
       </Switch>
     </BrowserRouter>
