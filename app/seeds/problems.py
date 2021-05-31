@@ -216,7 +216,7 @@ def seed_problems():
         title='Reverse String',
         description='Write a function that reverses a string. The input string is given as an array of characters s.',
         language="Python",
-        solution="class Solution(object): def reverseString(self, s): return s[::-1]",
+        solution="class Solution(object):\n        def reverseString(self, s):\n            return s[::-1]",
     )
 
     problem24 = Problem(
@@ -225,7 +225,7 @@ def seed_problems():
         title='Count Binary Substrings',
         description='Give a binary string s, return the number of non-empty substrings that have the same number of 0\'s and 1\'s, and all the 0\'s and all the 1\'s in these substrings are grouped consecutively. Substrings that occur multiple times are counted the number of times they occur.',
         language="Python",
-        solution="class Solution(object): def countBinarySubstrings(self, s): res = 0 prev = 0 tmp = 1 for i in range(1, len(s)): if s[i] != s[i-1]: res += min(prev, tmp) prev = tmp tmp = 1 else: tmp += 1 res += min(prev, tmp) return res",
+        solution="class Solution(object):\n    def countBinarySubstrings(self, s):\n        res = 0\n        prev = 0\n        tmp = 1\n    for i in range(1, len(s)):\n        if s[i] != s[i-1]:\n            res += min(prev, tmp)\n                prev = tmp\n                tmp = 1\n            else:\n                tmp += 1\n        res += min(prev, tmp)\n        return res",
     )
 
     problem25 = Problem(
@@ -234,7 +234,7 @@ def seed_problems():
         title='Valid Parentheses',
         description='Given a string s containing just the characters "(", ")", "{", "}", "[" and "]", determine if the input string is valid. An input string is valid if: Open brackets must be closed by the same type of brackets. Open brackets must be closed in the correct order.',
         language="Python",
-        solution='class Solution: def isValid(self, s: str) -> bool: if len(s)%2!=0: return False stack = list() dic = {"(":")","{":"}","[":"]"} for i, c in enumerate(s): if s[i] in dic: stack.append(s[i]) else: if len(stack)!=0 and dic[stack[-1]] == s[i]: stack.pop() else: return False if stack: return False else: return True',
+        solution="class Solution:\n    def isValid(self, s: str) -> bool:\n        stack = []\n        for x in s:\n            if x in {'(', '[', '{'}:\n                stack.append(x)\n            else:\n                if not stack or stack.pop() + x not in {'()', '[]', '{}'}:\n                    return False\n        return not stack",
     )
 
     problem26 = Problem(
@@ -243,7 +243,7 @@ def seed_problems():
         title='Valid Palindrome',
         description='Given a string s, determine if it is a palindrome, considering only alphanumeric characters and ignoring cases.',
         language="Python",
-        solution="class Solution(object): def isPalindrome(self, s): if not s: return True i, j = 0, len(s) - 1 while i < j: while i < j and not s[i].isalnum(): i += 1 while i < j and not s[j].isalnum(): j -= 1 if s[i].lower() != s[j].lower(): return False i += 1; j -= 1 return True",
+        solution="class Solution(object):\n    def isPalindrome(self, s):\n        s = s.lower()\n        s_stripped = ''.join(list(filter(lambda x: x.isalnum() == True, s)))\n        return s_stripped == s_stripped[::-1]",
     )
 
     problem27 = Problem(
@@ -252,7 +252,7 @@ def seed_problems():
         title='Add Binary',
         description='Given two binary strings a and b, return their sum as a binary string.',
         language="Python",
-        solution="class Solution(object): def addBinary(self, a, b): return bin(int(a,2) + int(b,2))[2:]",
+        solution="class Solution(object):\n    def addBinary(self, a, b):\n        return bin(int(a,2) + int(b,2))[2:]",
     )
 
     problem28 = Problem(
