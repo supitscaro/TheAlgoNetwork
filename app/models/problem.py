@@ -11,6 +11,7 @@ class Problem(db.Model):
     difficulty = db.Column(db.String, nullable=False)
     title = db.Column(db.String, nullable=False)
     description = db.Column(db.String, nullable=False)
+    language = db.Column(db.String)
     solution = db.Column(db.String, nullable=False)
 
     users = db.relationship("User", secondary="solved",
@@ -27,5 +28,6 @@ class Problem(db.Model):
             "difficulty": self.difficulty,
             "title": self.title,
             "description": self.description,
+            "language": self.language,
             "solution": self.solution,
         }
