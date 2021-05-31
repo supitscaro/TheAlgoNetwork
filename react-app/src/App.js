@@ -6,6 +6,7 @@ import NavBar from "./components/NavBar";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import User from "./components/User";
 import Dashboard from './components/Dashboard/index';
+import ArraysComponent from './components/Dashboard/Arrays/index'
 import { authenticate } from "./services/auth";
 
 function App() {
@@ -41,6 +42,9 @@ function App() {
         </Route>
         <Route exact path='/'>
           <Dashboard />
+        </Route>
+        <Route exact path='/:category'>
+          <ArraysComponent />
         </Route>
       </Switch>
     </BrowserRouter>
