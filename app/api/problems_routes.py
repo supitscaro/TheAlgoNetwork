@@ -20,4 +20,6 @@ def get_problems(category):
             problems_dict_[id] = problem.to_dict()
             id += 1
 
+    print('probleeeeeeeeeeeems', problems_dict_)
+
     return problems_dict_

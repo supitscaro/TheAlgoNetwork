@@ -8,14 +8,28 @@ const ArraysComponent = () => {
     const dispatch = useDispatch();
     const all_problems = useSelector(state => state.problems.problems);
 
-    console.log(all_problems);
+    console.log('probleeeeeeeems', Object.values(all_problems));
 
-    useEffect(async () => {
-        await dispatch(getAllProblems(arrays))
+    let problems = []
+
+    for (let key in all_problems) {
+        console.log('tetestesteet', all_problems[key])
+        problems.push(all_problems[key])
+    }
+
+    useEffect( () => {
+        dispatch(getAllProblems(arrays))
     }, [dispatch])
     
     return (
-        <h1>Arrays</h1>
+        <div>
+            {problems.map((problem) => (
+                <div>
+                {problem.title}
+               </div>
+            ))}
+            Hi
+        </div>
     )
 }
 

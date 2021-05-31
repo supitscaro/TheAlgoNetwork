@@ -14,11 +14,9 @@ const getProblems = (problems) => ({
 export const getAllProblems = (category) => async (dispatch) => {
     const res = await fetch(`/api/problems/${category}`);
 
-    console.log(res);
-
     if (res.ok) {
-        let data = res.json();
-        dispatch(getProblems(data));
+        let data = await res.json();
+        dispatch(getProblems(Object.values(data)));
     }
 };
 
