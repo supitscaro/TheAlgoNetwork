@@ -1,24 +1,23 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import LoginForm from "./components/auth/LoginForm";
 import SignUpForm from "./components/auth/SignUpForm";
 import NavBar from "./components/NavBar";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
+import UsersList from "./components/UsersList";
 import User from "./components/User";
-import Dashboard from './components/Dashboard/index';
-import ArraysComponent from './components/Dashboard/Arrays/index'
-import { authenticate } from "./services/auth";
+import { authenticate } from "./store/session";
+import Dashboard from "./components/Dashboard";
 
 function App() {
-  const [authenticated, setAuthenticated] = useState(false);
+  const user = useSelector(state => state.session.user)
   const [loaded, setLoaded] = useState(false);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     (async () => {
-      const user = await authenticate();
-      if (!user.errors) {
-        setAuthenticated(true);
-      }
+      await dispatch(authenticate());
       setLoaded(true);
     })();
   }, []);
@@ -29,22 +28,16 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar setAuthenticated={setAuthenticated} />
+      <NavBar />
       <Switch>
         <Route path="/login" exact={true}>
-          <LoginForm
-            authenticated={authenticated}
-            setAuthenticated={setAuthenticated}
-          />
+          <LoginForm />
         </Route>
         <Route path="/sign-up" exact={true}>
-          <SignUpForm authenticated={authenticated} setAuthenticated={setAuthenticated} />
+          <SignUpForm />
         </Route>
-        <Route exact path='/'>
+        <Route exact path="/">
           <Dashboard />
-        </Route>
-        <Route exact path='/:category'>
-          <ArraysComponent />
         </Route>
       </Switch>
     </BrowserRouter>
