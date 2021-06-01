@@ -238,7 +238,7 @@ def seed_problems():
         title='Reverse String',
         description='Write a function that reverses a string. The input string is given as an array of characters s.',
         language="Python",
-        example="",
+        example='Input: s = ["h","e","l","l","o"]\n Output: ["o","l","l","e","h"]',
         solution="class Solution(object):\n        def reverseString(self, s):\n            return s[::-1]",
     )
 
@@ -248,7 +248,7 @@ def seed_problems():
         title='Count Binary Substrings',
         description='Give a binary string s, return the number of non-empty substrings that have the same number of 0\'s and 1\'s, and all the 0\'s and all the 1\'s in these substrings are grouped consecutively. Substrings that occur multiple times are counted the number of times they occur.',
         language="Python",
-        example="",
+        example='Input: s = "10101"\n Output: 4\n Explanation: There are 4 substrings: "10", "01", "10", "01" that have equal number of consecutive 1\'s and 0\'s.',
         solution="class Solution(object):\n    def countBinarySubstrings(self, s):\n        res = 0\n        prev = 0\n        tmp = 1\n    for i in range(1, len(s)):\n        if s[i] != s[i-1]:\n            res += min(prev, tmp)\n                prev = tmp\n                tmp = 1\n            else:\n                tmp += 1\n        res += min(prev, tmp)\n        return res",
     )
 
@@ -258,7 +258,7 @@ def seed_problems():
         title='Valid Parentheses',
         description='Given a string s containing just the characters "(", ")", "{", "}", "[" and "]", determine if the input string is valid. An input string is valid if: Open brackets must be closed by the same type of brackets. Open brackets must be closed in the correct order.',
         language="Python",
-        example="",
+        example='Input: s = "()[]{}"\n Output: true',
         solution="class Solution:\n    def isValid(self, s: str) -> bool:\n        stack = []\n        for x in s:\n            if x in {'(', '[', '{'}:\n                stack.append(x)\n            else:\n                if not stack or stack.pop() + x not in {'()', '[]', '{}'}:\n                    return False\n        return not stack",
     )
 
@@ -268,7 +268,7 @@ def seed_problems():
         title='Valid Palindrome',
         description='Given a string s, determine if it is a palindrome, considering only alphanumeric characters and ignoring cases.',
         language="Python",
-        example="",
+        example='Input: s = "A man, a plan, a canal: Panama"\n Output: true\n Explanation: "amanaplanacanalpanama" is a palindrome.',
         solution="class Solution(object):\n    def isPalindrome(self, s):\n        s = s.lower()\n        s_stripped = ''.join(list(filter(lambda x: x.isalnum() == True, s)))\n        return s_stripped == s_stripped[::-1]",
     )
 
@@ -278,7 +278,7 @@ def seed_problems():
         title='Add Binary',
         description='Given two binary strings a and b, return their sum as a binary string.',
         language="Python",
-        example="",
+        example='Input: a = "11", b = "1"\n Output: "100"',
         solution="class Solution(object):\n    def addBinary(self, a, b):\n        return bin(int(a,2) + int(b,2))[2:]",
     )
 
@@ -288,7 +288,7 @@ def seed_problems():
         title='Add Strings',
         description='Given two non-negative integers, num1 and num2 represented as string, return the sum of num1 and num2 as a string.',
         language="Python",
-        example="",
+        example='Input: num1 = "11", num2 = "123"\n Output: "134"',
         solution='def addString(num1, num2):\n    i, j, carrier, res = len(num1)-1, len(num2)-1, 0, ""\n    while i >= 0 or j >=0 or carrier:\n        if i >= 0:\n            carrier += int(num1[i])\n            i -= 1\n        if j >= 0:\n            carrier += int(num2[j])\n            j -= 1\n        res += str(carrier % 10)\n        carrier //= 10\n    return "".join(res[::-1])',
     )
 
@@ -298,7 +298,7 @@ def seed_problems():
         title='Valid Palindrome II',
         description='Given a string s, return true if the s can be palindrome after deleting at most one character from it.',
         language="Python",
-        example="",
+        example='Input: s = "aba"\n Output: true',
         solution="class Solution:\n    def validPalindrome(self, s):\n        left, right = 0, len(s)-1\n        while left < right:\n            if s[left] == s[right]:\n                left += 1\n                right -= 1\n            else:\n                tmp1 = s[:left]+s[left+1:]\n                tmp2 = s[:right]+s[right+1:]\n                return tmp1 == tmp1[::-1] or tmp2 == tmp2[::-1]\n        return True",
     )
 
@@ -308,7 +308,7 @@ def seed_problems():
         title='Consecutive Characters',
         description='Given a string s, the power of the string is the maximum length of a non-empty substring that contains only one unique character. Return the power of the string.',
         language="Python",
-        example="",
+        example='Input: s = "leetcode"\n Output: 2\n Explanation: The substring "ee" is of length 2 with the character "e" only.',
         solution="class Solution:\n    def maxPower(self, s: str) -> int:\n        cnt = ans = 1\n        for i in range(1, len(s)):\n            if s[i] == s[i - 1]:\n                cnt += 1\n                ans = max(cnt, ans)\n            else:\n                cnt = 1\n        return ans",
     )
 
@@ -318,7 +318,7 @@ def seed_problems():
         title='Greatest Common Divisor of Strings',
         description='For two strings s and t, we say "t divides s" if and only if s = t + ... + t  (t concatenated with itself 1 or more times) Given two strings str1 and str2, return the largest string x such that x divides both str1 and str2.',
         language="Python",
-        example="",
+        example='Input: str1 = "ABCABC", str2 = "ABC"\n Output: "ABC"',
         solution="class Solution:\n    def gcdOfStrings(self, s1: str, s2: str) -> str:\n        return s1[:math.gcd(len(s1), len(s2))] if s1 + s2 == s2 + s1 else ''",
     )
 
@@ -328,7 +328,7 @@ def seed_problems():
         title='Longest Common Prefix',
         description='Write a function to find the longest common prefix string amongst an array of strings. If there is no common prefix, return an empty string "".',
         language="Python",
-        example="",
+        example='Input: strs = ["flower","flow","flight"]\n Output: "fl"',
         solution='class Solution(object):\n    def longestCommonPrefix(self, strs):\n        result = ""\n        for n in zip(*strs):\n            if len(set(n)) == 1:\n                result += n[0]\n            else:\n                return result\n        return result',
     )
 
@@ -340,7 +340,7 @@ def seed_problems():
         title='Generate Parentheses',
         description='Given n pairs of parentheses, write a function to generate all combinations of well-formed parentheses.',
         language="Python",
-        example="",
+        example='Input: n = 3\n Output: ["((()))","(()())","(())()","()(())","()()()"]',
         solution="class Solution:\n    def generateParenthesis(self, n: int) -> List[str]:\n        bfs = [(0, 0, '')]\n        for _ in range(n * 2):\n            new = []\n            for l, r, s in bfs:\n                if l + 1 <= n:\n                    new.append((l + 1, r, s + '('))\n                if l - r:\n                    new.append((l, r + 1, s + ')'))\n            bfs = new\n        return [s for l, r, s in bfs]",
     )
 
@@ -350,7 +350,7 @@ def seed_problems():
         title='Palindromic Substrings',
         description='Given a string s, return the number of palindromic substrings in it. A string is a palindrome when it reads the same backward as forward. A substring is a contiguous sequence of characters within the string.',
         language="Python",
-        example="",
+        example='Input: s = "abc"\n Output: 3\n Explanation: Three palindromic strings: "a", "b", "c".',
         solution="class Solution:\n    def countSubstrings(self, s: str) -> int:\n        self.res = 0\n        def helper(s, l, r):\n            while l >= 0 and r < len(s) and s[l] == s[r]:\n                l -= 1\n                r += 1\n                self.res += 1\n		for i in range(len(s)):\n			helper(s, i, i)\n			helper(s, i, i + 1)\n		return self.res",
     )
 
@@ -360,7 +360,7 @@ def seed_problems():
         title='Group Anagrams',
         description='Given an array of strings strs, group the anagrams together. You can return the answer in any order. An Anagram is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all the original letters exactly once.',
         language="Python",
-        example="",
+        example='Input: strs = ["eat","tea","tan","ate","nat","bat"]\n Output: [["bat"],["nat","tan"],["ate","eat","tea"]]',
         solution="class Solution(object):\n    def groupAnagrams(self, strs):\n        def convert(s):\n            res = [0]*26\n            for char in s:\n                res[ord(char)-ord('a')] += 1\n            return tuple(res)\n        rec = {}\n        res = []\n        for s in strs:\n            t = convert(s)\n            if t in rec:\n                res[rec[t]].append(s)\n            else:\n                res.append([s])\n                rec[t] = len(res)-1\n        return res",
     )
 
@@ -370,7 +370,7 @@ def seed_problems():
         title='Reorganize String',
         description='Given a string s, check if the letters can be rearranged so that two characters that are adjacent to each other are not the same. If possible, output any possible result.  If not possible, return the empty string.',
         language="Python",
-        example="",
+        example='Input: s = "aab"\n Output: "aba"',
         solution="class Solution:\n    def reorganizeString(self, S):\n        res, c = [], Counter(S)\n        pq = [(-value,key) for key,value in c.items()]\n        heapq.heapify(pq)\n        p_a, p_b = 0, ''\n        while pq:\n            a, b = heapq.heappop(pq)\n            res += [b]\n            if p_a < 0:\n                heapq.heappush(pq, (p_a, p_b))\n            a += 1\n            p_a, p_b = a, b\n        res = ''.join(res)\n        if len(res) != len(S): return ''\n        return res",
     )
 
