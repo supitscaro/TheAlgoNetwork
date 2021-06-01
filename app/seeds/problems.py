@@ -545,16 +545,6 @@ def seed_problems():
     problem51 = Problem(
         category='Trees',
         difficulty='Medium',
-        title='All Nodes Distance K in Binary Tree',
-        description='We are given a binary tree (with root node root), a target node, and an integer value k. Return a list of the values of all nodes that have a distance k from the target node.  The answer can be returned in any order.',
-        language="Python",
-        example="",
-        solution='class Solution: def distanceK(self, root, target, K): def dfs(root, d): if not root: return  if d == 0: res.append(root.val) return  if root.left: dfs(root.left, d-1) if root.right: dfs(root.right, d-1) parent = {} q = collections.deque([root]) while q: u = q.popleft() if u == target: break if u.left: parent[u.left] = u q.append(u.left) if u.right: parent[u.right] = u q.append(u.right) res = [] trav = target d = K while trav != root and d > 0: tmp = parent[trav] d -= 1 if d == 0: res.append(tmp.val) break if tmp.left == trav: dfs(tmp.right, d-1) else: dfs(tmp.left, d-1) trav = tmp dfs(target, K) return res',
-    )
-
-    problem52 = Problem(
-        category='Trees',
-        difficulty='Medium',
         title='Binary Tree Right Side View',
         description='Given the root of a binary tree, imagine yourself standing on the right side of it, return the values of the nodes you can see ordered from top to bottom.',
         language="Python",
@@ -564,7 +554,7 @@ def seed_problems():
 
     # Trees - Hard
 
-    problem53 = Problem(
+    problem52 = Problem(
         category='Trees',
         difficulty='Hard',
         title='Serialize and Deserialize Binary Tree',
@@ -574,7 +564,7 @@ def seed_problems():
         solution='class Codec: def serialize(self, root): def dfs(root): if not root: res.append("None,") return  res.append(str(root.val)+",") dfs(root.left) dfs(root.right) res = [] dfs(root) return "".join(res) def deserialize(self, data): def helper(q): if q[0] == "None": q.popleft() return root = TreeNode(q.popleft()) l = helper(q) r = helper(q) root.left = l root.right = r return root lst = data.split(",") q = collections.deque(lst) return helper(q)',
     )
 
-    problem54 = Problem(
+    problem53 = Problem(
         category='Trees',
         difficulty='Hard',
         title='Binary Tree Maximum Path Sum',
@@ -584,7 +574,7 @@ def seed_problems():
         solution="class Solution: def maxPathSum(self, root): def maxSum(root): if not root: return 0 l_sum = maxSum(root.left) r_sum = maxSum(root.right) l = max(0, l_sum) r = max(0, r_sum) res[0] = max(res[0], root.val + l + r) return root.val + max(l, r) res = [-float('inf')] maxSum(root) return res[0]",
     )
 
-    problem55 = Problem(
+    problem54 = Problem(
         category='Trees',
         difficulty='Hard',
         title='Vertical Order Traversal of a Binary Tree',
@@ -596,7 +586,7 @@ def seed_problems():
 
     # Hash Table
     # Hash Table - Easy
-    problem56 = Problem(
+    problem55 = Problem(
         category='Hash',
         difficulty='Easy',
         title='Number of Good Pairs',
@@ -606,7 +596,7 @@ def seed_problems():
         solution="class Solution: def numIdenticalPairs(self, nums: List[int]) -> int: ans = 0 d = defaultdict(list) for i in range(len(nums)): d[nums[i]].append(i) for k,v in d.items(): n = len(v) if n > 1: ans += ((n-1) * n) // 2 return ans",
     )
 
-    problem57 = Problem(
+    problem56 = Problem(
         category='Hash',
         difficulty='Easy',
         title='Jewels and Stones',
@@ -616,7 +606,7 @@ def seed_problems():
         solution="class Solution: def numJewelsInStones(self, J: str, S: str) -> int: jewels = set(J) count_of_jewel = 0 for item in S: if item in jewels: count_of_jewel += 1 return count_of_jewel",
     )
 
-    problem58 = Problem(
+    problem57 = Problem(
         category='Hash',
         difficulty='Easy',
         title='How Many Numbers Are Smaller Than the Current Number',
@@ -626,7 +616,7 @@ def seed_problems():
         solution="class Solution: def smallerNumbersThanCurrent(self, nums: List[int]) -> List[int]: indexes = {} for idx,val in enumerate(nums): if val in indexes: indexes[val].append(idx) else: indexes[val] = [idx] lst = sorted(list(set(nums))) ans = [None for x in nums] count_smaller = 0 for x in lst: for idx in indexes[x]: ans[idx] = count_smaller count_smaller += len(indexes[x]) return ans",
     )
 
-    problem59 = Problem(
+    problem58 = Problem(
         category='Hash',
         difficulty='Easy',
         title='Subdomain Visit Count',
@@ -636,7 +626,7 @@ def seed_problems():
         solution='class Solution(object): def subdomainVisits(self, cpdomains): res = [] dic = {} for item in cpdomains: count, domain = item.split() dlst = domain.split(".") summ = dlst[-1] if summ in dic: dic[summ] += int(count) else: dic[summ] = int(count) for i in range(len(dlst)-2, -1, -1): summ = dlst[i] + "." + summ if summ in dic: dic[summ] += int(count) else: dic[summ] = int(count) for key, val in dic.items(): res.append(str(val) + " " + key) return res',
     )
 
-    problem60 = Problem(
+    problem59 = Problem(
         category='Hash',
         difficulty='Easy',
         title='Design HashMap',
@@ -646,7 +636,7 @@ def seed_problems():
         solution="class MyHashMap(object): def __init__(self): self.map = [[] for i in xrange(1024)] def put(self, key, value): self.remove(key) self.map[key & 1023].append((key, value)) def get(self, key): values = [x[1] for x in self.map[key & 1023] if x[0] == key] return -1 if len(values) == 0 else values[0] def remove(self, key): self.map[key & 1023] = [x for x in self.map[key & 1023] if x[0] != key]",
     )
 
-    problem61 = Problem(
+    problem60 = Problem(
         category='Hash',
         difficulty='Easy',
         title='Single Number',
@@ -656,7 +646,7 @@ def seed_problems():
         solution="class Solution: def singleNumber(self, nums): res = nums[0] for i in range(1, len(nums)): res ^= nums[i] return res",
     )
 
-    problem62 = Problem(
+    problem61 = Problem(
         category='Hash',
         difficulty='Easy',
         title='Verifying an Alien Dictionary',
@@ -668,7 +658,7 @@ def seed_problems():
 
     # Hash Table - Medium
 
-    problem63 = Problem(
+    problem62 = Problem(
         category='Hash',
         difficulty='Medium',
         title='Top K Frequent Words',
@@ -678,7 +668,7 @@ def seed_problems():
         solution="import heapq import collections class Solution: def topKFrequent(self, words: List[str], k: int) -> List[str]: word_count = self.calc_count(words) word_count_pairs = [] for word, count in word_count.items(): word_count_pairs.append((-count, word)) heapq.heapify(word_count_pairs) result = [] for _ in range(k): result.append(heapq.heappop(word_count_pairs)[1]) return result def calc_count(self, words): result = collections.defaultdict(int) for word in words: result[word] += 1 return result",
     )
 
-    problem64 = Problem(
+    problem63 = Problem(
         category='Hash',
         difficulty='Medium',
         title='Daily Temperatures',
@@ -688,7 +678,7 @@ def seed_problems():
         solution="class Solution(object): def dailyTemperatures(self, temperatures): res = [0]*len(temperatures) T = [-1]*71 for i in range(len(temperatures)-1, -1, -1): t = temperatures[i] for j in range(t-1, 29, -1): T[j-30] = i if T[t-30] != -1: res[i] = T[t-30]-i return res",
     )
 
-    problem65 = Problem(
+    problem64 = Problem(
         category='Hash',
         difficulty='Medium',
         title='Subarray Sum Equals K',
@@ -700,7 +690,7 @@ def seed_problems():
 
     # Hash Tables - Hard
 
-    problem66 = Problem(
+    problem65 = Problem(
         category='Hash',
         difficulty='Hard',
         title='Group Anagrams',
@@ -710,7 +700,7 @@ def seed_problems():
         solution="class Solution(object): def groupAnagrams(self, strs): def convert(s): res = [0]*26 for char in s: res[ord(char)-ord('a')] += 1 return tuple(res) rec = {} res = [] for s in strs: t = convert(s) if t in rec: res[rec[t]].append(s) else: res.append([s]) rec[t] = len(res)-1 return res",
     )
 
-    problem67 = Problem(
+    problem66 = Problem(
         category='Hash',
         difficulty='Hard',
         title='Minimum Window Substring',
@@ -718,16 +708,6 @@ def seed_problems():
         language="Python",
         example="",
         solution="class Solution: def minWindow(self, s, t): dicT = collections.Counter(t) dicS = {} rec = set() j = 0 res = float('inf') for i, c in enumerate(s): if c not in dicS: dicS[c] = 1 else: dicS[c] += 1 if c in dicT and dicT[c] <= dicS[c]: rec.add(c) while len(rec) == len(dicT): dicS[s[j]] -= 1 if s[j] in dicT and dicT[s[j]] > dicS[s[j]]: rec.remove(s[j]) if res > i-j+1: start = j end = i res = i-j+1 j += 1 if res == float('inf'): return "" return s[start:end+1]",
-    )
-
-    problem68 = Problem(
-        category='Hash',
-        difficulty='Hard',
-        title='Palindrome Pairs',
-        description='Given a list of unique words, return all the pairs of the distinct indices (i, j) in the given list, so that the concatenation of the two words words[i] + words[j] is a palindrome.',
-        language="Python",
-        example="",
-        solution='class Solution: def palindromePairs(self, words: List[str]) -> List[List[int]]: if len(words) == 0: return [] res = [] mapping = {word: i for i, word in enumerate(words)} for i, word in enumerate(words): for j in range(len(word)+1): s1, s2 = word[:j], word[j:] if self.valid(s1): tmp = s2[::-1] if tmp in mapping and mapping[tmp] != i: res.append([mapping[tmp], i]) if len(s2) > 0 and self.valid(s2): tmp = s1[::-1] if tmp in mapping and mapping[tmp] != i: res.append([i, mapping[tmp]]) return res def valid(self, s): start, end = 0, len(s)-1 while start < end: if s[start] != s[end]: return False start += 1 end -= 1 return True',
     )
 
     db.session.add(problem1)
@@ -796,8 +776,6 @@ def seed_problems():
     db.session.add(problem64)
     db.session.add(problem65)
     db.session.add(problem66)
-    db.session.add(problem67)
-    db.session.add(problem68)
 
     db.session.commit()
 
