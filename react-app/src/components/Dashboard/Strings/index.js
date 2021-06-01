@@ -3,12 +3,10 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useParams, Link } from "react-router-dom";
 import { getAllProblems } from "../../../store/problems";
 
-const ArraysComponent = () => {
-    const { arrays } = useParams();
+const StringsComponent = () => {
+    const { strings } = useParams();
     const dispatch = useDispatch();
     const all_problems = useSelector(state => state.problems.problems);
-
-    console.log('teeeeeeeeeeeeeeeest', all_problems)
 
     let easy_problems = [];
 
@@ -27,10 +25,15 @@ const ArraysComponent = () => {
         if (val.difficulty === 'Hard') {
             hard_problems.push(val);
         }
+        // problems.push(all_problems[key])
     }
 
+
+    console.log('mediuuuuuuuuum', medium_problems);
+
+
     useEffect(() => {
-        dispatch(getAllProblems(arrays))
+        dispatch(getAllProblems(strings))
     }, [dispatch])
 
     return (
@@ -39,11 +42,9 @@ const ArraysComponent = () => {
                 Easy
                 {easy_problems.map((problem) => (
                 <div>
-                    <div>
-                        <Link to={`/${problem.category}/${problem.id}`}>
-                            <div>{problem.title}</div>
-                        </Link>
-                    </div>
+                    <Link to={`/${problem.category}/${problem.id}`}>
+                        <div>{problem.title}</div>
+                    </Link>
                 </div>
             ))}
             </div>
@@ -71,4 +72,4 @@ const ArraysComponent = () => {
     )
 }
 
-export default ArraysComponent;
+export default StringsComponent;

@@ -11,6 +11,7 @@ import { authenticate } from "./store/session";
 import Dashboard from "./components/Dashboard";
 import ArraysComponent from "./components/Dashboard/Arrays";
 import ArrayProblems from "./components/Dashboard/Arrays/FullArraysProblems";
+import StringsComponent from "./components/Dashboard/Strings";
 
 function App() {
   const user = useSelector(state => state.session.user)
@@ -42,10 +43,16 @@ function App() {
           <Dashboard />
         </Route>
         <Route exact path="/:arrays">
-          <ArraysComponent/>
+          <ArraysComponent />
         </Route>
         <Route exact path="/:arrays/:problemId">
-          <ArrayProblems/>
+          <ArrayProblems />
+        </Route>
+        <Route exact path="/:strings">
+          <StringsComponent />
+        </Route>
+        <Route exact path="/:strings/:problemId">
+          <ArrayProblems />
         </Route>
       </Switch>
     </BrowserRouter>

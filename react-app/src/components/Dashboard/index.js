@@ -2,6 +2,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { BrowserRouter, Route, Link } from "react-router-dom";
 import ArraysComponent from './Arrays';
+import StringsComponent from './Strings';
 
 const Dashboard = () => {
     // const problems = useSelector(state => state.problems);
@@ -13,6 +14,10 @@ const Dashboard = () => {
             <Link to={'/arrays'}>
                 <h2>Arrays</h2>
                 <ArraysComponent />
+            </Link>
+            <Link to={'/strings'}>
+                <h2>Strings</h2>
+                <StringsComponent />
             </Link>
         </>
     )

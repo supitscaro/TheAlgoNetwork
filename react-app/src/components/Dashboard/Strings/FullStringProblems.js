@@ -6,8 +6,8 @@ import { getSpecificProblem } from "../../../store/problems";
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { shadesOfPurple, materialOceanic } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
-const ArrayProblems = () => {
-    const { arrays, problemId } = useParams();
+const StringsProblems = () => {
+    const { strings, problemId } = useParams();
     const dispatch = useDispatch();
     const all_problems = useSelector(state => state.problems.problem);
 
@@ -19,7 +19,7 @@ const ArrayProblems = () => {
 
     useEffect(() => {
         dispatch(getSpecificProblem(arrays, problemId))
-    }, [dispatch, arrays, problemId])
+    }, [dispatch, strings, problemId])
 
     return (
         <div>
@@ -43,4 +43,4 @@ const ArrayProblems = () => {
     )
 }
 
-export default ArrayProblems;
+export default StringsProblems;
