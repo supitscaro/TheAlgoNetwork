@@ -380,8 +380,8 @@ def seed_problems():
         title='Basic Calculator II',
         description='Given a string s which represents an expression, evaluate this expression and return its value. The integer division should truncate toward zero.',
         language="Python",
-        example="",
-        solution='class Solution:def calculate(self, s): num, stack, sign = 0, [], "+" for i in range(len(s)): if s[i].isdigit(): num = num * 10 + int(s[i]) if s[i] in "+-*/" or i == len(s) - 1: if sign == "+": stack.append(num) elif sign == "-": stack.append(-num) elif sign == "*": stack.append(stack.pop()*num) else: stack.append(int(stack.pop()/num)) num = 0 sign = s[i] return sum(stack)',
+        example='Input: s = "3+2*2"\n Output: 7',
+        solution="class Solution:\n    def calculate(self, s: str) -> int:\n        num, presign, stack=0, '+', []\n        for i in s+'+':\n            if i.isdigit():\n                num = num*10 +int(i)\n            elif i in '+-*/':\n                if presign =='+':\n                    stack.append(num)\n                if presign =='-':\n                    stack.append(-num)\n                if presign =='*':\n                    stack.append(stack.pop()*num)\n                if presign == '/':\n                    stack.append(math.trunc(stack.pop()/num))\n                presign = i\n                num = 0\n        return sum(stack)",
     )
 
     problem38 = Problem(
@@ -390,8 +390,8 @@ def seed_problems():
         title='Multiply Strings',
         description='Given two non-negative integers num1 and num2 represented as strings, return the product of num1 and num2, also represented as a string.',
         language="Python",
-        example="",
-        solution='class Solution: def multiply(self, num1: str, num2: str) -> str: n, m = len(num1), len(num2) if not n or not m: return "0" result = [0] * (n + m) for i in reversed(range(n)): for j in reversed(range(m)): current = int(result[i + j + 1]) + int(num1[i]) * int(num2[j]) result[i + j + 1] = current % 10 result[i + j] += current // 10 for i, c in enumerate(result): if c != 0: return "".join(map(str, result[i:])) return "0"',
+        example='Input: num1 = "2", num2 = "3"\n Output: "6"',
+        solution='class Solution:\n    def multiply(self, num1: str, num2: str) -> str:\n        n, m = len(num1), len(num2)\n        if not n or not m:\n            return "0"\n        result = [0] * (n + m)\n        for i in reversed(range(n)):\n            for j in reversed(range(m)):\n                current = int(result[i + j + 1]) + int(num1[i]) * int(num2[j])\n                result[i + j + 1] = current % 10\n                result[i + j] += current // 10\n        for i, c in enumerate(result):\n            if c != 0:\n                return "".join(map(str, result[i:]))\n        return "0"',
     )
 
     # Strings - Hard
@@ -402,8 +402,8 @@ def seed_problems():
         title='Distinct Subsequences',
         description='Given two strings s and t, return the number of distinct subsequences of s which equals t. A string\'s subsequence is a new string formed from the original string by deleting some (can be none) of the characters without disturbing the remaining characters\' relative positions. (i.e., "ACE" is a subsequence of "ABCDE" while "AEC" is not). It is guaranteed the answer fits on a 32-bit signed integer.',
         language="Python",
-        example="",
-        solution='class Solution(object): def numDistinct(self, s, t): n1, n2 = len(s), len(t) dp = [1] + [0] * n2 for i in range(1, n1+1): pre = dp[0] for j in range(1, n2+1): dp[j], pre = dp[j] + pre * (s[i-1] == t[j-1]), dp[j] return dp[-1]',
+        example='Input: s = "rabbbit", t = "rabbit"\n Output: 3\n Explanation:\n As shown below, there are 3 ways you can generate "rabbit" from S.',
+        solution='class Solution(object):\n    def numDistinct(self, s, t):\n        n1, n2 = len(s), len(t)\n        dp = [1] + [0] * n2\n        for i in range(1, n1+1):\n            pre = dp[0]\n            for j in range(1, n2+1):\n                dp[j], pre = dp[j] + pre * (s[i-1] == t[j-1]), dp[j]\n        return dp[-1]',
     )
 
     problem40 = Problem(
@@ -412,8 +412,8 @@ def seed_problems():
         title='Text Justification',
         description='Given two strings s and t, return the number of distinct subsequences of s which equals t. A string\'s subsequence is a new string formed from the original string by deleting some (can be none) of the characters without disturbing the remaining characters\' relative positions. (i.e., "ACE" is a subsequence of "ABCDE" while "AEC" is not). It is guaranteed the answer fits on a 32-bit signed integer.',
         language="Python",
-        example="",
-        solution='class Solution(object): def fullJustify(self, words, maxWidth): line = [] word_count = 0 char_count = 0 res = [] for word in words: length = char_count+1+len(word) if length > maxWidth: space_left = maxWidth - char_count if word_count == 1: string = line[0]+" "*(maxWidth-len(line[0])) res.append(string) line = [word] char_count = len(word) else: q, r = divmod(space_left, word_count-1) front = (" "*(q+2)).join(line[:r+1]) end = (" "*(q+1)).join(line[r+1:]) string = front+" "*(q+1)+end if string: res.append(string) line = [word] word_count = 1 char_count = len(word) else: if line: char_count += len(word)+1 else: char_count += len(word) line.append(word) word_count += 1 if line: line = " ".join(line) line += " "*(maxWidth-len(line)) res.append(line) return res',
+        example='Input: words = ["This", "is", "an", "example", "of", "text", "justification."], maxWidth = 16\n Output:\n [\n "This    is    an",\n "example  of text",\n "justification.  "\n ]',
+        solution='class Solution(object):\n    def fullJustify(self, words, maxWidth):\n        line = []\n        word_count = 0\n        char_count = 0\n        res = []\n        for word in words:\n            length = char_count+1+len(word)\n            if length > maxWidth:\n                space_left = maxWidth - char_count\n                if word_count == 1:\n                    string = line[0]+" "*(maxWidth-len(line[0]))\n                    res.append(string)\n                    line = [word]\n                    char_count = len(word)\n                else:\n                    q, r = divmod(space_left, word_count-1)\n                    front = (" "*(q+2)).join(line[:r+1])\n                    end = (" "*(q+1)).join(line[r+1:])\n                    string = front+" "*(q+1)+end\n                    if string:\n                        res.append(string)\n                    line = [word]\n                    word_count = 1\n                    char_count = len(word)\n            else:\n                if line:\n                    char_count += len(word)+1\n                else:\n                    char_count += len(word)\n                line.append(word)\n                word_count += 1\n        if line:\n            line = " ".join(line)\n            line += " "*(maxWidth-len(line))\n            res.append(line)\n        return res',
     )
 
     # Trees
@@ -426,8 +426,8 @@ def seed_problems():
         title='Range Sum of BST',
         description='Given the root node of a binary search tree and two integers low and high, return the sum of values of all nodes with a value in the inclusive range [low, high].',
         language="Python",
-        example="",
-        solution='class Solution: def rangeSumBST(self, root, L, R): def dfs(root): if not root: return if L <= root.val <= R: self.res += root.val if L <= root.val: dfs(root.left) if R >= root.val: dfs(root.right) self.res = 0 dfs(root) return self.res',
+        example="Input: root = [10,5,15,3,7,null,18], low = 7, high = 15\n Output: 32\n Explanation: Nodes 7, 10, and 15 are in the range [7, 15]. 7 + 10 + 15 = 32.",
+        solution='class Solution:\n    def rangeSumBST(self, root, L, R):\n        def dfs(root):\n            if not root:\n                return\n            if L <= root.val <= R:\n                self.res += root.val\n            if L <= root.val:\n                dfs(root.left)\n            if R >= root.val:\n                dfs(root.right)\n        self.res = 0\n        dfs(root)\n        return self.res',
     )
 
     problem41 = Problem(
@@ -436,8 +436,8 @@ def seed_problems():
         title='Maximum Depth of Binary Tree',
         description='Given the root of a binary tree, return its maximum depth. A binary tree\'s maximum depth is the number of nodes along the longest path from the root node down to the farthest leaf node.',
         language="Python",
-        example="",
-        solution='class Solution(object): def maxDepth(self, root): if root == None: return 0 return 1 + max(self.maxDepth(root.left),self.maxDepth(root.right))',
+        example="Input: root = [3,9,20,null,null,15,7]\n Output: 3",
+        solution='class Solution(object):\n    def maxDepth(self, root):\n        if root == None:\n            return 0\n        return 1 + max(self.maxDepth(root.left),self.maxDepth(root.right))',
     )
 
     problem42 = Problem(
@@ -446,8 +446,8 @@ def seed_problems():
         title='Invert Binary Tree',
         description='Given the root of a binary tree, invert the tree, and return its root.',
         language="Python",
-        example="",
-        solution='class Solution: def invertTree(self, root): if root: invert = self.invertTree root.left, root.right = invert(root.right), invert(root.left) return root',
+        example="Input: root = [4,2,7,1,3,6,9]\n Output: [4,7,2,9,6,3,1]",
+        solution='class Solution:\n    def invertTree(self, root):\n        if root:\n            invert = self.invertTree\n            root.left, root.right = invert(root.right), invert(root.left)\n            return root',
     )
 
     problem43 = Problem(
@@ -456,8 +456,8 @@ def seed_problems():
         title='Binary Tree Postorder Traversal',
         description='Given the root of a binary tree, return the postorder traversal of its nodes\' values.',
         language="Python",
-        example="",
-        solution='class Solution(object): def postorderTraversal(self, root): def dfs(root): if not root: return dfs(root.left) dfs(root.right) res.append(root.val) res = [] dfs(root) return res',
+        example="Input: root = [1,null,2,3]\n Output: [3,2,1]",
+        solution='class Solution(object):\n    def postorderTraversal(self, root):\n        def dfs(root):\n            if not root:\n                return\n            dfs(root.left)\n            dfs(root.right)\n            res.append(root.val)\n        res = []\n        dfs(root)\n        return res',
     )
 
     problem44 = Problem(
@@ -466,8 +466,8 @@ def seed_problems():
         title='Binary Tree Preorder Traversal',
         description='Given the root of a binary tree, return the preorder traversal of its nodes\' values.',
         language="Python",
-        example="",
-        solution='class Solution(object): def preorderTraversal(self, root): if not root: return [] elif not root.left and not root.right: return [root.val] l = self.preorderTraversal(root.left) r = self.preorderTraversal(root.right) return [root.val]+l+r',
+        example="Input: root = [1,null,2,3]\n Output: [1,2,3]",
+        solution='class Solution(object):\n    def preorderTraversal(self, root):\n        if not root:\n           return []\n        elif not root.left and not root.right:\n            return [root.val]\n        l = self.preorderTraversal(root.left)\n        r = self.preorderTraversal(root.right)\n        return [root.val]+l+r',
     )
 
     problem45 = Problem(
