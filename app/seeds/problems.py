@@ -476,8 +476,8 @@ def seed_problems():
         title='Diameter of Binary Tree',
         description='Given the root of a binary tree, return the length of the diameter of the tree. The diameter of a binary tree is the length of the longest path between any two nodes in a tree. This path may or may not pass through the root. The length of a path between two nodes is represented by the number of edges between them.',
         language="Python",
-        example="",
-        solution='class Solution(object): def diameterOfBinaryTree(self, root): self.ans = 0 def depth(p): if not p: return 0 left, right = depth(p.left), depth(p.right) self.ans = max(self.ans, left+right) return 1 + max(left, right) depth(root) return self.ans',
+        example="Input: root = [1,2,3,4,5]\n Output: 3\n Explanation: 3is the length of the path [4,2,1,3] or [5,2,1,3].",
+        solution='class Solution(object):\n    def diameterOfBinaryTree(self, root):\n        self.ans = 0\n        def depth(p):\n            if not p:\n                return 0\n            left, right = depth(p.left), depth(p.right)\n            self.ans = max(self.ans, left+right)\n            return 1 + max(left, right)\n        depth(root)\n        return self.ans',
     )
 
     problem46 = Problem(
@@ -486,8 +486,8 @@ def seed_problems():
         title='Symmetric Tree',
         description='Given the root of a binary tree, check whether it is a mirror of itself (i.e., symmetric around its center).',
         language="Python",
-        example="",
-        solution='class Solution(object): def isSymmetric(self, root): def isSym(root1, root2): if root1 == None and root2 == None: return True elif root1 == None and root2 != None: return False elif root1 != None and root2 == None: return False else: if root1.val != root2.val: return False else: return isSym(root1.left, root2.right) and isSym(root1.right,root2.left) return root == None or isSym(root.left,root.right)',
+        example="Input: root = [1,2,2,3,4,4,3]\n Output: true",
+        solution='class Solution(object):\n    def isSymmetric(self, root):\n        def isSym(root1, root2):\n            if root1 == None and root2 == None:\n                return True\n            elif root1 == None and root2 != None:\n                return False\n            elif root1 != None and root2 == None:\n                return False\n            else:\n                if root1.val != root2.val:\n                    return False\n                else:\n                    return isSym(root1.left, root2.right) and isSym(root1.right,root2.left)\n        return root == None or isSym(root.left,root.right)',
     )
 
     problem47 = Problem(
@@ -506,8 +506,8 @@ def seed_problems():
         title='Subtree of Another Tree',
         description='Given the roots of two binary trees root and subRoot, return true if there is a subtree of root with the same structure and node values of subRoot and false otherwise. A subtree of a binary tree tree is a tree that consists of a node in tree and all of this node\'s descendants. The tree tree could also be considered as a subtree of itself.',
         language="Python",
-        example="",
-        solution='class Solution: def isSubtree(self, s, t): def isSame(s,t): if not s and not t: return True elif not s or not t: return False return s.val == t.val and isSame(s.left,t.left) and isSame(s.right,t.right) def traverse(s,t): if not s and not t: return True elif not s and t: return False elif s and not t: return False else: if s.val != t.val: return traverse(s.left,t) or traverse(s.right,t) else: if traverse(s.left,t) or traverse(s.right,t): return True else: return isSame(s,t) return traverse(s,t)',
+        example="Input: p = [1,2,3], q = [1,2,3]\n Output: true",
+        solution='class Solution(object):\n    def isSameTree(self, p, q):\n        queue = collections.deque([p,q])\n        while queue:\n            u1 = queue.popleft()\n            u2 = queue.popleft()\n            if u1 == None and u2 != None:\n                return False\n            if u1 != None and u2 == None:\n                return False\n            if u1 != None and u2 != None:\n                if u1.val != u2.val:\n                    return False\n                else:\n                    queue.append(u1.left)\n                    queue.append(u2.left)\n                    queue.append(u1.right)\n                    queue.append(u2.right)\n        return True',
     )
 
     # Trees - Medium
@@ -518,8 +518,8 @@ def seed_problems():
         title='Insert into a Binary Search Tree',
         description='You are given the root node of a binary search tree (BST) and a value to insert into the tree. Return the root node of the BST after the insertion. It is guaranteed that the new value does not exist in the original BST. Notice that there may exist multiple valid ways for the insertion, as long as the tree remains a BST after insertion. You can return any of them.',
         language="Python",
-        example="",
-        solution='class Solution: def insertIntoBST(self, root, val): if val < root.val: if not root.left: root.left = TreeNode(val) else: self.insertIntoBST(root.left, val) else: if not root.right: root.right = TreeNode(val) else: self.insertIntoBST(root.right, val) return root',
+        example="Input: root = [4,2,7,1,3], val = 5\n Output: [4,2,7,1,3,5]",
+        solution='class Solution:\n    def insertIntoBST(self, root, val):\n        if val < root.val:\n            if not root.left:\n                root.left = TreeNode(val)\n            else:\n                self.insertIntoBST(root.left, val)\n        else:\n            if not root.right:\n                root.right = TreeNode(val)\n            else:\n                self.insertIntoBST(root.right, val)\n        return root',
     )
 
     problem49 = Problem(
@@ -528,8 +528,8 @@ def seed_problems():
         title='Count Good Nodes in Binary Tree',
         description='Given a binary tree root, a node X in the tree is named good if in the path from root to X there are no nodes with a value greater than X. Return the number of good nodes in the binary tree.',
         language="Python",
-        example="",
-        solution="class Solution: def goodNodes(self, root: TreeNode) -> int: self.cnt = 0 def dfs(node, v): if not node: return if node.val >= v: self.cnt += 1 v = max(v, node.val) dfs(node.left, v) dfs(node.right, v) dfs(root,-float('inf')) return self.cnt",
+        example="Input: root = [3,1,4,3,null,1,5]\n Output: 4",
+        solution="class Solution:\n    def goodNodes(self, root: TreeNode):\n        maxSoFar = -1*float('inf')\n        def postorder(cur,maxSoFar):\n            count = 0\n            if cur is None:\n                return count\n            if cur.val >= maxSoFar:\n                count += 1\n            maxSoFar = max(maxSoFar, cur.val)\n            left_count = postorder(cur.left,maxSoFar)\n            right_count = postorder(cur.right,maxSoFar)\n            count += left_count + right_count\n            return count\n        res = postorder(root,maxSoFar)\n        return res",
     )
 
     problem50 = Problem(
@@ -538,8 +538,8 @@ def seed_problems():
         title='Construct Binary Tree from Preorder and Postorder Traversal',
         description='Return any binary tree that matches the given preorder and postorder traversals. Values in the traversals pre and post are distinct positive integers.',
         language="Python",
-        example="",
-        solution='class Solution: def constructFromPrePost(self, pre, post): if pre: root = TreeNode(pre.pop(0)) post.pop() if pre: if pre[0] == post[-1]: root.left = self.constructFromPrePost(pre, post) else: l, r = post.index(pre[0]), pre.index(post[-1]) root.left = self.constructFromPrePost(pre[:r], post[:l + 1]) root.right = self.constructFromPrePost(pre[r:], post[l + 1:]) return root',
+        example="Input: pre = [1,2,4,5,3,6,7], post = [4,5,2,6,7,3,1]\n Output: [1,2,3,4,5,6,7]",
+        solution='class Solution:\n    def constructFromPrePost(self, pre, post):\n        if pre:\n            root = TreeNode(pre.pop(0))\n            post.pop()\n            if pre:\n                if pre[0] == post[-1]:\n                    root.left = self.constructFromPrePost(pre, post)\n                else:\n                    l, r = post.index(pre[0]), pre.index(post[-1])\n                    root.left = self.constructFromPrePost(pre[:r], post[:l + 1])\n                    root.right = self.constructFromPrePost(pre[r:], post[l + 1:])\n                    return root',
     )
 
     problem51 = Problem(
