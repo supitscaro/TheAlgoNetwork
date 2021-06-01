@@ -28,10 +28,6 @@ const StringsComponent = () => {
         // problems.push(all_problems[key])
     }
 
-
-    console.log('mediuuuuuuuuum', medium_problems);
-
-
     useEffect(() => {
         dispatch(getAllProblems(strings))
     }, [dispatch])
