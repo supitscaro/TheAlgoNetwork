@@ -548,8 +548,8 @@ def seed_problems():
         title='Binary Tree Right Side View',
         description='Given the root of a binary tree, imagine yourself standing on the right side of it, return the values of the nodes you can see ordered from top to bottom.',
         language="Python",
-        example="",
-        solution='class Solution(object): def rightSideView(self, root): if root == None: return [] ans = [root.val] left = ans + self.rightSideView(root.left) right = ans + self.rightSideView(root.right) if len(right) >= len(left): return right return right + left[len(right):]',
+        example="Input: root = [1,2,3,null,5,null,4]\n Output: [1,3,4]",
+        solution='class Solution(object):\n    def rightSideView(self, root):\n        if root == None:\n            return[]\n        ans = [root.val]\n        left = ans + self.rightSideView(root.left)\n        right = ans + self.rightSideView(root.right)\n        if len(right) >= len(left):\n            return right\n        return right + left[len(right):]',
     )
 
     # Trees - Hard
@@ -557,46 +557,36 @@ def seed_problems():
     problem52 = Problem(
         category='Trees',
         difficulty='Hard',
-        title='Serialize and Deserialize Binary Tree',
-        description='Serialization is the process of converting a data structure or object into a sequence of bits so that it can be stored in a file or memory buffer, or transmitted across a network connection link to be reconstructed later in the same or another computer environment. Design an algorithm to serialize and deserialize a binary tree. There is no restriction on how your serialization/deserialization algorithm should work. You just need to ensure that a binary tree can be serialized to a string and this string can be deserialized to the original tree structure.',
+        title='Binary Tree Maximum Path Sum',
+        description='A path in a binary tree is a sequence of nodes where each pair of adjacent nodes in the sequence has an edge connecting them. A node can only appear in the sequence at most once. Note that the path does not need to pass through the root. The path sum of a path is the sum of the node\'s values in the path. Given the root of a binary tree, return the maximum path sum of any path.',
         language="Python",
-        example="",
-        solution='class Codec: def serialize(self, root): def dfs(root): if not root: res.append("None,") return  res.append(str(root.val)+",") dfs(root.left) dfs(root.right) res = [] dfs(root) return "".join(res) def deserialize(self, data): def helper(q): if q[0] == "None": q.popleft() return root = TreeNode(q.popleft()) l = helper(q) r = helper(q) root.left = l root.right = r return root lst = data.split(",") q = collections.deque(lst) return helper(q)',
+        example="Input: root = [1,2,3]\n Output: 6\n Explanation: The optimal path is 2 -> 1 -> 3 with a path sum of 2 + 1 + 3 = 6.",
+        solution="class Solution:\n    def maxPathSum(self, root):\n        def maxSum(root):\n            if not root:\n                return 0\n            l_sum = maxSum(root.left)\n            r_sum = maxSum(root.right)\n            l = max(0, l_sum)\n            r = max(0, r_sum)\n            res[0] = max(res[0], root.val + l + r)\n            return root.val + max(l, r)\n        res = [-float('inf')]\n        maxSum(root)\n        return res[0]",
     )
 
     problem53 = Problem(
         category='Trees',
         difficulty='Hard',
-        title='Binary Tree Maximum Path Sum',
-        description='A path in a binary tree is a sequence of nodes where each pair of adjacent nodes in the sequence has an edge connecting them. A node can only appear in the sequence at most once. Note that the path does not need to pass through the root. The path sum of a path is the sum of the node\'s values in the path. Given the root of a binary tree, return the maximum path sum of any path.',
-        language="Python",
-        example="",
-        solution="class Solution: def maxPathSum(self, root): def maxSum(root): if not root: return 0 l_sum = maxSum(root.left) r_sum = maxSum(root.right) l = max(0, l_sum) r = max(0, r_sum) res[0] = max(res[0], root.val + l + r) return root.val + max(l, r) res = [-float('inf')] maxSum(root) return res[0]",
-    )
-
-    problem54 = Problem(
-        category='Trees',
-        difficulty='Hard',
         title='Vertical Order Traversal of a Binary Tree',
         description='Given the root of a binary tree, calculate the vertical order traversal of the binary tree. For each node at position (row, col), its left and right children will be at positions (row + 1, col - 1) and (row + 1, col + 1) respectively. The root of the tree is at (0, 0). The vertical order traversal of a binary tree is a list of top-to-bottom orderings for each column index starting from the leftmost column and ending on the rightmost column. There may be multiple nodes in the same row and same column. In such a case, sort these nodes by their values. Return the vertical order traversal of the binary tree.',
         language="Python",
-        example="",
-        solution="class Solution(object): def verticalTraversal(self, root): res = [] frontier = [(root, 0)] h = collections.defaultdict(list) while frontier: next = [] for u, x in frontier: h[x].append(u.val) if u.left: next.append((u.left, x-1))  if u.right: next.append((u.right, x+1)) next.sort(key = lambda x: (x[1], x[0].val)) frontier = next for k in sorted(h): res.append(h[k]) return res",
+        example="Input: root = [3,9,20,null,null,15,7]\n Output: [[9],[3,15],[20],[7]]",
+        solution="class Solution(object):\n    def verticalTraversal(self, root: TreeNode) -> List[List[int]]:\n        hash = defaultdict(list)\n        def walk(root,row,col):\n            if root is None:\n                return\n            hash[col].append((row,root.val))\n            walk(root.left,row+1,col-1)\n            walk(root.right,row+1,col+1)\n        walk(root,0,0)\n        res = []\n        for key in sorted(hash.keys()):\n            hash[key].sort(key = lambda x: (x[0],x[1]))\n            res.append([x[1] for x in hash[key]])\n        return res",
     )
 
     # Hash Table
     # Hash Table - Easy
-    problem55 = Problem(
+    problem54 = Problem(
         category='Hash',
         difficulty='Easy',
         title='Number of Good Pairs',
         description='Given an array of integers nums. A pair (i,j) is called good if nums[i] == nums[j] and i < j. Return the number of good pairs.',
         language="Python",
-        example="",
-        solution="class Solution: def numIdenticalPairs(self, nums: List[int]) -> int: ans = 0 d = defaultdict(list) for i in range(len(nums)): d[nums[i]].append(i) for k,v in d.items(): n = len(v) if n > 1: ans += ((n-1) * n) // 2 return ans",
+        example="Input: nums = [1,2,3,1,1,3]\n Output: 4\n Explanation: There are 4 good pairs (0,3), (0,4), (3,4), (2,5) 0-indexed.",
+        solution="class Solution:\n    def numIdenticalPairs(self, nums: List[int]) -> int:\n        ans = 0\n        d = defaultdict(list)\n        for i in range(len(nums)):\n            d[nums[i]].append(i)\n        for k,v in d.items():\n            n = len(v)\n            if n > 1:\n                ans += ((n-1) * n) // 2\n        return ans",
     )
 
-    problem56 = Problem(
+    problem55 = Problem(
         category='Hash',
         difficulty='Easy',
         title='Jewels and Stones',
@@ -606,7 +596,7 @@ def seed_problems():
         solution="class Solution: def numJewelsInStones(self, J: str, S: str) -> int: jewels = set(J) count_of_jewel = 0 for item in S: if item in jewels: count_of_jewel += 1 return count_of_jewel",
     )
 
-    problem57 = Problem(
+    problem56 = Problem(
         category='Hash',
         difficulty='Easy',
         title='How Many Numbers Are Smaller Than the Current Number',
@@ -616,17 +606,7 @@ def seed_problems():
         solution="class Solution: def smallerNumbersThanCurrent(self, nums: List[int]) -> List[int]: indexes = {} for idx,val in enumerate(nums): if val in indexes: indexes[val].append(idx) else: indexes[val] = [idx] lst = sorted(list(set(nums))) ans = [None for x in nums] count_smaller = 0 for x in lst: for idx in indexes[x]: ans[idx] = count_smaller count_smaller += len(indexes[x]) return ans",
     )
 
-    problem58 = Problem(
-        category='Hash',
-        difficulty='Easy',
-        title='Subdomain Visit Count',
-        description='A website domain like "discuss.leetcode.com" consists of various subdomains. At the top level, we have "com", at the next level, we have "leetcode.com", and at the lowest level, "discuss.leetcode.com". When we visit a domain like "discuss.leetcode.com", we will also visit the parent domains "leetcode.com" and "com" implicitly. Now, call a "count-paired domain" to be a count (representing the number of visits this domain received), followed by a space, followed by the address. An example of a count-paired domain might be "9001 discuss.leetcode.com". We are given a list cpdomains of count-paired domains. We would like a list of count-paired domains, (in the same format as the input, and in any order), that explicitly counts the number of visits to each subdomain.',
-        language="Python",
-        example="",
-        solution='class Solution(object): def subdomainVisits(self, cpdomains): res = [] dic = {} for item in cpdomains: count, domain = item.split() dlst = domain.split(".") summ = dlst[-1] if summ in dic: dic[summ] += int(count) else: dic[summ] = int(count) for i in range(len(dlst)-2, -1, -1): summ = dlst[i] + "." + summ if summ in dic: dic[summ] += int(count) else: dic[summ] = int(count) for key, val in dic.items(): res.append(str(val) + " " + key) return res',
-    )
-
-    problem59 = Problem(
+    problem57 = Problem(
         category='Hash',
         difficulty='Easy',
         title='Design HashMap',
@@ -636,7 +616,7 @@ def seed_problems():
         solution="class MyHashMap(object): def __init__(self): self.map = [[] for i in xrange(1024)] def put(self, key, value): self.remove(key) self.map[key & 1023].append((key, value)) def get(self, key): values = [x[1] for x in self.map[key & 1023] if x[0] == key] return -1 if len(values) == 0 else values[0] def remove(self, key): self.map[key & 1023] = [x for x in self.map[key & 1023] if x[0] != key]",
     )
 
-    problem60 = Problem(
+    problem58 = Problem(
         category='Hash',
         difficulty='Easy',
         title='Single Number',
@@ -646,7 +626,7 @@ def seed_problems():
         solution="class Solution: def singleNumber(self, nums): res = nums[0] for i in range(1, len(nums)): res ^= nums[i] return res",
     )
 
-    problem61 = Problem(
+    problem59 = Problem(
         category='Hash',
         difficulty='Easy',
         title='Verifying an Alien Dictionary',
@@ -658,7 +638,7 @@ def seed_problems():
 
     # Hash Table - Medium
 
-    problem62 = Problem(
+    problem60 = Problem(
         category='Hash',
         difficulty='Medium',
         title='Top K Frequent Words',
@@ -668,7 +648,7 @@ def seed_problems():
         solution="import heapq import collections class Solution: def topKFrequent(self, words: List[str], k: int) -> List[str]: word_count = self.calc_count(words) word_count_pairs = [] for word, count in word_count.items(): word_count_pairs.append((-count, word)) heapq.heapify(word_count_pairs) result = [] for _ in range(k): result.append(heapq.heappop(word_count_pairs)[1]) return result def calc_count(self, words): result = collections.defaultdict(int) for word in words: result[word] += 1 return result",
     )
 
-    problem63 = Problem(
+    problem61 = Problem(
         category='Hash',
         difficulty='Medium',
         title='Daily Temperatures',
@@ -678,7 +658,7 @@ def seed_problems():
         solution="class Solution(object): def dailyTemperatures(self, temperatures): res = [0]*len(temperatures) T = [-1]*71 for i in range(len(temperatures)-1, -1, -1): t = temperatures[i] for j in range(t-1, 29, -1): T[j-30] = i if T[t-30] != -1: res[i] = T[t-30]-i return res",
     )
 
-    problem64 = Problem(
+    problem62 = Problem(
         category='Hash',
         difficulty='Medium',
         title='Subarray Sum Equals K',
@@ -690,7 +670,7 @@ def seed_problems():
 
     # Hash Tables - Hard
 
-    problem65 = Problem(
+    problem63 = Problem(
         category='Hash',
         difficulty='Hard',
         title='Group Anagrams',
@@ -700,7 +680,7 @@ def seed_problems():
         solution="class Solution(object): def groupAnagrams(self, strs): def convert(s): res = [0]*26 for char in s: res[ord(char)-ord('a')] += 1 return tuple(res) rec = {} res = [] for s in strs: t = convert(s) if t in rec: res[rec[t]].append(s) else: res.append([s]) rec[t] = len(res)-1 return res",
     )
 
-    problem66 = Problem(
+    problem64 = Problem(
         category='Hash',
         difficulty='Hard',
         title='Minimum Window Substring',
@@ -774,8 +754,6 @@ def seed_problems():
     db.session.add(problem62)
     db.session.add(problem63)
     db.session.add(problem64)
-    db.session.add(problem65)
-    db.session.add(problem66)
 
     db.session.commit()
 
