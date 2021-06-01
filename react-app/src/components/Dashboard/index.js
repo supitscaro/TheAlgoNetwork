@@ -11,7 +11,8 @@ const Dashboard = () => {
     return (
         <>
             <Link to={'/arrays'}>
-                <ArraysComponent/>
+                <h2>Arrays</h2>
+                <ArraysComponent />
             </Link>
         </>
     )

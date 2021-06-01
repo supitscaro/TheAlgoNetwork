@@ -10,26 +10,66 @@ const ArraysComponent = () => {
 
     console.log('teeeeeeeeeeeeeeeest', all_problems)
 
-    let problems = []
+    let easy_problems = [];
+
+    let medium_problems = [];
+
+    let hard_problems = [];
 
     for (let key in all_problems) {
-        problems.push(all_problems[key])
+        let val = all_problems[key];
+        if (val.difficulty === 'Easy') {
+            easy_problems.push(val);
+        };
+        if (val.difficulty === 'Medium') {
+            medium_problems.push(val);
+        };
+        if (val.difficulty === 'Hard') {
+            hard_problems.push(val);
+        }
+        // problems.push(all_problems[key])
     }
 
-    console.log('probleeeeeeeeeeeems', problems)
 
-    useEffect( () => {
+    console.log('mediuuuuuuuuum', medium_problems);
+
+
+    useEffect(() => {
         dispatch(getAllProblems(arrays))
     }, [dispatch])
-    
+
     return (
         <div>
-            {problems.map((problem) => (
-                <Link to={`/${problem.category}/${problem.id}`}>
-                    <div>{problem.title}</div>
-                </Link>
+            <div>
+                Easy
+                {easy_problems.map((problem) => (
+                <div>
+                    <Link to={`/${problem.category}/${problem.id}`}>
+                        <div>{problem.title}</div>
+                    </Link>
+                </div>
             ))}
-            Hi
+            </div>
+            <div>
+                Medium
+                {medium_problems.map((problem) => (
+                <div>
+                    <Link to={`/${problem.category}/${problem.id}`}>
+                        <div>{problem.title}</div>
+                    </Link>
+                </div>
+            ))}
+            </div>
+            <div>
+                Hard
+                {hard_problems.map((problem) => (
+                <div>
+                    <Link to={`/${problem.category}/${problem.id}`}>
+                        <div>{problem.title}</div>
+                    </Link>
+                </div>
+            ))}
+            </div>
         </div>
     )
 }
