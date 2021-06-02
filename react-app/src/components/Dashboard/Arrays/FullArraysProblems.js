@@ -8,7 +8,7 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { duotoneLight, materialOceanic } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 const ArrayProblems = () => {
-    const { arrays, problemId } = useParams();
+    const { problemId } = useParams();
     const dispatch = useDispatch();
     const user = useSelector(state => state.session.user);
     const all_problems = useSelector(state => state.problems.problem);
@@ -23,8 +23,8 @@ const ArrayProblems = () => {
     }
 
     useEffect(() => {
-        dispatch(getSpecificProblem(arrays, problemId))
-    }, [dispatch, arrays, problemId])
+        dispatch(getSpecificProblem("arrays", problemId))
+    }, [dispatch, "arrays", problemId])
 
     const addProblemToReview = async (e) => {
         let problem = problems.id;

@@ -6,10 +6,10 @@ import { getAllReviews } from "../../store/reviews";
 
 
 const Profile = () => {
-    const { userId } = useParams();
+    const { id } = useParams();
     const dispatch = useDispatch();
     const allProblemsToReview = useSelector(state => state.reviews.reviews);
-
+    console.log('butthole', allProblemsToReview)
     let reviews = [];
 
     for (let key in allProblemsToReview) {
@@ -18,7 +18,7 @@ const Profile = () => {
     }
 
     useEffect(() => {
-        dispatch(getAllReviews(userId))
+        dispatch(getAllReviews(id))
     }, [dispatch])
 
     return (

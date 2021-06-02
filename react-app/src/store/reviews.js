@@ -18,6 +18,7 @@ const addProblem = (review) => ({
 // THUNKS ------------------------------------------------------
 
 export const getAllReviews = (userId) => async (dispatch) => {
+    console.log('butthole2', userId);
     const res = await fetch(`/api/reviews/${userId}`);
 
     if (res.ok) {
@@ -28,6 +29,10 @@ export const getAllReviews = (userId) => async (dispatch) => {
 
 
 export const addProblemToReview = (problemId, userId, checked) => async (dispatch) => {
+    console.log('butthole1', problemId);
+    console.log('butthole2', userId);
+    console.log('butthole3', checked);
+
     const res = await fetch(`/api/reviews/${problemId}/${userId}`, {
         method: 'POST',
         headers: {
