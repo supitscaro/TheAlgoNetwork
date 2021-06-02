@@ -24,11 +24,11 @@ const NavBar = () => {
             Sign Up
           </NavLink>
         </li>
-        <li>
+        {/* <li>
           <NavLink to={`/${user.id}`} exact={true} activeClassName="active">
             Profile
           </NavLink>
-        </li>
+        </li> */}
         <li>
           <LogoutButton />
         </li>
