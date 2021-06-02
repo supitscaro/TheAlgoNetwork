@@ -11,11 +11,8 @@ const ArrayProblems = () => {
     const { problemId } = useParams();
     const dispatch = useDispatch();
     const user = useSelector(state => state.session.user);
-    console.log('user?', user)
-
     const all_problems = useSelector(state => state.problems.problem);
 
-    const [checked, setChecked] = useState(false);
     const [choice, setChoice] = useState(false);
     let userId = user?.id
 
@@ -30,10 +27,15 @@ const ArrayProblems = () => {
     }, [dispatch, "arrays", userId, problemId])
 
     const addProblem = async (e) => {
-        let problem = problems.id;
-        let choiceMade = checked;
+        let problemId;
 
-        await dispatch(addProblemToReview(userId, problem, choiceMade))
+        problems.map((problem) => {
+            problemId = problem.id
+        })
+
+        let choiceMade = choice;
+
+        await dispatch(addProblemToReview(problemId, userId, choiceMade))
     }
 
     return (
@@ -65,7 +67,7 @@ const ArrayProblems = () => {
                     </div>
                     <div>
                         <h3>Review</h3>
-                        <input type="radio" name="checked" checked={checked === true} onChange={() => setChoice(true)} />
+                        <input type="radio" name="checked" onChange={() => setChoice(true)} />
                         <button disabled={!choice} onClick={addProblem}>Save Changes</button>
                     </div>
                 </div>

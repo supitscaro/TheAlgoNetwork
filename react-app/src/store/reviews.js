@@ -29,10 +29,6 @@ export const getAllReviews = (userId) => async (dispatch) => {
 
 
 export const addProblemToReview = (problemId, userId, checked) => async (dispatch) => {
-    console.log('butthole1', problemId);
-    console.log('butthole2', userId);
-    console.log('butthole3', checked);
-
     const res = await fetch(`/api/reviews/${problemId}/${userId}`, {
         method: 'POST',
         headers: {
@@ -42,7 +38,6 @@ export const addProblemToReview = (problemId, userId, checked) => async (dispatc
     });
 
     if (res.ok) {
-        // let data = await res.json()
         dispatch(addProblem(problemId, userId, checked))
     }
 }
@@ -60,6 +55,11 @@ export default function reducer(state = initialState, action) {
             return {
                 ...state,
                 reviews: action.reviews
+            }
+        case ADD_TO_REVIEW:
+            return {
+                ...state,
+                reviews: { ...action.review }
             }
         default:
             return state;
