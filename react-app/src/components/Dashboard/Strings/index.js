@@ -25,7 +25,6 @@ const StringsComponent = () => {
         if (val.difficulty === 'Hard') {
             hard_problems.push(val);
         }
-        // problems.push(all_problems[key])
     }
 
     useEffect(() => {

@@ -17,6 +17,8 @@ const StringsProblems = () => {
         problems.push(all_problems[key])
     }
 
+    console.log('butthole', problems);
+
     useEffect(() => {
         dispatch(getSpecificProblem(arrays, problemId))
     }, [dispatch, strings, problemId])

@@ -4,7 +4,7 @@ import { useParams, Link } from "react-router-dom";
 import { getSpecificProblem } from "../../../store/problems";
 
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { shadesOfPurple, materialOceanic } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { duotoneLight, materialOceanic } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 const ArrayProblems = () => {
     const { arrays, problemId } = useParams();
@@ -17,6 +17,8 @@ const ArrayProblems = () => {
         problems.push(all_problems[key])
     }
 
+    console.log('butthole', problems);
+
     useEffect(() => {
         dispatch(getSpecificProblem(arrays, problemId))
     }, [dispatch, arrays, problemId])
@@ -28,6 +30,13 @@ const ArrayProblems = () => {
                     <div>{problem.title}</div>
                     <div>{problem.category}</div>
                     <div>{problem.description}</div>
+                    <SyntaxHighlighter
+                        language="python"
+                        wrapLines={true}
+                        style={duotoneLight}
+                    >
+                        {problem.examples}
+                    </SyntaxHighlighter>
                     <SyntaxHighlighter
                         language="python"
                         lineProps={{ style: { wordBreak: 'break-all', whiteSpace: 'pre-wrap' } }}
