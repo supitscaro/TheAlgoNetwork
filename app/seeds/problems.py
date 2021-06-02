@@ -592,8 +592,8 @@ def seed_problems():
         title='Jewels and Stones',
         description='You\'re given strings jewels representing the types of stones that are jewels, and stones representing the stones you have. Each character in stones is a type of stone you have. You want to know how many of the stones you have are also jewels. Letters are case sensitive, so "a" is considered a different type of stone from "A".',
         language="Python",
-        example="",
-        solution="class Solution: def numJewelsInStones(self, J: str, S: str) -> int: jewels = set(J) count_of_jewel = 0 for item in S: if item in jewels: count_of_jewel += 1 return count_of_jewel",
+        example='Input: jewels = "aA", stones = "aAAbbbb"\n Output: 3',
+        solution="class Solution:\n    def numJewelsInStones(self, J: str, S: str) -> int:\n        jewels = set(J)\n        count_of_jewel = 0\n        for item in S:\n            if item in jewels:\n                count_of_jewel += 1\n        return count_of_jewel",
     )
 
     problem56 = Problem(
@@ -602,8 +602,8 @@ def seed_problems():
         title='How Many Numbers Are Smaller Than the Current Number',
         description='Given the array nums, for each nums[i] find out how many numbers in the array are smaller than it. That is, for each nums[i] you have to count the number of valid j\'s such that j != i and nums[j] < nums[i]. Return the answer in an array.',
         language="Python",
-        example="",
-        solution="class Solution: def smallerNumbersThanCurrent(self, nums: List[int]) -> List[int]: indexes = {} for idx,val in enumerate(nums): if val in indexes: indexes[val].append(idx) else: indexes[val] = [idx] lst = sorted(list(set(nums))) ans = [None for x in nums] count_smaller = 0 for x in lst: for idx in indexes[x]: ans[idx] = count_smaller count_smaller += len(indexes[x]) return ans",
+        example="Input: nums = [8,1,2,2,3]\n Output: [4,0,1,1,3]",
+        solution="class Solution:\n    def smallerNumbersThanCurrent(self, nums: List[int]) -> List[int]:\n        counts = [0]*101\n        for nn in nums:\n            counts[nn] += 1\n        return_counts = list()\n        for nn in nums:\n            if nn ==0:\n                return_counts.append(0)\n            else:\n                return_counts.append(sum(counts[:nn]))\n        return return_counts",
     )
 
     problem57 = Problem(
@@ -612,8 +612,8 @@ def seed_problems():
         title='Design HashMap',
         description='Design a HashMap without using any built-in hash table libraries.',
         language="Python",
-        example="",
-        solution="class MyHashMap(object): def __init__(self): self.map = [[] for i in xrange(1024)] def put(self, key, value): self.remove(key) self.map[key & 1023].append((key, value)) def get(self, key): values = [x[1] for x in self.map[key & 1023] if x[0] == key] return -1 if len(values) == 0 else values[0] def remove(self, key): self.map[key & 1023] = [x for x in self.map[key & 1023] if x[0] != key]",
+        example='Input ["MyHashMap", "put", "put", "get", "get", "put", "get", "remove", "get"]\n [[], [1, 1], [2, 2], [1], [3], [2, 1], [2], [2], [2]]\n Output\n [null, null, null, 1, -1, null, 1, null, -1]',
+        solution="cclass MyHashMap:\n    def __init__(self):\n        self.golden_ratio = 1.618\n        self.table_size = 65536\n        self.table = [[] for _ in range(self.table_size)]\n        self.hash = lambda i: i*math.ceil(self.golden_ratio*self.table_size) % self.table_size\n    def put(self, key, value):\n        self.remove(key)\n        hkey = self.hash(key)\n        self.table[hkey].append((key, value))\n    def get(self, key):\n        hkey = self.hash(key)\n        ix = -1\n        for i, x in enumerate(self.table[hkey]):\n            if x[0] == key:\n                ix = i\n        return -1 if ix==-1 else self.table[hkey][ix][1]\n    def remove(self, key):\n        hkey = self.hash(key)\n        ix = -1\n        for i, x in enumerate(self.table[hkey]):\n            if x[0] == key:\n                ix = i\n        if ix >= 0:\n            del self.table[hkey][ix]",
     )
 
     problem58 = Problem(
@@ -622,8 +622,8 @@ def seed_problems():
         title='Single Number',
         description='Given a non-empty array of integers nums, every element appears twice except for one. Find that single one. You must implement a solution with a linear runtime complexity and use only constant extra space.',
         language="Python",
-        example="",
-        solution="class Solution: def singleNumber(self, nums): res = nums[0] for i in range(1, len(nums)): res ^= nums[i] return res",
+        example="Input: nums = [2,2,1]\n Output: 1",
+        solution="class Solution:\n    def singleNumber(self, nums):\n        res = nums[0]\n        for i in range(1, len(nums)):\n            res ^= nums[i]\n        return res",
     )
 
     problem59 = Problem(
@@ -632,8 +632,8 @@ def seed_problems():
         title='Verifying an Alien Dictionary',
         description='In an alien language, surprisingly they also use english lowercase letters, but possibly in a different order. The order of the alphabet is some permutation of lowercase letters.Given a sequence of words written in the alien language, and the order of the alphabet, return true if and only if the given words are sorted lexicographicaly in this alien language.',
         language="Python",
-        example="",
-        solution='class Solution: def isAlienSorted(self, words, order): dic = {} for i, c in enumerate(order): dic[c] = i for i in range(len(words)-1): cur = words[i] nex = words[i+1] for i in range(min(len(cur), len(nex))): if cur[i] != nex[i]: if dic[cur[i]] > dic[nex[i]]: return False break else: if len(cur) > len(nex): return False return True',
+        example='Input: words = ["hello","leetcode"], order = "hlabcdefgijkmnopqrstuvwxyz"\n Output: true\n Explanation: As "h" comes before "l" in this language, then the sequence is sorted.',
+        solution='class Solution:\n    def isAlienSorted(self, words: List[str], order: str) -> bool:\n        mapping = {char: i for i, char in enumerate(order)}\n        alien_char_codes = [[mapping[char] for char in word] for word in words]\n        for curr_word, next_word in zip(alien_char_codes, alien_char_codes[1:]):\n            if curr_word > next_word:\n                return False\n        return True',
     )
 
     # Hash Table - Medium
@@ -645,7 +645,7 @@ def seed_problems():
         description='Given a non-empty list of words, return the k most frequent elements. Your answer should be sorted by frequency from highest to lowest. If two words have the same frequency, then the word with the lower alphabetical order comes first.',
         language="Python",
         example="",
-        solution="import heapq import collections class Solution: def topKFrequent(self, words: List[str], k: int) -> List[str]: word_count = self.calc_count(words) word_count_pairs = [] for word, count in word_count.items(): word_count_pairs.append((-count, word)) heapq.heapify(word_count_pairs) result = [] for _ in range(k): result.append(heapq.heappop(word_count_pairs)[1]) return result def calc_count(self, words): result = collections.defaultdict(int) for word in words: result[word] += 1 return result",
+        solution="class Solution:\n    def topKFrequent(self, words, k):\n        d = {}\n        for word in words:\n            d[word] = d.get(word, 0) + 1\n        ret = sorted(d, key=lambda word: (-d[word], word))\n        return ret[:k]",
     )
 
     problem61 = Problem(
