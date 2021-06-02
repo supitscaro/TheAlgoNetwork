@@ -48,10 +48,12 @@ const ArrayProblems = () => {
                     <div>
                         <input type="checkbox" name="checked" value="Solved" />
                         <h3>Solved</h3>
+                        <button>Save Changes</button>
                     </div>
                     <div>
                         <input type="checkbox" name="checked" value="Review" />
                         <h3>Review</h3>
+                        <button>Save Changes</button>
                     </div>
                 </div>
             ))}

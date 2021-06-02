@@ -18,7 +18,7 @@ def get_reviewlist(user_id):
         new_review = Review(
             review_problems=True,
             users_id=user_id,
-            problems_id=problem_id
+            problems_id=problem_id  # ?
         )
 
     else:
