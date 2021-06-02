@@ -45,7 +45,14 @@ const ArrayProblems = () => {
                         wrapLines={true}>
                         {problem.solution}
                     </SyntaxHighlighter>
-                    {/* <CodeBlock text={problem.solution} language={problem.language} theme={dracula} wraplines/> */}
+                    <div>
+                        <input type="checkbox" name="checked" value="Solved" />
+                        <h3>Solved</h3>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="checked" value="Review" />
+                        <h3>Review</h3>
+                    </div>
                 </div>
             ))}
         </div>
