@@ -12,6 +12,7 @@ import Dashboard from "./components/Dashboard";
 import ArraysComponent from "./components/Dashboard/Arrays";
 import ArrayProblems from "./components/Dashboard/Arrays/FullArraysProblems";
 import StringsComponent from "./components/Dashboard/Strings";
+import HashComponent from "./components/Dashboard/Hash";
 
 function App() {
   const user = useSelector(state => state.session.user)
@@ -53,6 +54,9 @@ function App() {
         </Route>
         <Route exact path="/:strings/:problemId">
           <ArrayProblems />
+        </Route>
+        <Route exact path="/:hash">
+          <HashComponent />
         </Route>
       </Switch>
     </BrowserRouter>

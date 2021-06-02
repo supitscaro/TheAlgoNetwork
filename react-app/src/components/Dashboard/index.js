@@ -2,6 +2,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { BrowserRouter, Route, Link } from "react-router-dom";
 import ArraysComponent from './Arrays';
+import HashComponent from './Hash';
 import StringsComponent from './Strings';
 
 const Dashboard = () => {
@@ -18,6 +19,10 @@ const Dashboard = () => {
             <Link to={'/strings'}>
                 <h2>Strings</h2>
                 <StringsComponent />
+            </Link>
+            <Link to={'/hash'}>
+                <h2>Hash</h2>
+                <HashComponent />
             </Link>
         </>
     )
