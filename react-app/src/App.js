@@ -45,9 +45,9 @@ function App() {
         <Route exact path="/">
           <Dashboard />
         </Route>
-        {/* <Route exact path="/:userId">
+        <Route exact path="/:id">
           <Profile />
-        </Route> */}
+        </Route>
         <Route exact path="/:arrays">
           <ArraysComponent />
         </Route>

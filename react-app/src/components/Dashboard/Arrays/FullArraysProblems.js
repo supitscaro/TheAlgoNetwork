@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams, Link } from "react-router-dom";
 import { getSpecificProblem } from "../../../store/problems";
@@ -26,7 +26,7 @@ const ArrayProblems = () => {
         dispatch(getSpecificProblem(arrays, problemId))
     }, [dispatch, arrays, problemId])
 
-    const addProblemToReview = (e) => {
+    const addProblemToReview = async (e) => {
         let problem = problems.id;
         let choiceMade = checked;
         let id = user.id
