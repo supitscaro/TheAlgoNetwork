@@ -2,7 +2,7 @@ const GET_ALL_PROBLEMS = "problems/GET_ALL_PROBLEMS";
 const GET_SPECIFIC_PROBLEM = "problems/GET_SPECIFIC_PROBLEM";
 
 
-// ACTIONS
+// ACTIONS ----------------------------
 
 const getProblems = (problems) => ({
     type: GET_ALL_PROBLEMS,
@@ -15,7 +15,7 @@ const getProblem = (problem) => ({
 });
 
 
-// THUNKS
+// THUNKS ------------------------------------------------------
 
 // gets all problems based on category
 export const getAllProblems = (category) => async (dispatch) => {
@@ -39,7 +39,7 @@ export const getSpecificProblem = (category, id) => async (dispatch) => {
 };
 
 
-// REDUCER
+// REDUCER ------------------------------------------------------
 
 let initialState = {
     problems: {},
@@ -47,7 +47,7 @@ let initialState = {
 }
 
 export default function reducer(state = initialState, action) {
-    switch(action.type) {
+    switch (action.type) {
         case GET_ALL_PROBLEMS:
             return {
                 ...state,
