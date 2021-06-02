@@ -14,6 +14,7 @@ import StringsProblems from "./components/Dashboard/Strings/FullStringProblems";
 import HashProblems from "./components/Dashboard/Hash/FullHashProblems";
 import TreesComponent from "./components/Dashboard/Trees";
 import TreesProblems from "./components/Dashboard/Trees";
+import Profile from "./components/Profile";
 
 function App() {
   const user = useSelector(state => state.session.user)
@@ -43,6 +44,9 @@ function App() {
         </Route>
         <Route exact path="/">
           <Dashboard />
+        </Route>
+        <Route exact path="/:userId">
+          <Profile />
         </Route>
         <Route exact path="/:arrays">
           <ArraysComponent />

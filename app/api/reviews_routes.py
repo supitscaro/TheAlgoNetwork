@@ -8,9 +8,9 @@ reviews_routes = Blueprint("reviews", __name__)
 # get user's review list
 
 
+# @login_required
 @reviews_routes.route('/', methods=["GET", "POST"])
-@login_required
 def get_reviewlist():
-    reviews = Review.query.filter(Review.users_id == current_user.id)
-    print('butthole', reviews)
-    pass
+    user_id = current_user.id
+    reviews = Review.query.filter(Review.users_id == 1).all()
+    return {'test': 'code'}
