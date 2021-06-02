@@ -644,7 +644,7 @@ def seed_problems():
         title='Top K Frequent Words',
         description='Given a non-empty list of words, return the k most frequent elements. Your answer should be sorted by frequency from highest to lowest. If two words have the same frequency, then the word with the lower alphabetical order comes first.',
         language="Python",
-        example="",
+        example='Input: ["i", "love", "leetcode", "i", "love", "coding"], k = 2\n Output: ["i", "love"]\n Explanation: "i" and "love" are the two most frequent words.\n Note that "i" comes before "love" due to a lower alphabetical order.',
         solution="class Solution:\n    def topKFrequent(self, words, k):\n        d = {}\n        for word in words:\n            d[word] = d.get(word, 0) + 1\n        ret = sorted(d, key=lambda word: (-d[word], word))\n        return ret[:k]",
     )
 
@@ -654,8 +654,8 @@ def seed_problems():
         title='Daily Temperatures',
         description='Given a list of daily temperatures temperatures, return a list such that, for each day in the input, tells you how many days you would have to wait until a warmer temperature. If there is no future day for which this is possible, put 0 instead.',
         language="Python",
-        example="",
-        solution="class Solution(object): def dailyTemperatures(self, temperatures): res = [0]*len(temperatures) T = [-1]*71 for i in range(len(temperatures)-1, -1, -1): t = temperatures[i] for j in range(t-1, 29, -1): T[j-30] = i if T[t-30] != -1: res[i] = T[t-30]-i return res",
+        example="Input: temperatures = [73,74,75,71,69,72,76,73]\n Output: [1,1,4,2,1,1,0,0]",
+        solution="class Solution(object):\n    def dailyTemperatures(self, temperatures):\n        res = [0]*len(temperatures)\n        T = [-1]*71\n        for i in range(len(temperatures)-1, -1, -1):\n            t = temperatures[i]\n            for j in range(t-1, 29, -1):\n                T[j-30] = i\n                if T[t-30] != -1:\n                    res[i] = T[t-30]-i\n        return res",
     )
 
     problem62 = Problem(
@@ -664,8 +664,8 @@ def seed_problems():
         title='Subarray Sum Equals K',
         description='Given an array of integers nums and an integer k, return the total number of continuous subarrays whose sum equals to k.',
         language="Python",
-        example="",
-        solution="class Solution: def subarraySum(self, nums, k): preSums = {0: 1} s = 0 res = 0 for num in nums: s += num res += preSums.get(s - k, 0) preSums[s] = preSums.get(s, 0) + 1 return res",
+        example="Input: nums = [1,1,1], k = 2\n Output: 2",
+        solution="class Solution:\n    def subarraySum(self, nums, k):\n        preSums = {0: 1}\n        s = 0\n        res = 0\n        for num in nums:\n            s += num\n            res += preSums.get(s - k, 0)\n            preSums[s] = preSums.get(s, 0) + 1\n        return res",
     )
 
     # Hash Tables - Hard
@@ -676,8 +676,8 @@ def seed_problems():
         title='Group Anagrams',
         description='Given an array of strings strs, group the anagrams together. You can return the answer in any order. An Anagram is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all the original letters exactly once.',
         language="Python",
-        example="",
-        solution="class Solution(object): def groupAnagrams(self, strs): def convert(s): res = [0]*26 for char in s: res[ord(char)-ord('a')] += 1 return tuple(res) rec = {} res = [] for s in strs: t = convert(s) if t in rec: res[rec[t]].append(s) else: res.append([s]) rec[t] = len(res)-1 return res",
+        example='Input: strs = ["eat","tea","tan","ate","nat","bat"]\n Output: [["bat"],["nat","tan"],["ate","eat","tea"]]',
+        solution="class Solution(object):\n    def groupAnagrams(self, strs):\n    def convert(s):\n            res = [0]*26\n            for char in s:\n                res[ord(char)-ord('a')] += 1\n            return tuple(res)\n        rec = {}\n        res = []\n        for s in strs:\n            t = convert(s)\n            if t in rec:\n                res[rec[t]].append(s)\n            else:\n                res.append([s])\n                rec[t] = len(res)-1\n        return res",
     )
 
     problem64 = Problem(
@@ -686,8 +686,8 @@ def seed_problems():
         title='Minimum Window Substring',
         description='Given two strings s and t of lengths m and n respectively, return the minimum window substring of s such that every character in t (including duplicates) is included in the window. If there is no such substring, return the empty string "". The testcases will be generated such that the answer is unique. A substring is a contiguous sequence of characters within the string.',
         language="Python",
-        example="",
-        solution="class Solution: def minWindow(self, s, t): dicT = collections.Counter(t) dicS = {} rec = set() j = 0 res = float('inf') for i, c in enumerate(s): if c not in dicS: dicS[c] = 1 else: dicS[c] += 1 if c in dicT and dicT[c] <= dicS[c]: rec.add(c) while len(rec) == len(dicT): dicS[s[j]] -= 1 if s[j] in dicT and dicT[s[j]] > dicS[s[j]]: rec.remove(s[j]) if res > i-j+1: start = j end = i res = i-j+1 j += 1 if res == float('inf'): return "" return s[start:end+1]",
+        example='Input: s = "ADOBECODEBANC", t = "ABC"\n Output: "BANC"\n Explanation: The minimum window substring "BANC" includes "A", "B", and "C" from string t.',
+        solution="class Solution:\n    def minWindow(self, s, t):\n        need, missing = collections.Counter(t), len(t)\n        i = I = J = 0\n        for j, c in enumerate(s, 1):\n            missing -= need[c] > 0\n            need[c] -= 1\n            if not missing:\n                while i < j and need[s[i]] < 0:\n                    need[s[i]] += 1\n                    i += 1\n                if not J or j - i <= J - I:\n                    I, J = i, j\n        return s[I:J]",
     )
 
     db.session.add(problem1)
