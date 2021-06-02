@@ -34,6 +34,7 @@ def get_reviewlist(user_id):
 @reviews_routes.route('/<int:problemId>/<int:userId>', methods=["POST"])
 @login_required
 def add_to_review(problemId, userId):
+    print('butt', problemId)
     add_problem = Problem.query.get(problemId)
 
     new_review = Review(
@@ -41,8 +42,6 @@ def add_to_review(problemId, userId):
         users_id=userId,
         problems_id=problemId
     )
-
-    print('butthooooolio', new_review.to_dict())
 
     db.session.add(new_review)
     db.session.commit()
