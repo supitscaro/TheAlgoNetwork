@@ -4,15 +4,16 @@ import { useDispatch, useSelector } from "react-redux";
 import LoginForm from "./components/auth/LoginForm";
 import SignUpForm from "./components/auth/SignUpForm";
 import NavBar from "./components/NavBar";
-import ProtectedRoute from "./components/auth/ProtectedRoute";
-import UsersList from "./components/UsersList";
-import User from "./components/User";
 import { authenticate } from "./store/session";
 import Dashboard from "./components/Dashboard";
 import ArraysComponent from "./components/Dashboard/Arrays";
 import ArrayProblems from "./components/Dashboard/Arrays/FullArraysProblems";
 import StringsComponent from "./components/Dashboard/Strings";
 import HashComponent from "./components/Dashboard/Hash";
+import StringsProblems from "./components/Dashboard/Strings/FullStringProblems";
+import HashProblems from "./components/Dashboard/Hash/FullHashProblems";
+import TreesComponent from "./components/Dashboard/Trees";
+import TreesProblems from "./components/Dashboard/Trees";
 
 function App() {
   const user = useSelector(state => state.session.user)
@@ -53,10 +54,19 @@ function App() {
           <StringsComponent />
         </Route>
         <Route exact path="/:strings/:problemId">
-          <ArrayProblems />
+          <StringsProblems />
         </Route>
         <Route exact path="/:hash">
           <HashComponent />
+        </Route>
+        <Route exact path="/:hash/:problemId">
+          <HashProblems />
+        </Route>
+        <Route exact path="/:trees">
+          <TreesComponent />
+        </Route>
+        <Route exact path="/:trees/:problemId">
+          <TreesProblems />
         </Route>
       </Switch>
     </BrowserRouter>

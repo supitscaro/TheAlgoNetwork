@@ -14,15 +14,19 @@ const Dashboard = () => {
         <>
             <Link to={'/arrays'}>
                 <h2>Arrays</h2>
-                <ArraysComponent />
+                {/* <ArraysComponent /> */}
             </Link>
             <Link to={'/strings'}>
                 <h2>Strings</h2>
-                <StringsComponent />
+                {/* <StringsComponent /> */}
             </Link>
             <Link to={'/hash'}>
                 <h2>Hash</h2>
-                <HashComponent />
+                {/* <HashComponent /> */}
+            </Link>
+            <Link to={'/trees'}>
+                <h2>Trees</h2>
+                {/* <HashComponent /> */}
             </Link>
         </>
     )

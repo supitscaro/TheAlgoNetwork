@@ -7,7 +7,7 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { duotoneLight, materialOceanic } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 const HashProblems = () => {
-    const { arrays, problemId } = useParams();
+    const { hash, problemId } = useParams();
     const dispatch = useDispatch();
     const all_problems = useSelector(state => state.problems.problem);
 
@@ -20,8 +20,8 @@ const HashProblems = () => {
     console.log('butthole', problems);
 
     useEffect(() => {
-        dispatch(getSpecificProblem(arrays, problemId))
-    }, [dispatch, arrays, problemId])
+        dispatch(getSpecificProblem(hash, problemId))
+    }, [dispatch, hash, problemId])
 
     return (
         <div>
