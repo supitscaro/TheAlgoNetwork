@@ -1,7 +1,7 @@
 from flask import Blueprint, request
 from flask_login import current_user, login_required
 import json
-from app.models import Review, Problem
+from app.models import db, Review, Problem
 
 reviews_routes = Blueprint("reviews", __name__)
 
@@ -34,15 +34,19 @@ def get_reviewlist(user_id):
 @reviews_routes.route('/<int:problemId>/<int:userId>', methods=["POST"])
 @login_required
 def add_to_review(problemId, userId):
-    # data = request.get_json()
-    print('butthole', problemId)
-    print('secondbutthole', userId)
-
     add_problem = Problem.query.get(problemId)
 
-    # ??
-    # new_review = Review(
-    #     review_prob
-    # )
+    new_review = Review(
+        review_problems=True,
+        users_id=userId,
+        problems_id=problemId
+    )
 
-    return {'test': 'ok'}
+    print('butthooooolio', new_review.to_dict())
+
+    db.session.add(new_review)
+    db.session.commit()
+
+    res = new_review.to_dict()
+
+    return res

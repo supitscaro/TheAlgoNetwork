@@ -10,6 +10,7 @@ import { duotoneLight, materialOceanic } from 'react-syntax-highlighter/dist/esm
 const ArrayProblems = () => {
     const { arrays, problemId } = useParams();
     const dispatch = useDispatch();
+    const user = useSelector(state => state.session.user);
     const all_problems = useSelector(state => state.problems.problem);
 
     const [checked, setChecked] = useState(false);
@@ -27,8 +28,10 @@ const ArrayProblems = () => {
 
     const addProblemToReview = (e) => {
         let problem = problems.id;
+        let choiceMade = checked;
+        let id = user.id
 
-        await dispatch(addProblemToReview(problem))
+        await dispatch(addProblemToReview(id, problem, choiceMade))
     }
 
     return (

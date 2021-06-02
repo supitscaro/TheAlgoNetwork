@@ -27,12 +27,18 @@ export const getAllReviews = (id) => async (dispatch) => {
 };
 
 
-export const addProblemToReview = (id) => async (dispatch) => {
-    const res = await fetch(`/api/reviews/${id}`);
+export const addProblemToReview = (problemId, userId, checked) => async (dispatch) => {
+    const res = await fetch(`/api/reviews/${problemId}/${userId}`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ checked, userId, problemId })
+    });
 
     if (res.ok) {
-        let data = await res.json()
-        dispatch(addProblem(data))
+        // let data = await res.json()
+        dispatch(addProblem(problemId, userId, checked))
     }
 }
 
