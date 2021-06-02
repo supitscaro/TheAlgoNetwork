@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams, Link } from "react-router-dom";
 import { getSpecificProblem } from "../../../store/problems";
+import { addProblemToReview } from "../../../store/reviews";
 
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { duotoneLight, materialOceanic } from 'react-syntax-highlighter/dist/esm/styles/prism';
@@ -11,17 +12,24 @@ const ArrayProblems = () => {
     const dispatch = useDispatch();
     const all_problems = useSelector(state => state.problems.problem);
 
+    const [checked, setChecked] = useState(false);
+    const [choice, setChoice] = useState(false);
+
     let problems = [];
 
     for (let key in all_problems) {
         problems.push(all_problems[key])
     }
 
-    console.log('butthole', problems);
-
     useEffect(() => {
         dispatch(getSpecificProblem(arrays, problemId))
     }, [dispatch, arrays, problemId])
+
+    const addProblemToReview = (e) => {
+        let problem = problems.id;
+
+        await dispatch(addProblemToReview(problem))
+    }
 
     return (
         <div>
@@ -51,9 +59,9 @@ const ArrayProblems = () => {
                         <button>Save Changes</button>
                     </div>
                     <div>
-                        <input type="checkbox" name="checked" value="Review" />
+                        <input type="checkbox" name="checked" checked={checked === true} onClick={() => setChoice(true)} />
                         <h3>Review</h3>
-                        <button>Save Changes</button>
+                        <button disabled={!choice}>Save Changes</button>
                     </div>
                 </div>
             ))}

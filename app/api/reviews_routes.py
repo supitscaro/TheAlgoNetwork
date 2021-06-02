@@ -7,7 +7,7 @@ reviews_routes = Blueprint("reviews", __name__)
 
 
 # get user's review list
-@reviews_routes.route('/<int:user_id>', methods=["GET", "POST"])
+@reviews_routes.route('/<int:user_id>', methods=["GET"])
 @login_required
 def get_reviewlist(user_id):
 
@@ -31,11 +31,18 @@ def get_reviewlist(user_id):
 
 
 # add problem to user's review list
-@reviews_routes.route('/<int:id>', methods=["POST"])
-def add_to_review(id):
-    data = request.get_json()
+@reviews_routes.route('/<int:problemId>/<int:userId>', methods=["POST"])
+@login_required
+def add_to_review(problemId, userId):
+    # data = request.get_json()
+    print('butthole', problemId)
+    print('secondbutthole', userId)
+
+    add_problem = Problem.query.get(problemId)
 
     # ??
-    new_review = Review(
-        review_prob
-    )
+    # new_review = Review(
+    #     review_prob
+    # )
+
+    return {'test': 'ok'}

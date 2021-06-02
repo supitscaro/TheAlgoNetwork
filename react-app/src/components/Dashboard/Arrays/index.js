@@ -8,8 +8,6 @@ const ArraysComponent = () => {
     const dispatch = useDispatch();
     const all_problems = useSelector(state => state.problems.problems);
 
-    console.log('teeeeeeeeeeeeeeeest', all_problems)
-
     let easy_problems = [];
 
     let medium_problems = [];
