@@ -15,6 +15,12 @@ def get_reviewlist(user_id):
         json_data = request.get_json()
         print(json_data)
 
+        new_review = Review(
+            review_problems=True,
+            users_id=user_id,
+            problems_id=problem_id
+        )
+
     else:
 
         reviews = Review.query.filter(Review.users_id == user_id).all()
