@@ -17,8 +17,8 @@ const addProblem = (review) => ({
 
 // THUNKS ------------------------------------------------------
 
-export const getAllReviews = (id) => async (dispatch) => {
-    const res = await fetch(`/api/reviews/${id}`);
+export const getAllReviews = (userId) => async (dispatch) => {
+    const res = await fetch(`/api/reviews/${userId}`);
 
     if (res.ok) {
         let data = await res.json()

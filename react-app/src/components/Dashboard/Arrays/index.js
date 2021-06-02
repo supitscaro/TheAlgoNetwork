@@ -5,6 +5,7 @@ import { getAllProblems } from "../../../store/problems";
 
 const ArraysComponent = () => {
     const { arrays } = useParams();
+    console.log('test', arrays);
     const dispatch = useDispatch();
     const all_problems = useSelector(state => state.problems.problems);
 
@@ -28,7 +29,7 @@ const ArraysComponent = () => {
     }
 
     useEffect(() => {
-        dispatch(getAllProblems(arrays))
+        dispatch(getAllProblems("arrays"))
     }, [dispatch])
 
     return (

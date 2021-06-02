@@ -45,32 +45,32 @@ function App() {
         <Route exact path="/">
           <Dashboard />
         </Route>
-        <Route exact path="/:id">
-          <Profile />
-        </Route>
-        <Route exact path="/:arrays">
+        <Route exact path="/arrays">
           <ArraysComponent />
         </Route>
-        <Route exact path="/:arrays/:problemId">
+        <Route exact path="/arrays/:problemId">
           <ArrayProblems />
         </Route>
-        <Route exact path="/:strings">
+        <Route exact path="/strings">
           <StringsComponent />
         </Route>
-        <Route exact path="/:strings/:problemId">
+        <Route exact path="/strings/:problemId">
           <StringsProblems />
         </Route>
-        <Route exact path="/:hash">
+        <Route exact path="/hash">
           <HashComponent />
         </Route>
-        <Route exact path="/:hash/:problemId">
+        <Route exact path="/hash/:problemId">
           <HashProblems />
         </Route>
-        <Route exact path="/:trees">
+        <Route exact path="/trees">
           <TreesComponent />
         </Route>
-        <Route exact path="/:trees/:problemId">
+        <Route exact path="/trees/:problemId">
           <TreesProblems />
+        </Route>
+        <Route exact={true} path="/:id">
+          <Profile />
         </Route>
       </Switch>
     </BrowserRouter>
