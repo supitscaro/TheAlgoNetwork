@@ -11,17 +11,24 @@ const TreesProblems = () => {
     const dispatch = useDispatch();
     const all_problems = useSelector(state => state.problems.problem);
 
+    const [checked, setChecked] = useState(false)
+
     let problems = [];
 
     for (let key in all_problems) {
         problems.push(all_problems[key])
     }
 
-    console.log('butthole', problems);
 
     useEffect(() => {
         dispatch(getSpecificProblem(trees, problemId))
     }, [dispatch, trees, problemId])
+
+
+    const addToReviewList = async (e) => {
+        setChecked(true)
+
+    }
 
     return (
         <div>
@@ -38,7 +45,6 @@ const TreesProblems = () => {
                         wrapLines={true}>
                         {problem.solution}
                     </SyntaxHighlighter>
-                    {/* <CodeBlock text={problem.solution} language={problem.language} theme={dracula} wraplines/> */}
                 </div>
             ))}
         </div>

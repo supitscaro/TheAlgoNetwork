@@ -5,38 +5,37 @@ from app.models import Review, Problem
 
 reviews_routes = Blueprint("reviews", __name__)
 
+
 # get user's review list
-
-
-# @login_required
 @reviews_routes.route('/<int:user_id>', methods=["GET", "POST"])
+@login_required
 def get_reviewlist(user_id):
-    if request.method == 'POST':
-        json_data = request.get_json()
-        print(json_data)
 
-        new_review = Review(
-            review_problems=True,
-            users_id=user_id,
-            problems_id=problem_id  # ?
-        )
+    reviews = Review.query.filter(Review.users_id == user_id).all()
 
-    else:
+    reviews_dict_ = {}
 
-        reviews = Review.query.filter(Review.users_id == user_id).all()
+    id = 0
 
-        reviews_dict_ = {}
+    for item in reviews:
+        review_items = item.to_dict()
+        problem_review = review_items['problems_id']
 
-        id = 0
+    problems_to_review = Problem.query.filter(
+        Problem.id == problem_review).all()
 
-        for item in reviews:
-            review_items = item.to_dict()
-            problem_review = review_items['problems_id']
+    for problem in problems_to_review:
+        reviews_dict_[id] = problem.to_dict()
 
-        problems_to_review = Problem.query.filter(
-            Problem.id == problem_review).all()
+    return reviews_dict_
 
-        for problem in problems_to_review:
-            reviews_dict_[id] = problem.to_dict()
 
-        return reviews_dict_
+# add problem to user's review list
+@reviews_routes.route('/<int:id>', methods=["POST"])
+def add_to_review(id):
+    data = request.get_json()
+
+    # ??
+    new_review = Review(
+        review_prob
+    )
