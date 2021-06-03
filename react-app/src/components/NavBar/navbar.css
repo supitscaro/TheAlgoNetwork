@@ -8,4 +8,13 @@
 
 .link {
     margin-bottom: 20px;
+    margin-left: 30px;
+}
+
+
+.nav-link {
+    text-decoration: none;
+    color: #000;
+    font-family: 'Lato', sans-serif;
+    font-weight: lighter;
 }

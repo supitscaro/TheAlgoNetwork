@@ -11,22 +11,22 @@ const NavBar = () => {
     <nav className="nav-outer">
       <div className="nav-div">
         <div className="link">
-          <NavLink to="/" exact={true} activeClassName="active">
-            Home
+          <NavLink className="nav-link" to="/" exact={true} activeClassName="active">
+            Dashboard
           </NavLink>
         </div>
         <div className="link">
-          <NavLink to="/login" exact={true} activeClassName="active">
+          <NavLink className="nav-link" to="/login" exact={true} activeClassName="active">
             Login
           </NavLink>
         </div>
         <div className="link">
-          <NavLink to="/sign-up" exact={true} activeClassName="active">
+          <NavLink className="nav-link" to="/sign-up" exact={true} activeClassName="active">
             Sign Up
           </NavLink>
         </div>
         <div className="link">
-          <NavLink to={`/${user.id}`} exact={true} activeClassName="active">
+          <NavLink className="nav-link" to={`/${user.id}`} exact={true} activeClassName="active">
             Profile
           </NavLink>
         </div>
