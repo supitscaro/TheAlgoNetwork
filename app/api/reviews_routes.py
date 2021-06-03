@@ -13,22 +13,22 @@ def get_reviewlist(user_id):
 
     reviews = Review.query.filter(Review.users_id == user_id).all()
 
+    id = 1
+
     reviews_dict_ = {}
 
-    id = 1
+    problems_dict = {}
 
     for item in reviews:
         review_items = item.to_dict()
         problem_review = review_items['problems_id']
+        new_problems = Problem.query.filter(Problem.id == problem_review).all()
 
-    problems_to_review = Problem.query.filter(
-        Problem.id == problem_review).all()
+        for problem in new_problems:
+            problems_dict[id] = problem.to_dict()
+            id += 1
 
-    for problem in problems_to_review:
-        reviews_dict_[id] = problem.to_dict()
-        id += 1
-
-    return reviews_dict_
+    return problems_dict
 
 
 # add problem to user's review list

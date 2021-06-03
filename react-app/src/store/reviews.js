@@ -62,6 +62,7 @@ export default function reducer(state = initialState, action) {
                 reviews: action.reviews
             }
         case ADD_TO_REVIEW:
+            console.log('butt', state.reviews);
             return {
                 ...state,
                 ...state.reviews,
