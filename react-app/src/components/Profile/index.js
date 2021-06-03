@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from "react-router-dom";
 import { BrowserRouter, Route, Link } from "react-router-dom";
 import { getAllReviews, deleteProblemFromReview } from "../../store/reviews";
+import { getAllSolved } from "../../store/solved";
 import NavBar from '../NavBar';
 
 import './index.css';
@@ -11,19 +12,30 @@ const Profile = () => {
     const { id } = useParams();
     const dispatch = useDispatch();
     const allProblemsToReview = useSelector(state => state.reviews.reviews);
+    const problemsSolvedList = useSelector(state => state.solvedLists.solvedList);
 
-    console.log('butt', allProblemsToReview);
+    console.log('butt', problemsSolvedList);
 
     let reviews = [];
+    let probSolved = []
 
     for (let key in allProblemsToReview) {
         let val = allProblemsToReview[key];
         reviews.push(val)
     }
 
+    for (let key in problemsSolvedList) {
+        let val = problemsSolvedList[key]
+        probSolved.push(val);
+    }
+
     useEffect(() => {
         dispatch(getAllReviews(id))
     }, [dispatch]);
+
+    useEffect(() => {
+        dispatch(getAllSolved(id))
+    }, [dispatch])
 
 
     let deleteProblem = async (id) => {
@@ -46,6 +58,13 @@ const Profile = () => {
             </div>
             <div>
                 Problems Solved
+                {probSolved.map((problem) => (
+                <div>
+                    <Link>
+                        <div>{problem.title}</div>
+                    </Link>
+                </div>
+            ))}
             </div>
         </div>
     )
