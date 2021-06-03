@@ -50,6 +50,7 @@ export const addProblemToReview = (problemId, userId, checked) => async (dispatc
 
 let initialState = {
     reviews: {},
+    review: {}
 }
 
 export default function reducer(state = initialState, action) {
@@ -61,10 +62,10 @@ export default function reducer(state = initialState, action) {
                 reviews: action.reviews
             }
         case ADD_TO_REVIEW:
-            newState = { ...state };
             return {
                 ...state,
-                reviews: { ...state.reviews, [action.payload.user]: action.payload }
+                ...state.reviews,
+                review: { ...state.reviews, [action.payload.user]: action.payload }
             }
         default:
             return state;

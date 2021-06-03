@@ -1,0 +1,11 @@
+.nav-outer {
+    display: flex;
+    flex-direction: column;
+    width: 131px;
+    background-color: #F6F7FB;
+    height: 100%;
+}
+
+.link {
+    margin-bottom: 20px;
+}

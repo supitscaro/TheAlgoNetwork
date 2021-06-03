@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import LoginForm from "./components/auth/LoginForm";
 import SignUpForm from "./components/auth/SignUpForm";
-import NavBar from "./components/NavBar";
+import TopNavBar from "./components/NavBar/TopNavBar";
 import { authenticate } from "./store/session";
 import Dashboard from "./components/Dashboard";
 import ArraysComponent from "./components/Dashboard/Arrays";
@@ -15,6 +15,8 @@ import HashProblems from "./components/Dashboard/Hash/FullHashProblems";
 import TreesComponent from "./components/Dashboard/Trees";
 import TreesProblems from "./components/Dashboard/Trees";
 import Profile from "./components/Profile";
+
+import './index.css';
 
 function App() {
   const user = useSelector(state => state.session.user)
@@ -34,7 +36,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar />
+      <TopNavBar />
       <Switch>
         <Route path="/login" exact={true}>
           <LoginForm />
