@@ -16,8 +16,6 @@ const ArrayProblems = () => {
     const [choice, setChoice] = useState(false);
     let userId = user?.id
 
-    console.log('butthole', problemId);
-
     let problems = [];
 
     for (let key in all_problems) {

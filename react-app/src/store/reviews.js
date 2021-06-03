@@ -40,10 +40,6 @@ export const addProblemToReview = (problemId, userId, checked) => async (dispatc
         body: JSON.stringify({ checked, userId, problemId })
     });
 
-    console.log('reeeeeeeeeeeees', res);
-
-    console.log('userId', userId);
-    console.log('problemId', problemId)
     if (res.ok) {
         dispatch(addProblem(problemId, userId, checked))
     }
@@ -66,10 +62,9 @@ export default function reducer(state = initialState, action) {
             }
         case ADD_TO_REVIEW:
             newState = { ...state };
-            console.log('action.reviews', action.review);
             return {
                 ...state,
-                reviews: { ...state.reviews, [action.review.id]: action.review }
+                reviews: { ...state.reviews, [action.payload.user]: action.payload }
             }
         default:
             return state;

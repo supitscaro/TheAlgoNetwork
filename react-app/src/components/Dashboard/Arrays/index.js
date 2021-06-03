@@ -27,8 +27,6 @@ const ArraysComponent = () => {
         }
     }
 
-    console.log('easy', all_problems);
-
     useEffect(() => {
         dispatch(getAllProblems("arrays"))
     }, [dispatch])
@@ -39,7 +37,6 @@ const ArraysComponent = () => {
                 Easy
                 {easy_problems.map((problem) => (
                 <div>
-                    {console.log('inside easy loop', problem.id)}
                     <div>
                         <Link to={`/${problem.category}/${problem.id}`}>
                             <div>{problem.title}</div>
