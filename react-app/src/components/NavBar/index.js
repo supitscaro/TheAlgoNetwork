@@ -7,9 +7,10 @@ import './navbar.css';
 const NavBar = () => {
   const user = useSelector(state => state.session.user);
 
-  return (
-    <nav className="nav-outer">
-      <div className="nav-div">
+  let sessionNav;
+  if (user) {
+    sessionNav = (
+      <div>
         <div className="link">
           {/* <div className=""> */}
           {/* </div> */}
@@ -17,16 +18,6 @@ const NavBar = () => {
             <i class="fas fa-home"></i>
           </NavLink>
             Dashboard
-        </div>
-        <div className="link">
-          <NavLink className="nav-link" to="/login" exact={true} activeClassName="active">
-          </NavLink>
-            Login
-        </div>
-        <div className="link">
-          <NavLink className="nav-link" to="/sign-up" exact={true} activeClassName="active">
-          </NavLink>
-            Sign Up
         </div>
         <div className="link">
           <NavLink className="nav-link" to={`/${user.id}`} exact={true} activeClassName="active">
@@ -37,6 +28,28 @@ const NavBar = () => {
         <div>
           <LogoutButton />
         </div>
+      </div>
+    );
+  } else {
+    sessionNav = (<div>
+      <div className="link">
+        <NavLink className="nav-link" to="/login" exact={true} activeClassName="active">
+        </NavLink>
+            Login
+        </div>
+      <div className="link">
+        <NavLink className="nav-link" to="/sign-up" exact={true} activeClassName="active">
+        </NavLink>
+            Sign Up
+        </div>
+    </div>
+    )
+  }
+
+  return (
+    <nav className="nav-outer">
+      <div className="nav-div">
+        {sessionNav}
       </div>
     </nav>
   );

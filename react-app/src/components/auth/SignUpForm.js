@@ -5,6 +5,8 @@ import { signUp } from '../../store/session';
 
 const SignUpForm = () => {
   const [username, setUsername] = useState("");
+  const [fname, setFname] = useState("");
+  const [lname, setLname] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
@@ -14,8 +16,16 @@ const SignUpForm = () => {
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
-      await dispatch(signUp(username, email, password));
+      await dispatch(signUp(fname, lname, username, email, password));
     }
+  };
+
+  const updateFname = (e) => {
+    setFname(e.target.value);
+  };
+
+  const updateLname = (e) => {
+    setLname(e.target.value);
   };
 
   const updateUsername = (e) => {
@@ -40,6 +50,24 @@ const SignUpForm = () => {
 
   return (
     <form onSubmit={onSignUp}>
+      <div>
+        <label>First Name</label>
+        <input
+          type="text"
+          name="username"
+          onChange={updateFname}
+          value={fname}
+        ></input>
+      </div>
+      <div>
+        <label>Last Name</label>
+        <input
+          type="text"
+          name="username"
+          onChange={updateLname}
+          value={lname}
+        ></input>
+      </div>
       <div>
         <label>User Name</label>
         <input
