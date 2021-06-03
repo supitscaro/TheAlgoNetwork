@@ -13,6 +13,7 @@ const ArrayProblems = () => {
     const user = useSelector(state => state.session.user);
     const all_problems = useSelector(state => state.problems.problem);
 
+    // console.log()
     const [choice, setChoice] = useState(false);
     let userId = user?.id
 
@@ -27,11 +28,6 @@ const ArrayProblems = () => {
     }, [dispatch, "arrays", userId, problemId])
 
     const addProblem = async (e) => {
-        let problemId;
-
-        problems.map((problem) => {
-            problemId = problem.id
-        })
 
         let choiceMade = choice;
 

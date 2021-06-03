@@ -9,9 +9,13 @@ const getReviewList = (reviews) => ({
     reviews
 });
 
-const addProblem = (review) => ({
+const addProblem = (problem, user, checked) => ({
     type: ADD_TO_REVIEW,
-    review
+    payload: {
+        problem,
+        user,
+        checked
+    }
 })
 
 
@@ -36,6 +40,10 @@ export const addProblemToReview = (problemId, userId, checked) => async (dispatc
         body: JSON.stringify({ checked, userId, problemId })
     });
 
+    console.log('reeeeeeeeeeeees', res);
+
+    console.log('userId', userId);
+    console.log('problemId', problemId)
     if (res.ok) {
         dispatch(addProblem(problemId, userId, checked))
     }
