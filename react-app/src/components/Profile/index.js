@@ -11,7 +11,6 @@ const Profile = () => {
     const { id } = useParams();
     const dispatch = useDispatch();
     const allProblemsToReview = useSelector(state => state.reviews.reviews);
-    console.log('butthole', allProblemsToReview)
     let reviews = [];
 
     for (let key in allProblemsToReview) {
@@ -29,9 +28,12 @@ const Profile = () => {
             <div>
                 Problems To Review:
                 {reviews.map((review) => (
-                <Link to={`/${review.category}/${review.id}`}>
-                    <div>{review.title}</div>
-                </Link>
+                <div>
+                    <Link to={`/${review.category}/${review.id}`}>
+                        <div>{review.title}</div>
+                    </Link>
+                    <button>Delete</button>
+                </div>
             ))}
             </div>
         </div>

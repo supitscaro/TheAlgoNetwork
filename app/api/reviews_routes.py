@@ -50,3 +50,16 @@ def add_to_review(problemId, userId):
     res = new_review.to_dict()
 
     return res
+
+# remove problem from user's review list
+
+
+@reviews_routes.route('/<int:problemId>', methods=["DELETE"])
+@login_required
+def delete_problem(problemId):
+    problem = Problem.query.get(problemId)
+
+    db.session.delete(problem)
+    db.session.commit()
+
+    return problem.to_dict()

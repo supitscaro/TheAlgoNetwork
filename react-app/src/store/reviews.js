@@ -1,5 +1,6 @@
 const GET_REVIEW_LIST = "reviews/GET_REVIEW_LIST";
 const ADD_TO_REVIEW = "reviews/ADD_TO_REVIEW";
+const DELETE_REVIEW = "reviews/DELETE_REVIEW";
 
 // ACTIONS ----------------------------
 
@@ -16,7 +17,8 @@ const addProblem = (problem, user, checked) => ({
         user,
         checked
     }
-})
+});
+
 
 
 // THUNKS ------------------------------------------------------
