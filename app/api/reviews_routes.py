@@ -15,7 +15,7 @@ def get_reviewlist(user_id):
 
     reviews_dict_ = {}
 
-    id = 0
+    id = 1
 
     for item in reviews:
         review_items = item.to_dict()
@@ -26,6 +26,7 @@ def get_reviewlist(user_id):
 
     for problem in problems_to_review:
         reviews_dict_[id] = problem.to_dict()
+        id += 1
 
     return reviews_dict_
 

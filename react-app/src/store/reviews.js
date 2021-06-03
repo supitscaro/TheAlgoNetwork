@@ -18,7 +18,6 @@ const addProblem = (review) => ({
 // THUNKS ------------------------------------------------------
 
 export const getAllReviews = (userId) => async (dispatch) => {
-    console.log('butthole2', userId);
     const res = await fetch(`/api/reviews/${userId}`);
 
     if (res.ok) {
@@ -50,6 +49,7 @@ let initialState = {
 }
 
 export default function reducer(state = initialState, action) {
+    let newState = {};
     switch (action.type) {
         case GET_REVIEW_LIST:
             return {
@@ -57,9 +57,11 @@ export default function reducer(state = initialState, action) {
                 reviews: action.reviews
             }
         case ADD_TO_REVIEW:
+            newState = { ...state };
+            console.log('action.reviews', action.review);
             return {
                 ...state,
-                reviews: { ...action.review }
+                reviews: { ...state.reviews, [action.review.id]: action.review }
             }
         default:
             return state;

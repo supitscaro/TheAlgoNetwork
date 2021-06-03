@@ -17,7 +17,6 @@ const HashProblems = () => {
         problems.push(all_problems[key])
     }
 
-    console.log('butthole', problems);
 
     useEffect(() => {
         dispatch(getSpecificProblem(hash, problemId))
