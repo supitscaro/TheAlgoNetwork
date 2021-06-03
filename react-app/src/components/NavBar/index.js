@@ -11,24 +11,28 @@ const NavBar = () => {
     <nav className="nav-outer">
       <div className="nav-div">
         <div className="link">
+          {/* <div className=""> */}
+          {/* </div> */}
           <NavLink className="nav-link" to="/" exact={true} activeClassName="active">
-            Dashboard
+            <i class="fas fa-home"></i>
           </NavLink>
+            Dashboard
         </div>
         <div className="link">
           <NavLink className="nav-link" to="/login" exact={true} activeClassName="active">
-            Login
           </NavLink>
+            Login
         </div>
         <div className="link">
           <NavLink className="nav-link" to="/sign-up" exact={true} activeClassName="active">
-            Sign Up
           </NavLink>
+            Sign Up
         </div>
         <div className="link">
           <NavLink className="nav-link" to={`/${user.id}`} exact={true} activeClassName="active">
-            Profile
+            <i class="far fa-user"></i>
           </NavLink>
+            Profile
         </div>
         <div>
           <LogoutButton />

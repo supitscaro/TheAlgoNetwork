@@ -9,12 +9,35 @@
 .link {
     margin-bottom: 20px;
     margin-left: 30px;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Lato', sans-serif;
+    font-weight: lighter;
 }
 
+.fa-home {
+    color: #ffff;
+    font-size: 23px;
+    /* justify-content: center; */
+    margin-top: 12px;
+    margin-left: 12px;
+}
+
+.fa-user {
+    color: #ffff;
+    font-size: 23px;
+    /* justify-content: center; */
+    margin-top: 12px;
+    margin-left: 15px;
+}
 
 .nav-link {
     text-decoration: none;
-    color: #000;
+    background-color: #BFB9FA;
+    width: 50px;
+    height: 50px;
     font-family: 'Lato', sans-serif;
     font-weight: lighter;
+    border-radius: 10px;
+    /* justify-content: center; */
 }
