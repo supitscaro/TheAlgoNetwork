@@ -24,7 +24,6 @@ def get_reviewlist(user_id):
 
         for problem in new_problems:
             prob_review = problem.to_dict()
-            print('butthole', prob_review)
             problems_dict[prob_review['id']] = prob_review
 
     return problems_dict

@@ -1,5 +1,6 @@
 const GET_ALL_PROBLEMS = "problems/GET_ALL_PROBLEMS";
 const GET_SPECIFIC_PROBLEM = "problems/GET_SPECIFIC_PROBLEM";
+const GET_SOLVED_PROBLEMS = "problems/GET_SOLVED_PROBLEMS";
 
 
 // ACTIONS ----------------------------
@@ -12,6 +13,11 @@ const getProblems = (problems) => ({
 const getProblem = (problem) => ({
     type: GET_SPECIFIC_PROBLEM,
     problem
+});
+
+const solvedProblems = (problemsList) => ({
+    type: GET_SOLVED_PROBLEMS,
+    problemsList
 });
 
 

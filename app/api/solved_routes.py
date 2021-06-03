@@ -1,0 +1,63 @@
+from flask import Blueprint, request
+from flask_login import current_user, login_required
+import json
+from app.models import db, Solved, Problem
+
+solved_routes = Blueprint("solved", __name__)
+
+
+# get user's review list
+@solved_routes.route('/<int:user_id>', methods=["GET"])
+@login_required
+def get_solvedlist(user_id):
+
+    solved = Solved.query.filter(Solved.users_id == user_id).all()
+
+    solved_dict_ = {}
+
+    problems_dict = {}
+
+    for item in solved:
+        solved_items = item.to_dict()
+        problem_solved = solved_items['problems_id']
+        new_problems = Problem.query.filter(Problem.id == problem_solved).all()
+
+        for problem in new_problems:
+            prob_solved = problem.to_dict()
+            problems_dict[prob_solved['id']] = prob_solved
+
+    return problems_dict
+
+
+# add problem to user's review list
+# @solved_routes.route('/<int:problemId>/<int:userId>', methods=["POST"])
+# @login_required
+# def add_to_review(problemId, userId):
+#     add_problem = Problem.query.get(problemId)
+
+#     new_review = Review(
+#         review_problems=True,
+#         users_id=userId,
+#         problems_id=problemId
+#     )
+
+#     db.session.add(new_review)
+#     db.session.commit()
+
+#     res = new_review.to_dict()
+
+#     return res
+
+
+# # remove problem from user's review list
+# @solved_routes.route('/<int:problemId>', methods=["DELETE"])
+# @login_required
+# def delete_problem(problemId):
+#     problems = Review.query.filter(Review.problems_id == problemId).all()
+
+#     for problem in problems:
+#         specific_problem = problem.to_dict()
+#     db.session.delete(problem)
+#     db.session.commit()
+
+#     return problem.to_dict()

@@ -44,6 +44,9 @@ const Profile = () => {
                 </div>
             ))}
             </div>
+            <div>
+                Problems Solved
+            </div>
         </div>
     )
 }

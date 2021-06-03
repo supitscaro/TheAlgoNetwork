@@ -16,6 +16,7 @@ const ArrayProblems = () => {
     const all_problems = useSelector(state => state.problems.problem);
 
     const [choice, setChoice] = useState(false);
+    const [solved, setSolved] = useState(false);
     let userId = user?.id
 
     let problems = [];
@@ -28,11 +29,15 @@ const ArrayProblems = () => {
         dispatch(getSpecificProblem("arrays", problemId, userId))
     }, [dispatch, "arrays", problemId, userId])
 
-    const addProblem = async (e) => {
+    const addReview = async (e) => {
 
         let choiceMade = choice;
 
         await dispatch(addProblemToReview(problemId, userId, choiceMade))
+    }
+
+    const addProblem = async (e) => {
+        let problemSolved = solved;
     }
 
     return (
@@ -69,7 +74,7 @@ const ArrayProblems = () => {
                         <div>
                             <h3>Review</h3>
                             <input type="radio" name="checked" onChange={() => setChoice(true)} />
-                            <button disabled={!choice} onClick={addProblem}>Save Changes</button>
+                            <button disabled={!choice} onClick={addReview}>Save Changes</button>
                         </div>
                     </div>
                 ))}

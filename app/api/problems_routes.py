@@ -1,12 +1,11 @@
 from flask import Blueprint, jsonify
 import json
-from app.models import Problem
+from app.models import db, Problem, Solved, Review
 
 problems_routes = Blueprint("problems", __name__)
 
 
 # Gets all array problems
-
 @problems_routes.route('/<string:category>')
 def get_problems(category):
     problems = Problem.query.filter(
@@ -18,6 +17,8 @@ def get_problems(category):
         problems_dict_[prob_to_add['id']] = prob_to_add
 
     return problems_dict_
+
+# get specific problems for each category
 
 
 @problems_routes.route('/<string:category>/<int:id>')
