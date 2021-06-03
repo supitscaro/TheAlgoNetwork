@@ -2,3 +2,23 @@
     display: flex;
     flex-direction: row;
 }
+
+.cat-div {
+    width: 251px;
+    height: 221;
+    background-color: #BFB9FA;
+    margin-left: 40px;
+    margin-top: 40px;
+    border-radius: 10px;
+    text-decoration: none;
+}
+
+.cat-title {
+    font-family: 'Lato', sans-serif;
+    font-size: 44px;
+    font-weight: lighter;
+    color: #000000;
+    margin-top: 44px;
+    margin-left: 60px;
+
+}
