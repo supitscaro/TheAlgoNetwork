@@ -19,7 +19,10 @@ const addProblem = (problem, user, checked) => ({
     }
 });
 
-
+const deleteProblem = (problem) => ({
+    type: DELETE_REVIEW,
+    problem
+})
 
 // THUNKS ------------------------------------------------------
 
@@ -45,7 +48,20 @@ export const addProblemToReview = (problemId, userId, checked) => async (dispatc
     if (res.ok) {
         dispatch(addProblem(problemId, userId, checked))
     }
-}
+};
+
+
+export const deleteProblemFromReview = (problemId) => async (dispatch) => {
+    const res = await fetch(`/api/reviews/${problemId}`, {
+        method: 'DELETE',
+    });
+
+    if (res.ok) {
+        let data = await res.json();
+
+        dispatch(deleteProblem(data));
+    }
+};
 
 
 // REDUCER ------------------------------------------------------
@@ -64,12 +80,16 @@ export default function reducer(state = initialState, action) {
                 reviews: action.reviews
             }
         case ADD_TO_REVIEW:
-            console.log('butt', state.reviews);
             return {
                 ...state,
                 ...state.reviews,
                 reviews: { ...state.reviews, [action.payload.user]: action.payload }
             }
+        case DELETE_REVIEW:
+            newState = { ...state };
+            console.log('puuuuuuuuuuurrrrr', newState);
+            delete newState[action.problem];
+            return newState
         default:
             return state;
     }
