@@ -35,7 +35,6 @@ def get_reviewlist(user_id):
 @reviews_routes.route('/<int:problemId>/<int:userId>', methods=["POST"])
 @login_required
 def add_to_review(problemId, userId):
-    print('butt', problemId)
     add_problem = Problem.query.get(problemId)
 
     new_review = Review(
@@ -56,8 +55,11 @@ def add_to_review(problemId, userId):
 @reviews_routes.route('/<int:problemId>', methods=["DELETE"])
 @login_required
 def delete_problem(problemId):
-    problem = Review.query.get(problemId)
+    problems = Review.query.filter(Review.problems_id == problemId).all()
 
+    for problem in problems:
+        specific_problem = problem.to_dict()
+    print('butthole', specific_problem)
     db.session.delete(problem)
     db.session.commit()
 

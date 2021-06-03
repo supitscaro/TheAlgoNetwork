@@ -34,6 +34,7 @@ const Profile = () => {
                 Problems To Review:
                 {reviews.map((review) => (
                 <div>
+                    {console.log('problems:', review)}
                     <Link to={`/${review.category}/${review.id}`}>
                         <div>{review.title}</div>
                     </Link>

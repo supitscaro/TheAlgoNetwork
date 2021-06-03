@@ -87,7 +87,6 @@ export default function reducer(state = initialState, action) {
             }
         case DELETE_REVIEW:
             newState = { ...state };
-            console.log('action.problem in delete', action.problem);
             delete newState[action.problem];
             return newState
         default:
