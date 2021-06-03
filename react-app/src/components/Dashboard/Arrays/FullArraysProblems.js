@@ -6,6 +6,8 @@ import { addProblemToReview } from "../../../store/reviews";
 
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { duotoneLight, materialOceanic } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import NavBar from '../../NavBar';
+import './problem.css';
 
 const ArrayProblems = () => {
     const { problemId } = useParams();
@@ -34,39 +36,44 @@ const ArrayProblems = () => {
     }
 
     return (
-        <div>
-            {problems.map((problem) => (
-                <div>
-                    <div>{problem.title}</div>
-                    <div>{problem.category}</div>
-                    <div>{problem.description}</div>
-                    <SyntaxHighlighter
-                        language="python"
-                        wrapLines={true}
-                        style={duotoneLight}
-                    >
-                        {problem.examples}
-                    </SyntaxHighlighter>
-                    <SyntaxHighlighter
-                        language="python"
-                        lineProps={{ style: { wordBreak: 'break-all', whiteSpace: 'pre-wrap' } }}
-                        style={materialOceanic}
-                        showLineNumbers={true}
-                        wrapLines={true}>
-                        {problem.solution}
-                    </SyntaxHighlighter>
+        <div className="problems-outer-div">
+            <div>
+                <NavBar />
+            </div>
+            <div className="problems-div">
+                {problems.map((problem) => (
                     <div>
-                        <input type="checkbox" name="checked" value="Solved" />
-                        <h3>Solved</h3>
-                        <button>Save Changes</button>
+                        <div>{problem.title}</div>
+                        <div>{problem.category}</div>
+                        <div>{problem.description}</div>
+                        <SyntaxHighlighter
+                            language="python"
+                            wrapLines={true}
+                            style={duotoneLight}
+                        >
+                            {problem.examples}
+                        </SyntaxHighlighter>
+                        <SyntaxHighlighter
+                            language="python"
+                            lineProps={{ style: { wordBreak: 'break-all', whiteSpace: 'pre-wrap' } }}
+                            style={materialOceanic}
+                            showLineNumbers={true}
+                            wrapLines={true}>
+                            {problem.solution}
+                        </SyntaxHighlighter>
+                        <div>
+                            <input type="checkbox" name="checked" value="Solved" />
+                            <h3>Solved</h3>
+                            <button>Save Changes</button>
+                        </div>
+                        <div>
+                            <h3>Review</h3>
+                            <input type="radio" name="checked" onChange={() => setChoice(true)} />
+                            <button disabled={!choice} onClick={addProblem}>Save Changes</button>
+                        </div>
                     </div>
-                    <div>
-                        <h3>Review</h3>
-                        <input type="radio" name="checked" onChange={() => setChoice(true)} />
-                        <button disabled={!choice} onClick={addProblem}>Save Changes</button>
-                    </div>
-                </div>
-            ))}
+                ))}
+            </div>
         </div>
     )
 }

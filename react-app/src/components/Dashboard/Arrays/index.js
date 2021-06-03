@@ -2,6 +2,9 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams, Link } from "react-router-dom";
 import { getAllProblems } from "../../../store/problems";
+import NavBar from '../../NavBar';
+
+import './index.css';
 
 const ArraysComponent = () => {
     const { arrays } = useParams();
@@ -32,7 +35,8 @@ const ArraysComponent = () => {
     }, [dispatch])
 
     return (
-        <div>
+        <div className="arrays-outer-div">
+            <NavBar />
             <div>
                 Easy
                 {easy_problems.map((problem) => (

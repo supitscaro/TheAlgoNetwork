@@ -65,7 +65,7 @@ export default function reducer(state = initialState, action) {
             return {
                 ...state,
                 ...state.reviews,
-                review: { ...state.reviews, [action.payload.user]: action.payload }
+                reviews: { ...state.reviews, [action.payload.user]: action.payload }
             }
         default:
             return state;

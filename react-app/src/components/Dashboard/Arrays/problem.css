@@ -1,0 +1,10 @@
+.problems-outer-div {
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+}
+
+.problems-div {
+    display: flex;
+    flex-direction: column;
+}

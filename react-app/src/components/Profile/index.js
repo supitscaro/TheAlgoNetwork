@@ -3,7 +3,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from "react-router-dom";
 import { BrowserRouter, Route, Link } from "react-router-dom";
 import { getAllReviews } from "../../store/reviews";
+import NavBar from '../NavBar';
 
+import './index.css';
 
 const Profile = () => {
     const { id } = useParams();
@@ -22,12 +24,15 @@ const Profile = () => {
     }, [dispatch])
 
     return (
-        <>
-            Problems To Review:
-            {reviews.map((review) => (
+        <div className="profile-outer-div">
+            <NavBar />
+            <div>
+                Problems To Review:
+                {reviews.map((review) => (
                 <div>{review}</div>
             ))}
-        </>
+            </div>
+        </div>
     )
 }
 
