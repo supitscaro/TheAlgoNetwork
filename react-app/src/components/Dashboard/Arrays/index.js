@@ -6,7 +6,7 @@ import { getAllProblems } from "../../../store/problems";
 const ArraysComponent = () => {
     const { arrays } = useParams();
     const dispatch = useDispatch();
-    const all_problems = useSelector(state => state.problems.problems);
+    const all_problems = useSelector(state => Object.values(state.problems.problems));
 
     let easy_problems = [];
 
@@ -27,6 +27,8 @@ const ArraysComponent = () => {
         }
     }
 
+    console.log('easy', all_problems);
+
     useEffect(() => {
         dispatch(getAllProblems("arrays"))
     }, [dispatch])
@@ -37,6 +39,7 @@ const ArraysComponent = () => {
                 Easy
                 {easy_problems.map((problem) => (
                 <div>
+                    {console.log('inside easy loop', problem.id)}
                     <div>
                         <Link to={`/${problem.category}/${problem.id}`}>
                             <div>{problem.title}</div>

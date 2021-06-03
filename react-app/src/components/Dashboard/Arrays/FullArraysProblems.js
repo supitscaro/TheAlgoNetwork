@@ -13,9 +13,10 @@ const ArrayProblems = () => {
     const user = useSelector(state => state.session.user);
     const all_problems = useSelector(state => state.problems.problem);
 
-    // console.log()
     const [choice, setChoice] = useState(false);
     let userId = user?.id
+
+    console.log('butthole', problemId);
 
     let problems = [];
 
@@ -24,8 +25,8 @@ const ArrayProblems = () => {
     }
 
     useEffect(() => {
-        dispatch(getSpecificProblem("arrays", userId, problemId))
-    }, [dispatch, "arrays", userId, problemId])
+        dispatch(getSpecificProblem("arrays", problemId, userId))
+    }, [dispatch, "arrays", problemId, userId])
 
     const addProblem = async (e) => {
 

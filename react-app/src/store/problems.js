@@ -28,7 +28,7 @@ export const getAllProblems = (category) => async (dispatch) => {
 };
 
 
-// gets all problems based on category and id
+// gets problem based on category and id
 export const getSpecificProblem = (category, id) => async (dispatch) => {
     const res = await fetch(`/api/problems/${category}/${id}`);
 
