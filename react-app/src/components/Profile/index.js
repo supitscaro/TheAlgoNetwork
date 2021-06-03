@@ -16,7 +16,7 @@ const Profile = () => {
 
     for (let key in allProblemsToReview) {
         let val = allProblemsToReview[key];
-        reviews.push(val.title)
+        reviews.push(val)
     }
 
     useEffect(() => {
@@ -29,7 +29,9 @@ const Profile = () => {
             <div>
                 Problems To Review:
                 {reviews.map((review) => (
-                <div>{review}</div>
+                <Link to={`/${review.category}/${review.id}`}>
+                    <div>{review.title}</div>
+                </Link>
             ))}
             </div>
         </div>

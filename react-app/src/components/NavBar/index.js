@@ -15,13 +15,13 @@ const NavBar = () => {
           {/* <div className=""> */}
           {/* </div> */}
           <NavLink className="nav-link" to="/" exact={true} activeClassName="active">
-            <i class="fas fa-home"></i>
+            <i className="fas fa-home"></i>
           </NavLink>
             Dashboard
         </div>
         <div className="link">
           <NavLink className="nav-link" to={`/${user.id}`} exact={true} activeClassName="active">
-            <i class="far fa-user"></i>
+            <i className="far fa-user"></i>
           </NavLink>
             Profile
         </div>
