@@ -38,7 +38,7 @@ const ArraysComponent = () => {
         <div className="arrays-outer-div">
             <NavBar />
             <div>
-                Easy
+                Easy ✨
                 {easy_problems.map((problem) => (
                 <div>
                     <div>
@@ -50,7 +50,7 @@ const ArraysComponent = () => {
             ))}
             </div>
             <div>
-                Medium
+                Medium 🙏🏼
                 {medium_problems.map((problem) => (
                 <div>
                     <Link to={`/${problem.category}/${problem.id}`}>
@@ -60,7 +60,7 @@ const ArraysComponent = () => {
             ))}
             </div>
             <div>
-                Hard
+                Hard 🔥
                 {hard_problems.map((problem) => (
                 <div>
                     <Link to={`/${problem.category}/${problem.id}`}>

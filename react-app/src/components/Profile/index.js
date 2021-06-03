@@ -13,14 +13,9 @@ const Profile = () => {
     const allProblemsToReview = useSelector(state => state.reviews.reviews);
     let reviews = [];
 
-    let reviewId;
-    console.log('review', reviewId)
-
     for (let key in allProblemsToReview) {
         let val = allProblemsToReview[key];
         reviews.push(val)
-        console.log('ok', val)
-        // reviewId = val.id
     }
 
     useEffect(() => {
@@ -28,8 +23,8 @@ const Profile = () => {
     }, [dispatch]);
 
 
-    let deleteProblem = async (e) => {
-        console.log('test', e)
+    let deleteProblem = async (id) => {
+        await dispatch(deleteProblemFromReview(id))
     }
 
     return (
@@ -42,7 +37,8 @@ const Profile = () => {
                     <Link to={`/${review.category}/${review.id}`}>
                         <div>{review.title}</div>
                     </Link>
-                    <button onClick={(e) => deleteProblem(e.target.value)}>Delete</button>
+                    <button onClick={() => deleteProblem(review.id)}>Delete</button>
+                    {console.log('problem id', review?.id)}
                 </div>
             ))}
             </div>
