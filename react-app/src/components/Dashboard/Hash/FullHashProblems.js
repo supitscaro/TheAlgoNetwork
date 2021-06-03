@@ -5,9 +5,11 @@ import { getSpecificProblem } from "../../../store/problems";
 
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { duotoneLight, materialOceanic } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import NavBar from '../../NavBar';
+import '../Arrays/problem.css'
 
 const HashProblems = () => {
-    const { hash, problemId } = useParams();
+    const { problemId } = useParams();
     const dispatch = useDispatch();
     const all_problems = useSelector(state => state.problems.problem);
 
@@ -19,11 +21,14 @@ const HashProblems = () => {
 
 
     useEffect(() => {
-        dispatch(getSpecificProblem(hash, problemId))
-    }, [dispatch, hash, problemId])
+        dispatch(getSpecificProblem("hash", problemId))
+    }, [dispatch, "hash", problemId])
 
     return (
-        <div>
+        <div className="problems-outer-div">
+            <div>
+                <NavBar />
+            </div>
             {problems.map((problem) => (
                 <div>
                     <div>{problem.title}</div>

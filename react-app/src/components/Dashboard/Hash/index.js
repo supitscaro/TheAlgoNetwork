@@ -2,13 +2,14 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams, Link } from "react-router-dom";
 import { getAllProblems } from "../../../store/problems";
+import NavBar from '../../NavBar';
+
+import './index.css';
 
 const HashComponent = () => {
-    const { arrays } = useParams();
+    // const { "" } = useParams();
     const dispatch = useDispatch();
     const all_problems = useSelector(state => state.problems.problems);
-
-    console.log('teeeeeeeeeeeeeeeest', all_problems)
 
     let easy_problems = [];
 
@@ -30,13 +31,14 @@ const HashComponent = () => {
     }
 
     useEffect(() => {
-        dispatch(getAllProblems(arrays))
+        dispatch(getAllProblems("hash"))
     }, [dispatch])
 
     return (
-        <div>
+        <div className="hash-outer-div">
+            <NavBar />
             <div>
-                Easy
+                Easy ✨
                 {easy_problems.map((problem) => (
                 <div>
                     <div>
@@ -48,7 +50,7 @@ const HashComponent = () => {
             ))}
             </div>
             <div>
-                Medium
+                Medium 🙏🏼
                 {medium_problems.map((problem) => (
                 <div>
                     <Link to={`/${problem.category}/${problem.id}`}>
@@ -58,7 +60,7 @@ const HashComponent = () => {
             ))}
             </div>
             <div>
-                Hard
+                Hard 🔥
                 {hard_problems.map((problem) => (
                 <div>
                     <Link to={`/${problem.category}/${problem.id}`}>
