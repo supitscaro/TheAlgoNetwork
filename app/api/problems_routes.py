@@ -13,11 +13,9 @@ def get_problems(category):
         Problem.category == category.capitalize()).all()
     problems_dict_ = {}
 
-    id = 1
-    while id < len(problems):
-        for problem in problems:
-            problems_dict_[id] = problem.to_dict()
-            id += 1
+    for problem in problems:
+        prob_to_add = problem.to_dict()
+        problems_dict_[prob_to_add['id']] = prob_to_add
 
     return problems_dict_
 
@@ -29,10 +27,8 @@ def get_specific_problem(category, id):
 
     problem_dict_ = {}
 
-    problem_id = 0
-
     for problem in problems:
-        problem_dict_[problem_id] = problem.to_dict()
-        problem_id += 1
+        prob_to_add = problem.to_dict()
+        problem_dict_[prob_to_add['id']] = prob_to_add
 
     return problem_dict_

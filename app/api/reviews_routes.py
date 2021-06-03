@@ -13,8 +13,6 @@ def get_reviewlist(user_id):
 
     reviews = Review.query.filter(Review.users_id == user_id).all()
 
-    id = 1
-
     reviews_dict_ = {}
 
     problems_dict = {}
@@ -28,8 +26,6 @@ def get_reviewlist(user_id):
             prob_review = problem.to_dict()
             print('butthole', prob_review)
             problems_dict[prob_review['id']] = prob_review
-
-    print('helloooo', problems_dict)
 
     return problems_dict
 
@@ -62,7 +58,6 @@ def delete_problem(problemId):
 
     for problem in problems:
         specific_problem = problem.to_dict()
-    print('butthole', specific_problem)
     db.session.delete(problem)
     db.session.commit()
 
