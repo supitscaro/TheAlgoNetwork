@@ -68,7 +68,6 @@ export const deleteProblemFromReview = (problemId) => async (dispatch) => {
 
 let initialState = {
     reviews: {},
-    review: {}
 }
 
 export default function reducer(state = initialState, action) {
@@ -86,9 +85,11 @@ export default function reducer(state = initialState, action) {
                 reviews: { ...state.reviews, [action.payload.user]: action.payload }
             }
         case DELETE_REVIEW:
-            newState = { ...state };
-            delete newState[action.problem];
-            return newState
+            newState = { ...state, reviews: { ...state.reviews } };
+
+            delete newState['reviews'][action.problem.problems_id];
+
+            return newState;
         default:
             return state;
     }

@@ -11,6 +11,9 @@ const Profile = () => {
     const { id } = useParams();
     const dispatch = useDispatch();
     const allProblemsToReview = useSelector(state => state.reviews.reviews);
+
+    console.log('butt', allProblemsToReview);
+
     let reviews = [];
 
     for (let key in allProblemsToReview) {
@@ -24,7 +27,7 @@ const Profile = () => {
 
 
     let deleteProblem = async (id) => {
-        await dispatch(deleteProblemFromReview(id))
+        dispatch(deleteProblemFromReview(id))
     }
 
     return (
@@ -34,12 +37,10 @@ const Profile = () => {
                 Problems To Review:
                 {reviews.map((review) => (
                 <div>
-                    {console.log('problems:', review)}
                     <Link to={`/${review.category}/${review.id}`}>
                         <div>{review.title}</div>
                     </Link>
                     <button onClick={() => deleteProblem(review.id)}>Delete</button>
-                    {console.log('problem id', review?.id)}
                 </div>
             ))}
             </div>

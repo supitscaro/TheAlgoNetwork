@@ -25,8 +25,11 @@ def get_reviewlist(user_id):
         new_problems = Problem.query.filter(Problem.id == problem_review).all()
 
         for problem in new_problems:
-            problems_dict[id] = problem.to_dict()
-            id += 1
+            prob_review = problem.to_dict()
+            print('butthole', prob_review)
+            problems_dict[prob_review['id']] = prob_review
+
+    print('helloooo', problems_dict)
 
     return problems_dict
 
