@@ -73,7 +73,7 @@ const Dashboard = () => {
         pieChart = (
             <div className="pie">
                 <VictoryPie
-                    colorScale={["#8A2BE2", "#CFD8DC"]}
+                    colorScale={["#B18CD9", "#CFD8DC"]}
                     data={[
                         { x: 1, y: allSolvedProblems, label: "solved" },
                         { x: 2, y: listOfProblems, label: "all problems" },
@@ -86,16 +86,17 @@ const Dashboard = () => {
             <div className="bar">
                 <VictoryChart
                     domainPadding={20}
+                    height={400}
                 >
                     <VictoryBar
-                        style={{ data: { fill: "#7442C8" } }}
+                        style={{ data: { fill: "#B18CD9" } }}
                         barWidth={() => 18}
                         cornerRadius={{ topLeft: () => 10, topRight: () => 10, bottomRight: () => 10, bottomLeft: () => 10 }}
                         data={[
-                            { x: 'arrays', y: arraysProblems.length / arraysTotal.length * 100 },
-                            { x: 'trees', y: treesProblems.length / treesTotal.length * 100 },
-                            { x: 'hash', y: hashProblems.length / hashTotal.length * 100 },
-                            { x: 'strings', y: stringsProblems.length / stringsTotal.length * 100 },
+                            { x: 'arrays', y: arraysProblems.length / arraysTotal.length * 100, y0: 1 },
+                            { x: 'trees', y: treesProblems.length / treesTotal.length * 100, y0: 1 },
+                            { x: 'hash', y: hashProblems.length / hashTotal.length * 100, y0: 1 },
+                            { x: 'strings', y: stringsProblems.length / stringsTotal.length * 100, y0: 1 },
                         ]}
                     />
                 </VictoryChart>
@@ -105,14 +106,15 @@ const Dashboard = () => {
             <div className="horizontal">
                 <VictoryChart
                     domainPadding={30}
+                    height={400}
                 >
                     <VictoryBar horizontal
-                        style={{ data: { fill: "#7442C8" } }}
+                        style={{ data: { fill: "#B18CD9" } }}
                         barWidth={() => 18}
                         cornerRadius={{ topLeft: () => 10, topRight: () => 10, bottomRight: () => 10, bottomLeft: () => 10 }}
                         data={[
                             { x: 'easy', y: easyProblems.length / easyTotal.length * 100 },
-                            { x: 'medium', y: mediumProblems.length / mediumTotal.length * 100 },
+                            { x: 'med.', y: mediumProblems.length / mediumTotal.length * 100 },
                             { x: 'hard', y: hardProblems.length / hardTotal.length * 100 },
                         ]}
                     />
@@ -127,6 +129,7 @@ const Dashboard = () => {
         <div className="dashboard-body">
             <NavBar />
             <div className="dashboard-content">
+                <h2 className="category">Categories</h2>
                 <div className="category-divs">
                     <Link className="cat-div" to={'/arrays'}>
                         <h2 className="cat-title">Arrays</h2>
@@ -142,13 +145,16 @@ const Dashboard = () => {
                     </Link>
                 </div>
                 <div className="graphs">
-                    <div>
+                    <div className="horizontal-div">
+                        <h2>Level of Difficulty</h2>
                         {horizontalGraph}
                     </div>
-                    <div>
+                    <div className="bar-div">
+                        <h2>Progress for Categories</h2>
                         {barChart}
                     </div>
-                    <div>
+                    <div className="pie-div">
+                        <h2>Total Progress</h2>
                         {pieChart}
                     </div>
                 </div>

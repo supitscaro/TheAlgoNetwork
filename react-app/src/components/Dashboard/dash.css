@@ -4,11 +4,18 @@
     height: 100vh;
 }
 
+.category {
+    font-family: 'Lato', sans-serif;
+    font-size: 24px;
+    margin-bottom: -20px;
+    margin-left: 50px;
+}
+
 .cat-div {
-    width: 251px;
-    height: 221px;
+    width: 351px;
+    height: 321px;
     background-color: #BFB9FA;
-    margin-left: 40px;
+    margin-left: 50px;
     margin-top: 40px;
     border-radius: 10px;
     text-decoration: none;
@@ -19,8 +26,8 @@
     font-size: 44px;
     font-weight: lighter;
     color: #000000;
-    margin-top: 44px;
-    margin-left: 60px;
+    margin-top: 35%;
+    margin-left: 32%;
 
 }
 
@@ -37,5 +44,28 @@
 .graphs {
     display: flex;
     flex-direction: row;
-    margin-top: 20px;
+    /* margin-top: 20p */
+    margin: 30px auto;
+}
+
+.horizontal-div {
+    margin-left: -20px;
+    margin-right: 50px;
+    /* height: 200px; */
+}
+
+.bar-div {
+    margin-right: 50px;
+}
+
+.horizontal-div h2 {
+    font-family: 'Lato', sans-serif;
+}
+
+.bar-div h2 {
+    font-family: 'Lato', sans-serif;
+}
+
+.pie-div h2 {
+    font-family: 'Lato', sans-serif;
 }
