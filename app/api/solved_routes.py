@@ -60,3 +60,18 @@ def delete_solved(problemId):
     db.session.commit()
 
     return problem.to_dict()
+
+
+# get all solved with no id
+@solved_routes.route('/')
+@login_required
+def all_solved():
+    solved = Solved.query.all()
+
+    all_solved = {}
+
+    for problem in solved:
+        problem_to_add = problem.to_dict()
+        all_solved[problem_to_add['id']] = problem_to_add
+
+    return all_solved

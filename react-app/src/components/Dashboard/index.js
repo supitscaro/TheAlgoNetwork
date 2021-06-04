@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from "react-router-dom";
 import { getEveryProblem } from "../../store/problems";
+import { getAllSolved } from "../../store/solved";
+
 
 import NavBar from '../NavBar';
 import './dash.css';
@@ -12,9 +14,15 @@ import { VictoryPie } from "victory";
 const Dashboard = () => {
     const dispatch = useDispatch();
     const all_problems = useSelector(state => state.problems.allProblems);
+    const problemsSolvedList = useSelector(state => state.solvedLists.solvedList);
     const user = useSelector(state => state.session.user);
 
-    console.log('all probleeeeeeems', all_problems);
+    console.log('all solved probleeeeeeems', problemsSolvedList);
+
+    for (let item in all_problems) {
+        let problem = all_problems[item];
+        // console.log('butthole', problem);
+    }
 
     useEffect(() => {
         dispatch(getEveryProblem())

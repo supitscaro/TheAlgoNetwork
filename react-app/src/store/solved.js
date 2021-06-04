@@ -1,6 +1,7 @@
 const GET_SOLVED_LIST = "solvedLists/GET_SOLVED_LIST";
 const ADD_TO_SOLVED = "solvedLists/ADD_TO_SOLVED";
 const REMOVE_SOLVED = "solvedLists/REMOVE_SOLVED";
+const ALL_SOLVED = "solvedLists/ALL_SOLVED";
 
 // ACTIONS ----------------------------
 
@@ -22,6 +23,11 @@ const deleteSolved = (problem) => ({
     type: REMOVE_SOLVED,
     problem
 });
+
+const allSolvedList = (problems) => ({
+    type: ALL_SOLVED,
+    problems
+})
 
 
 // THUNKS ------------------------------------------------------
@@ -63,11 +69,22 @@ export const deleteProblemFromSolved = (problemId) => async (dispatch) => {
     }
 };
 
+export const allSolved = () => async (dispatch) => {
+    const res = await fetch(`/api/solved`);
+
+    if (res.ok) {
+        let data = res.json();
+
+        dispatch(allSolvedList(data))
+    }
+}
+
 
 // REDUCER ------------------------------------------------------
 
 let initialState = {
-    solvedList: {}
+    solvedList: {},
+    allSolvedLists: {}
 };
 
 export default function reducer(state = initialState, action) {
@@ -88,6 +105,11 @@ export default function reducer(state = initialState, action) {
             newState = { ...state, solvedList: { ...state.solvedList } };
             delete newState['solvedList'][action.problem.problems_id]
             return newState;
+        case ALL_SOLVED:
+            return {
+                ...state,
+                allSolvedLists: action.problems
+            }
         default:
             return state;
     }
