@@ -18,11 +18,11 @@ def get_problems(category):
 
     return problems_dict_
 
+
 # get specific problems for each category
-
-
 @problems_routes.route('/<string:category>/<int:id>')
 def get_specific_problem(category, id):
+    print('category', category)
     problems = Problem.query.filter(
         Problem.category == category.capitalize()).filter(Problem.id == id).all()
 
@@ -33,3 +33,16 @@ def get_specific_problem(category, id):
         problem_dict_[prob_to_add['id']] = prob_to_add
 
     return problem_dict_
+
+
+@problems_routes.route('/')
+def get_all_problems():
+    problems = Problem.query.all()
+
+    all_problems_ = {}
+
+    for problem in problems:
+        problem_to_add = problem.to_dict()
+        all_problems_[problem_to_add['id']] = problem_to_add
+
+    return all_problems_

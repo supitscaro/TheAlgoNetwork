@@ -47,6 +47,12 @@ function App() {
         <Route exact path="/">
           <Dashboard />
         </Route>
+        <Route exact path="/trees">
+          <TreesComponent />
+        </Route>
+        <Route path="/trees/:problemId">
+          <TreesProblems />
+        </Route>
         <Route exact path="/arrays">
           <ArraysComponent />
         </Route>
@@ -58,12 +64,6 @@ function App() {
         </Route>
         <Route exact path="/strings/:problemId">
           <StringsProblems />
-        </Route>
-        <Route exact path="/trees">
-          <TreesComponent />
-        </Route>
-        <Route path="/trees/:problemId">
-          <TreesProblems />
         </Route>
         <Route exact path="/hash">
           <HashComponent />

@@ -18,7 +18,7 @@ const TreesProblems = () => {
 
     const [choice, setChoice] = useState(false);
     const [solved, setSolved] = useState(false);
-    let userId = user?.id
+    let userId = user?.id;
 
     let problems = [];
 
@@ -27,8 +27,8 @@ const TreesProblems = () => {
     }
 
     useEffect(() => {
-        dispatch(getSpecificProblem("trees", problemId, userId))
-    }, [dispatch, "trees", problemId, userId])
+        dispatch(getSpecificProblem("trees", problemId))
+    }, [dispatch, "trees", problemId]);
 
     const addReview = async (e) => {
         let choiceMade = choice;

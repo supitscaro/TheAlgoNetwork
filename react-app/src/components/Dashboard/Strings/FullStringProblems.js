@@ -30,7 +30,7 @@ const StringsProblems = () => {
 
     useEffect(() => {
         dispatch(getSpecificProblem("strings", problemId))
-    }, [dispatch, "strings", problemId, userId]);
+    }, [dispatch, "strings", problemId]);
 
     const addReview = async (e) => {
         let choiceMade = choice;
