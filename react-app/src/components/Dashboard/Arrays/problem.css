@@ -8,3 +8,95 @@
     display: flex;
     flex-direction: column;
 }
+
+.problem-div-container {
+    margin-left: 40px;
+    margin-top: 30px;
+}
+
+.prob-title {
+    font-family: 'Montserrat', sans-serif;
+    color: #3E3C50;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+
+.prob-cat {
+    font-family: 'Lato', sans-serif;
+    color: #3E3C50;
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+
+.prob-desc {
+    font-family: 'Lato', sans-serif;
+    color: #3E3C50;
+    font-size: 18px;
+    margin-bottom: 20px;
+    max-width: 60%;
+}
+
+.examples {
+    font-family: 'Lato', sans-serif;
+    color: #3E3C50;
+    font-size: 18px;
+    font-weight: bold;
+    width: 50%;
+    margin-right: 40px;
+}
+
+.code-blocks {
+    display: flex;
+    flex-direction: row;
+}
+
+.code-block {
+    width: 70%;
+}
+
+
+.review-mark {
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+}
+
+.solved-mark {
+    display: flex;
+    flex-direction: row;
+}
+
+.fa-check-square {
+    color: #BFB9FA;
+    font-size: 30px;
+}
+
+.pill-btn {
+    display: flex;
+    flex-direction: row;
+    margin-right: 20px;
+    padding-top: 10px;
+    /* padding-right: 30px; */
+    height: 25px;
+    border-radius: 10px;
+    margin-top: -6px;
+    /* box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22); */
+}
+
+.label {
+    margin-top: 1px;
+    position: relative;
+    font-family: 'Lato', sans-serif;
+}
+
+.radio-btn {
+    width: 20px;
+    height: 20px;
+}
+
+.radio-btn:checked {
+    width: 20px;
+    height: 20px;
+}
