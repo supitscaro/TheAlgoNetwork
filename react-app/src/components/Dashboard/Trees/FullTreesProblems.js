@@ -27,6 +27,7 @@ const TreesProblems = () => {
     }
 
     useEffect(() => {
+        console.log('BUTTHOLEEEEEEE')
         dispatch(getSpecificProblem("trees", problemId))
     }, [dispatch, "trees", problemId]);
 

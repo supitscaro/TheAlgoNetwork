@@ -64,7 +64,7 @@ def delete_solved(problemId):
 
 # get all solved with no id
 @solved_routes.route('/')
-@login_required
+# @login_required
 def all_solved():
     solved = Solved.query.all()
 

@@ -72,9 +72,11 @@ export const deleteProblemFromSolved = (problemId) => async (dispatch) => {
 export const allSolved = () => async (dispatch) => {
     const res = await fetch(`/api/solved`);
 
-    if (res.ok) {
-        let data = res.json();
 
+    if (res.ok) {
+        let data = await res.json();
+
+        // console.log('dataaaaa', data)
         dispatch(allSolvedList(data))
     }
 }
