@@ -33,7 +33,6 @@ def get_solvedlist(user_id):
 @solved_routes.route('/<int:problemId>/<int:userId>', methods=["POST"])
 @login_required
 def add_to_solved(problemId, userId):
-    add_problem = Problem.query.get(problemId)
 
     new_solved = Solved(
         problem_solved=True,
@@ -49,15 +48,15 @@ def add_to_solved(problemId, userId):
     return res
 
 
-# # remove problem from user's review list
-# @solved_routes.route('/<int:problemId>', methods=["DELETE"])
-# @login_required
-# def delete_problem(problemId):
-#     problems = Review.query.filter(Review.problems_id == problemId).all()
+# remove problem from user's review list
+@solved_routes.route('/<int:problemId>', methods=["DELETE"])
+@login_required
+def delete_solved(problemId):
+    problems = Solved.query.filter(Solved.problems_id == problemId).all()
 
-#     for problem in problems:
-#         specific_problem = problem.to_dict()
-#     db.session.delete(problem)
-#     db.session.commit()
+    for problem in problems:
+        specific_problem = problem.to_dict()
+    db.session.delete(problem)
+    db.session.commit()
 
-#     return problem.to_dict()
+    return problem.to_dict()

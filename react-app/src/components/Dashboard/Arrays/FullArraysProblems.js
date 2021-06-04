@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useParams, Link } from "react-router-dom";
 import { getSpecificProblem } from "../../../store/problems";
 import { addProblemToReview } from "../../../store/reviews";
+import { addProblemToSolved } from "../../../store/solved";
 
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { duotoneLight, materialOceanic } from 'react-syntax-highlighter/dist/esm/styles/prism';
@@ -38,6 +39,10 @@ const ArrayProblems = () => {
 
     const addProblem = async (e) => {
         let problemSolved = solved;
+
+        console.log('problem solved id', problemId);
+
+        await dispatch(addProblemToSolved(problemId, userId, problemSolved))
     }
 
     return (
@@ -67,9 +72,9 @@ const ArrayProblems = () => {
                             {problem.solution}
                         </SyntaxHighlighter>
                         <div>
-                            <input type="checkbox" name="checked" value="Solved" />
                             <h3>Solved</h3>
-                            <button>Save Changes</button>
+                            <input type="radio" name="checked" onChange={() => setSolved(true)} />
+                            <button disabled={!solved} onClick={addProblem}>Save Changes</button>
                         </div>
                         <div>
                             <h3>Review</h3>

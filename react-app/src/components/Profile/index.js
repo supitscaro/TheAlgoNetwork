@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from "react-router-dom";
 import { BrowserRouter, Route, Link } from "react-router-dom";
 import { getAllReviews, deleteProblemFromReview } from "../../store/reviews";
-import { getAllSolved } from "../../store/solved";
+import { getAllSolved, deleteProblemFromSolved } from "../../store/solved";
 import NavBar from '../NavBar';
 
 import './index.css';
@@ -13,8 +13,6 @@ const Profile = () => {
     const dispatch = useDispatch();
     const allProblemsToReview = useSelector(state => state.reviews.reviews);
     const problemsSolvedList = useSelector(state => state.solvedLists.solvedList);
-
-    console.log('butt', problemsSolvedList);
 
     let reviews = [];
     let probSolved = []
@@ -42,6 +40,10 @@ const Profile = () => {
         dispatch(deleteProblemFromReview(id))
     }
 
+    let deleteSolved = async (id) => {
+        dispatch(deleteProblemFromSolved(id))
+    }
+
     return (
         <div className="profile-outer-div">
             <NavBar />
@@ -63,6 +65,7 @@ const Profile = () => {
                     <Link to={`/${problem.category}/${problem.id}`}>
                         <div>{problem.title}</div>
                     </Link>
+                    <button onClick={() => deleteSolved(problem.id)}>Delete</button>
                 </div>
             ))}
             </div>
