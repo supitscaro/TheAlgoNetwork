@@ -12,8 +12,6 @@ const NavBar = () => {
     sessionNav = (
       <div>
         <div className="link">
-          {/* <div className=""> */}
-          {/* </div> */}
           <NavLink className="nav-link" to="/" exact={true} activeClassName="active">
             <i className="fas fa-home"></i>
           </NavLink>
