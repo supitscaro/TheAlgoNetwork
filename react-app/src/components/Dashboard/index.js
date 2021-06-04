@@ -20,22 +20,27 @@ const Dashboard = () => {
     let allSolvedProblems = Object.values(problemsSolvedList).length;
     let listOfProblems = Object.values(allProblems).length;
 
-    // console.log('problems solved', Object.values(problemsSolvedList));
-
     let problemsArr = Object.values(allProblems);
 
-    let problems;
-    let problemsSolvedId = []
+    // grab total of problems for each category
+    let arraysTotal = problemsArr.filter((item) => item.category === 'Arrays');
+    let stringsTotal = problemsArr.filter((item) => item.category === 'Strings');
+    let hashTotal = problemsArr.filter((item) => item.category === 'Hash');
+    let treesTotal = problemsArr.filter((item) => item.category === 'Trees');
 
+
+    // creating an array of the solved problems' id
+    let problemsSolvedId = []
     for (let item in problemsSolvedList) {
         let problem = problemsSolvedList[item];
         problemsSolvedId.push(problem.problems_id)
     }
 
+    // Filtering the list of problems based on which have been solved
     let setOfProblems = new Set(problemsSolvedId)
-
     let filterById = problemsArr.filter((item) => setOfProblems.has(item.id))
 
+    // Filtering solved problems by category
     let stringsProblems = filterById.filter((item) => item.category === 'Strings');
     let arraysProblems = filterById.filter((item) => item.category === 'Arrays');
     let treesProblems = filterById.filter((item) => item.category === 'Trees');
@@ -72,12 +77,14 @@ const Dashboard = () => {
                     domainPadding={20}
                 >
                     <VictoryBar
-                        style={{ data: { fill: "#c43a31" } }}
+                        style={{ data: { fill: "#7442C8" } }}
+                        barWidth={() => 18}
+                        cornerRadius={{ topLeft: () => 10, topRight: () => 10, bottomRight: () => 10, bottomLeft: () => 10 }}
                         data={[
-                            { x: 'arrays', y: arraysProblems.length },
-                            { x: 'trees', y: treesProblems.length },
-                            { x: 'hash', y: hashProblems.length },
-                            { x: 'strings', y: stringsProblems.length },
+                            { x: 'arrays', y: arraysProblems.length / arraysTotal.length * 100 },
+                            { x: 'trees', y: treesProblems.length / treesTotal.length * 100 },
+                            { x: 'hash', y: hashProblems.length / hashTotal.length * 100 },
+                            { x: 'strings', y: stringsProblems.length / stringsTotal.length * 100 },
                         ]}
                     />
                 </VictoryChart>
@@ -106,10 +113,12 @@ const Dashboard = () => {
                     </Link>
                 </div>
                 <div className="graphs">
-                    {pieChart}
-                </div>
-                <div className="graphs">
-                    {barChart}
+                    <div>
+                        {pieChart}
+                    </div>
+                    <div>
+                        {barChart}
+                    </div>
                 </div>
             </div>
         </div>
