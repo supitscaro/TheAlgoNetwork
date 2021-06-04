@@ -3,11 +3,14 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useParams, Link } from "react-router-dom";
 import { getSpecificProblem } from "../../../store/problems";
 
+import '../Arrays/problem.css'
+
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { shadesOfPurple, materialOceanic } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { duotoneLight, materialOceanic } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import NavBar from '../../NavBar';
 
 const StringsProblems = () => {
-    const { strings, problemId } = useParams();
+    const { problemId } = useParams();
     const dispatch = useDispatch();
     const all_problems = useSelector(state => state.problems.problem);
 
@@ -18,16 +21,26 @@ const StringsProblems = () => {
     }
 
     useEffect(() => {
-        dispatch(getSpecificProblem(strings, problemId))
-    }, [dispatch, strings, problemId])
+        dispatch(getSpecificProblem("strings", problemId))
+    }, [dispatch, "strings", problemId])
 
     return (
-        <div>
+        <div className="problems-outer-div">
+            <div>
+                <NavBar />
+            </div>
             {problems.map((problem) => (
                 <div>
                     <div>{problem.title}</div>
                     <div>{problem.category}</div>
                     <div>{problem.description}</div>
+                    <SyntaxHighlighter
+                        language="python"
+                        wrapLines={true}
+                        style={duotoneLight}
+                    >
+                        {problem.examples}
+                    </SyntaxHighlighter>
                     <SyntaxHighlighter
                         language="python"
                         lineProps={{ style: { wordBreak: 'break-all', whiteSpace: 'pre-wrap' } }}
@@ -36,7 +49,16 @@ const StringsProblems = () => {
                         wrapLines={true}>
                         {problem.solution}
                     </SyntaxHighlighter>
-                    {/* <CodeBlock text={problem.solution} language={problem.language} theme={dracula} wraplines/> */}
+                    <div>
+                        <input type="checkbox" name="checked" value="Solved" />
+                        <h3>Solved</h3>
+                        <button>Save Changes</button>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="checked" value="Review" />
+                        <h3>Review</h3>
+                        <button>Save Changes</button>
+                    </div>
                 </div>
             ))}
         </div>

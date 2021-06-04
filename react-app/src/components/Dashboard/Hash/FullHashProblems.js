@@ -19,7 +19,6 @@ const HashProblems = () => {
         problems.push(all_problems[key])
     }
 
-
     useEffect(() => {
         dispatch(getSpecificProblem("hash", problemId))
     }, [dispatch, "hash", problemId])

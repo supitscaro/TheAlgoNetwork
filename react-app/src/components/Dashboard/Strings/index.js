@@ -2,9 +2,11 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams, Link } from "react-router-dom";
 import { getAllProblems } from "../../../store/problems";
+import NavBar from '../../NavBar';
+
+import './index.css';
 
 const StringsComponent = () => {
-    const { strings } = useParams();
     const dispatch = useDispatch();
     const all_problems = useSelector(state => state.problems.problems);
 
@@ -28,13 +30,14 @@ const StringsComponent = () => {
     }
 
     useEffect(() => {
-        dispatch(getAllProblems(strings))
+        dispatch(getAllProblems("strings"))
     }, [dispatch])
 
     return (
-        <div>
+        <div className="strings-outer-div">
+            <NavBar />
             <div>
-                Easy
+                Easy ✨
                 {easy_problems.map((problem) => (
                 <div>
                     <Link to={`/${problem.category}/${problem.id}`}>
@@ -44,7 +47,7 @@ const StringsComponent = () => {
             ))}
             </div>
             <div>
-                Medium
+                Medium 🙏🏼
                 {medium_problems.map((problem) => (
                 <div>
                     <Link to={`/${problem.category}/${problem.id}`}>
@@ -54,7 +57,7 @@ const StringsComponent = () => {
             ))}
             </div>
             <div>
-                Hard
+                Hard 🔥
                 {hard_problems.map((problem) => (
                 <div>
                     <Link to={`/${problem.category}/${problem.id}`}>
