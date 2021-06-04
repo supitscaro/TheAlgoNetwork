@@ -10,8 +10,17 @@
 }
 
 .problem-div-container {
+    display: flex;
+    flex-direction: row;
     margin-left: 40px;
     margin-top: 30px;
+    max-width:max-content;
+}
+
+.problem-container {
+    display: flex;
+    flex-direction: column;
+    max-width: 50%;
 }
 
 .prob-title {
@@ -35,7 +44,7 @@
     color: #3E3C50;
     font-size: 18px;
     margin-bottom: 20px;
-    max-width: 60%;
+    max-width: 100%;
 }
 
 .examples {
@@ -43,7 +52,7 @@
     color: #3E3C50;
     font-size: 18px;
     font-weight: bold;
-    width: 50%;
+    width: 80%;
     margin-right: 40px;
 }
 
@@ -53,7 +62,8 @@
 }
 
 .code-block {
-    width: 70%;
+    width: 50%;
+    margin-right: 50px;
 }
 
 
