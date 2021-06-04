@@ -39,9 +39,9 @@ const ArraysComponent = () => {
             <div>
                 Easy ✨
                 {easy_problems.map((problem) => (
-                <div>
+                <div className="problem-div">
                     <div>
-                        <Link to={`/${problem.category}/${problem.id}`}>
+                        <Link className="problem-title" to={`/${problem.category}/${problem.id}`}>
                             <div>{problem.title}</div>
                         </Link>
                     </div>
@@ -51,8 +51,8 @@ const ArraysComponent = () => {
             <div>
                 Medium 🙏🏼
                 {medium_problems.map((problem) => (
-                <div>
-                    <Link to={`/${problem.category}/${problem.id}`}>
+                <div className="problem-div">
+                    <Link className="problem-title" to={`/${problem.category}/${problem.id}`}>
                         <div>{problem.title}</div>
                     </Link>
                 </div>
@@ -61,8 +61,8 @@ const ArraysComponent = () => {
             <div>
                 Hard 🔥
                 {hard_problems.map((problem) => (
-                <div>
-                    <Link to={`/${problem.category}/${problem.id}`}>
+                <div className="problem-div">
+                    <Link className="problem-title" to={`/${problem.category}/${problem.id}`}>
                         <div>{problem.title}</div>
                     </Link>
                 </div>
