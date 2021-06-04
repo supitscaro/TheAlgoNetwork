@@ -13,18 +13,13 @@ import { VictoryPie } from "victory";
 
 const Dashboard = () => {
     const dispatch = useDispatch();
-    const all_problems = useSelector(state => state.problems.allProblems);
+    const allProblems = useSelector(state => state.problems.allProblems);
     const problemsSolvedList = useSelector(state => state.solvedLists.allSolvedLists);
     const user = useSelector(state => state.session.user);
 
-    console.log('all solved probleeeeeeems', problemsSolvedList);
 
-    // let problemsId;
-    for (let item in all_problems) {
-        let problem = all_problems[item];
-        // problemsId = problem.id
-        console.log('butthole', problem);
-    }
+    let allSolvedProblems = Object.values(problemsSolvedList).length;
+    let listOfProblems = Object.values(allProblems).length;
 
     useEffect(() => {
         dispatch(getEveryProblem())
@@ -38,27 +33,42 @@ const Dashboard = () => {
     if (user) {
         pieChart = (
             <div className="pie">
-                <VictoryPie />
+                <VictoryPie
+                    colorScale={["#8A2BE2", "#CFD8DC"]}
+                    data={[
+                        { x: 1, y: allSolvedProblems, label: "solved" },
+                        { x: 2, y: listOfProblems, label: "all problems" },
+                    ]}
+                    innerRadius={100}
+                />
             </div>
         )
     }
 
+    // 8A2BE2
 
     return (
         <div className="dashboard-body">
             <NavBar />
-            <Link className="cat-div" to={'/arrays'}>
-                <h2 className="cat-title">Arrays</h2>
-            </Link>
-            <Link className="cat-div" to={'/trees'}>
-                <h2 className="cat-title">Trees</h2>
-            </Link>
-            <Link className="cat-div" to={'/strings'}>
-                <h2 className="cat-title">Strings</h2>
-            </Link>
-            <Link className="cat-div" to={'/hash'}>
-                <h2 className="cat-title">Hash</h2>
-            </Link>
+            <div className="dashboard-content">
+                <div className="category-divs">
+                    <Link className="cat-div" to={'/arrays'}>
+                        <h2 className="cat-title">Arrays</h2>
+                    </Link>
+                    <Link className="cat-div" to={'/trees'}>
+                        <h2 className="cat-title">Trees</h2>
+                    </Link>
+                    <Link className="cat-div" to={'/strings'}>
+                        <h2 className="cat-title">Strings</h2>
+                    </Link>
+                    <Link className="cat-div" to={'/hash'}>
+                        <h2 className="cat-title">Hash</h2>
+                    </Link>
+                </div>
+                <div className="graphs">
+                    {pieChart}
+                </div>
+            </div>
         </div>
     )
 }

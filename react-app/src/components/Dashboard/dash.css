@@ -23,3 +23,18 @@
     margin-left: 60px;
 
 }
+
+.category-divs {
+    display: flex;
+    flex-direction: row;
+}
+
+.dashboard-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.graphs {
+    display: flex;
+    flex-direction: row;
+}
