@@ -20,6 +20,8 @@ const Dashboard = () => {
     let allSolvedProblems = Object.values(problemsSolvedList).length;
     let listOfProblems = Object.values(allProblems).length;
 
+    console.log('list of problems', listOfProblems)
+
     let problemsArr = Object.values(allProblems);
 
     // grab total of problems for each category
@@ -38,12 +40,12 @@ const Dashboard = () => {
     let problemsSolvedId = []
     for (let item in problemsSolvedList) {
         let problem = problemsSolvedList[item];
-        problemsSolvedId.push(problem.problems_id)
+        problemsSolvedId.push(problem.problems_id);
     }
 
     // Filtering the list of problems based on which have been solved
-    let setOfProblems = new Set(problemsSolvedId)
-    let filterById = problemsArr.filter((item) => setOfProblems.has(item.id))
+    let setOfProblems = new Set(problemsSolvedId);
+    let filterById = problemsArr.filter((item) => setOfProblems.has(item.id));
 
     // Filtering solved problems by category
     let stringsProblems = filterById.filter((item) => item.category === 'Strings');
@@ -56,7 +58,6 @@ const Dashboard = () => {
     let mediumProblems = filterById.filter((item) => item.difficulty === 'Medium');
     let hardProblems = filterById.filter((item) => item.difficulty === 'Hard');
 
-    console.log('strings filter?', stringsProblems);
 
     useEffect(() => {
         dispatch(getEveryProblem())
@@ -120,10 +121,8 @@ const Dashboard = () => {
                     />
                 </VictoryChart>
             </div>
-        )
+        );
     }
-
-    // 8A2BE2
 
     return (
         <div className="dashboard-body">
