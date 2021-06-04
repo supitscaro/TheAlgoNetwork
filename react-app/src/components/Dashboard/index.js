@@ -28,6 +28,11 @@ const Dashboard = () => {
     let hashTotal = problemsArr.filter((item) => item.category === 'Hash');
     let treesTotal = problemsArr.filter((item) => item.category === 'Trees');
 
+    // grab total of problems for each difficulty
+    let easyTotal = problemsArr.filter((item) => item.difficulty === 'Easy');
+    let mediumTotal = problemsArr.filter((item) => item.difficulty === 'Medium');
+    let hardTotal = problemsArr.filter((item) => item.difficulty === 'Hard');
+
 
     // creating an array of the solved problems' id
     let problemsSolvedId = []
@@ -46,6 +51,11 @@ const Dashboard = () => {
     let treesProblems = filterById.filter((item) => item.category === 'Trees');
     let hashProblems = filterById.filter((item) => item.category === 'Hash');
 
+    // Filtering solved problems by difficulty
+    let easyProblems = filterById.filter((item) => item.difficulty === 'Easy');
+    let mediumProblems = filterById.filter((item) => item.difficulty === 'Medium');
+    let hardProblems = filterById.filter((item) => item.difficulty === 'Hard');
+
     console.log('strings filter?', stringsProblems);
 
     useEffect(() => {
@@ -58,6 +68,7 @@ const Dashboard = () => {
 
     let pieChart;
     let barChart;
+    let horizontalGraph;
     if (user) {
         pieChart = (
             <div className="pie">
@@ -89,6 +100,24 @@ const Dashboard = () => {
                     />
                 </VictoryChart>
             </div>
+        );
+        horizontalGraph = (
+            <div className="horizontal">
+                <VictoryChart
+                    domainPadding={30}
+                >
+                    <VictoryBar horizontal
+                        style={{ data: { fill: "#7442C8" } }}
+                        barWidth={() => 18}
+                        cornerRadius={{ topLeft: () => 10, topRight: () => 10, bottomRight: () => 10, bottomLeft: () => 10 }}
+                        data={[
+                            { x: 'easy', y: easyProblems.length / easyTotal.length * 100 },
+                            { x: 'medium', y: mediumProblems.length / mediumTotal.length * 100 },
+                            { x: 'hard', y: hardProblems.length / hardTotal.length * 100 },
+                        ]}
+                    />
+                </VictoryChart>
+            </div>
         )
     }
 
@@ -114,10 +143,13 @@ const Dashboard = () => {
                 </div>
                 <div className="graphs">
                     <div>
-                        {pieChart}
+                        {horizontalGraph}
                     </div>
                     <div>
                         {barChart}
+                    </div>
+                    <div>
+                        {pieChart}
                     </div>
                 </div>
             </div>
