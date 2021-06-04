@@ -60,7 +60,7 @@ const Profile = () => {
                 Problems Solved
                 {probSolved.map((problem) => (
                 <div>
-                    <Link>
+                    <Link to={`/${problem.category}/${problem.id}`}>
                         <div>{problem.title}</div>
                     </Link>
                 </div>

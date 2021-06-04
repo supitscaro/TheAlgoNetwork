@@ -6,7 +6,7 @@ from app.models import db, Solved, Problem
 solved_routes = Blueprint("solved", __name__)
 
 
-# get user's review list
+# get user's solved list
 @solved_routes.route('/<int:user_id>', methods=["GET"])
 @login_required
 def get_solvedlist(user_id):
@@ -29,24 +29,24 @@ def get_solvedlist(user_id):
     return problems_dict
 
 
-# add problem to user's review list
-# @solved_routes.route('/<int:problemId>/<int:userId>', methods=["POST"])
-# @login_required
-# def add_to_review(problemId, userId):
-#     add_problem = Problem.query.get(problemId)
+# add problem to user's solved list
+@solved_routes.route('/<int:problemId>/<int:userId>', methods=["POST"])
+@login_required
+def add_to_solved(problemId, userId):
+    add_problem = Problem.query.get(problemId)
 
-#     new_review = Review(
-#         review_problems=True,
-#         users_id=userId,
-#         problems_id=problemId
-#     )
+    new_solved = Solved(
+        problem_solved=True,
+        users_id=userId,
+        problems_id=problemId
+    )
 
-#     db.session.add(new_review)
-#     db.session.commit()
+    db.session.add(new_solved)
+    db.session.commit()
 
-#     res = new_review.to_dict()
+    res = new_solved.to_dict()
 
-#     return res
+    return res
 
 
 # # remove problem from user's review list
