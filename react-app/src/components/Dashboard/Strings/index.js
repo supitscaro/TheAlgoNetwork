@@ -29,6 +29,9 @@ const StringsComponent = () => {
         }
     }
 
+    console.log('striiiiiiiiiings', easy_problems);
+
+
     useEffect(() => {
         dispatch(getAllProblems("strings"))
     }, [dispatch])
@@ -40,6 +43,7 @@ const StringsComponent = () => {
                 Easy ✨
                 {easy_problems.map((problem) => (
                 <div>
+                    {console.log('EAAAAAAASY', problem.category)}
                     <Link to={`/${problem.category}/${problem.id}`}>
                         <div>{problem.title}</div>
                     </Link>

@@ -59,17 +59,17 @@ function App() {
         <Route exact path="/strings/:problemId">
           <StringsProblems />
         </Route>
+        <Route exact path="/trees">
+          <TreesComponent />
+        </Route>
+        <Route path="/trees/:problemId">
+          <TreesProblems />
+        </Route>
         <Route exact path="/hash">
           <HashComponent />
         </Route>
         <Route exact path="/hash/:problemId">
           <HashProblems />
-        </Route>
-        <Route exact path="/trees">
-          <TreesComponent />
-        </Route>
-        <Route exact path="/trees/:problemId">
-          <TreesProblems />
         </Route>
         <Route exact={true} path="/:id">
           <Profile />

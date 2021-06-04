@@ -31,7 +31,6 @@ const ArrayProblems = () => {
     }, [dispatch, "arrays", problemId, userId])
 
     const addReview = async (e) => {
-
         let choiceMade = choice;
 
         await dispatch(addProblemToReview(problemId, userId, choiceMade))
@@ -39,8 +38,6 @@ const ArrayProblems = () => {
 
     const addProblem = async (e) => {
         let problemSolved = solved;
-
-        console.log('problem solved id', problemId);
 
         await dispatch(addProblemToSolved(problemId, userId, problemSolved))
     }

@@ -1,15 +1,14 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useParams, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { getAllProblems } from "../../../store/problems";
 import NavBar from '../../NavBar';
 
 import './index.css';
 
 const ArraysComponent = () => {
-    const { arrays } = useParams();
     const dispatch = useDispatch();
-    const all_problems = useSelector(state => Object.values(state.problems.problems));
+    const all_problems = useSelector(state => state.problems.problems);
 
     let easy_problems = [];
 
