@@ -196,7 +196,7 @@ def seed_problems():
         description='Given n non-negative integers representing an elevation map where the width of each bar is 1, compute how much water it can trap after raining.',
         language="Python",
         example="Input: height = [0,1,0,2,1,0,1,3,2,1,2,1]\nOutput: 6\nExplanation: The above elevation map (black section) is represented by array [0,1,0,2,1,0,1,3,2,1,2,1]. In this case, 6 units of rain water (blue section) are being trapped.",
-        solution='class Solution:\n    def trap(self, height: List[int]) -> int:\n        stack =[]\n        area = 0\n        for i in range(len(height)):\n            offset = 0\n            while(stack and height[i] >= height[stack[-1]]):\n                pre_i = stack.pop()\n                area += (height[pre_i]-offset) * (i-pre_i-1)\n                offset = height[pre_i]\n            if stack:\n                area += (height[i]-offset) * (i-stack[-1]-1)\n            stack.append(i)\        return area',
+        solution='class Solution:\n    def trap(self, height: List[int]) -> int:\n        stack =[]\n        area = 0\n        for i in range(len(height)):\n            offset = 0\n            while(stack and height[i] >= height[stack[-1]]):\n                pre_i = stack.pop()\n                area += (height[pre_i]-offset) * (i-pre_i-1)\n                offset = height[pre_i]\n            if stack:\n                area += (height[i]-offset) * (i-stack[-1]-1)\n            stack.append(i)\n        return area',
     )
 
     problem20 = Problem(

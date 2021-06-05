@@ -94,10 +94,10 @@ const Dashboard = () => {
                         barWidth={() => 18}
                         cornerRadius={{ topLeft: () => 10, topRight: () => 10, bottomRight: () => 10, bottomLeft: () => 10 }}
                         data={[
-                            { x: 'arrays', y: arraysProblems.length / arraysTotal.length * 100, y0: 1 },
-                            { x: 'trees', y: treesProblems.length / treesTotal.length * 100, y0: 1 },
-                            { x: 'hash', y: hashProblems.length / hashTotal.length * 100, y0: 1 },
-                            { x: 'strings', y: stringsProblems.length / stringsTotal.length * 100, y0: 1 },
+                            { x: 'arrays', y: arraysProblems.length / arraysTotal.length * 100 },
+                            { x: 'trees', y: treesProblems.length / treesTotal.length * 100 },
+                            { x: 'hash', y: hashProblems.length / hashTotal.length * 100 },
+                            { x: 'strings', y: stringsProblems.length / stringsTotal.length * 100 },
                         ]}
                     />
                 </VictoryChart>
