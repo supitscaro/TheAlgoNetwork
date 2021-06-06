@@ -63,11 +63,11 @@ const ArrayProblems = () => {
 
 
         if ((parseInt(userId) === problem.users_id) && (parseInt(problemId) === problem.problems_id)) {
-            console.log('solved')
-            solvedComponent = (
-                <div>You've marked this problem as solved!</div>
-            )
-        } else {
+                console.log('solved')
+                solvedComponent = (
+                    <div>You've marked this problem as solved!</div>
+                )
+            } else {
             console.log('not solved')
             solvedComponent = (
                 <div className="solved-mark">
