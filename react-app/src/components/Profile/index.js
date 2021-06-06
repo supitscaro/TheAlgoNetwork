@@ -47,27 +47,27 @@ const Profile = () => {
     return (
         <div className="profile-outer-div">
             <NavBar />
-            <div>
-                Problems To Review:
+            <div className="problem-review">
+                <h2 className="prob-review-title">Problems To Review:</h2>
                 {reviews.map((review) => (
-                <div>
-                    <Link to={`/${review.category}/${review.id}`}>
-                        <div>{review.title}</div>
-                    </Link>
-                    <button onClick={() => deleteProblem(review.id)}>Delete</button>
-                </div>
-            ))}
+                    <div>
+                        <Link to={`/${review.category}/${review.id}`}>
+                            <div>{review.title}</div>
+                        </Link>
+                        <button onClick={() => deleteProblem(review.id)}>Delete</button>
+                    </div>
+                ))}
             </div>
-            <div>
-                Problems Solved
+            <div className="prob-solved-div">
+                <h2 className="prob-solved-title">Problems Solved:</h2>
                 {probSolved.map((problem) => (
-                <div>
-                    <Link to={`/${problem.category}/${problem.id}`}>
-                        <div>{problem.title}</div>
-                    </Link>
-                    <button onClick={() => deleteSolved(problem.id)}>Delete</button>
-                </div>
-            ))}
+                    <div>
+                        <Link to={`/${problem.category}/${problem.id}`}>
+                            <div>{problem.title}</div>
+                        </Link>
+                        <button onClick={() => deleteSolved(problem.id)}>Delete</button>
+                    </div>
+                ))}
             </div>
         </div>
     )

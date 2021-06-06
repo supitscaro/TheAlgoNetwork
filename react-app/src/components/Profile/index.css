@@ -3,3 +3,25 @@
     flex-direction: row;
     height: 100vh;
 }
+
+
+.problem-review {
+    max-width: 600px;
+    margin-right: 100px;
+}
+
+.prob-review-title {
+    font-family: 'Montserrat', sans-serif;
+    color: #3E3C50;
+    font-size: 20px;
+}
+
+.prob-solved-div {
+    max-width: 600px;
+}
+
+.prob-solved-title {
+    font-family: 'Montserrat', sans-serif;
+    color: #3E3C50;
+    font-size: 20px;
+}
