@@ -13,7 +13,7 @@ import HashComponent from "./components/Dashboard/Hash";
 import StringsProblems from "./components/Dashboard/Strings/FullStringProblems";
 import HashProblems from "./components/Dashboard/Hash/FullHashProblems";
 import TreesComponent from "./components/Dashboard/Trees";
-import TreesProblems from "./components/Dashboard/Trees";
+import TreesProblems from "./components/Dashboard/Trees/FullTreesProblems";
 import Profile from "./components/Profile";
 
 import './index.css';

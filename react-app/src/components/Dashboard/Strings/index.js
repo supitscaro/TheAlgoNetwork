@@ -10,27 +10,37 @@ const StringsComponent = () => {
     const dispatch = useDispatch();
     const all_problems = useSelector(state => state.problems.problems);
 
-    let easy_problems = [];
+    let easyProblems = [];
 
-    let medium_problems = [];
+    let mediumProblems = [];
 
-    let hard_problems = [];
+    let hardProblems = [];
+
+    let easyColor;
+    let mediumColor;
+    let hardColor;
 
     for (let key in all_problems) {
         let val = all_problems[key];
         if (val.difficulty === 'Easy') {
-            easy_problems.push(val);
+            easyProblems.push(val);
+            easyColor = (
+                <div className="easy-button"></div>
+            )
         };
         if (val.difficulty === 'Medium') {
-            medium_problems.push(val);
+            mediumProblems.push(val);
+            mediumColor = (
+                <div className="medium-button"></div>
+            )
         };
         if (val.difficulty === 'Hard') {
-            hard_problems.push(val);
+            hardProblems.push(val);
+            hardColor = (
+                <div className="hard-button"></div>
+            )
         }
     }
-
-    console.log('striiiiiiiiiings', easy_problems);
-
 
     useEffect(() => {
         dispatch(getAllProblems("strings"))
@@ -39,36 +49,46 @@ const StringsComponent = () => {
     return (
         <div className="strings-outer-div">
             <NavBar />
-            <div>
-                Easy ✨
-                {easy_problems.map((problem) => (
+            <div className="outer-div">
                 <div>
-                    {console.log('EAAAAAAASY', problem.category)}
-                    <Link to={`/${problem.category}/${problem.id}`}>
-                        <div>{problem.title}</div>
-                    </Link>
+                    <div className="category-title">Easy ✨</div>
+                    {easyProblems.map((problem) => (
+                        <div className="problem-div">
+                            {easyColor}
+                            <div>
+                                <Link className="problem-title" to={`/${problem.category}/${problem.id}`}>
+                                    <div>{problem.title}</div>
+                                </Link>
+                            </div>
+                        </div>
+                    ))}
                 </div>
-            ))}
-            </div>
-            <div>
-                Medium 🙏🏼
-                {medium_problems.map((problem) => (
                 <div>
-                    <Link to={`/${problem.category}/${problem.id}`}>
-                        <div>{problem.title}</div>
-                    </Link>
+                    <div className="category-title">Medium 🙏🏼</div>
+                    {mediumProblems.map((problem) => (
+                        <div className="problem-div">
+                            {mediumColor}
+                            <div>
+                                <Link className="problem-title" to={`/${problem.category}/${problem.id}`}>
+                                    <div>{problem.title}</div>
+                                </Link>
+                            </div>
+                        </div>
+                    ))}
                 </div>
-            ))}
-            </div>
-            <div>
-                Hard 🔥
-                {hard_problems.map((problem) => (
                 <div>
-                    <Link to={`/${problem.category}/${problem.id}`}>
-                        <div>{problem.title}</div>
-                    </Link>
+                    <div className="category-title">Hard 🔥</div>
+                    {hardProblems.map((problem) => (
+                        <div className="problem-div">
+                            {hardColor}
+                            <div>
+                                <Link className="problem-title" to={`/${problem.category}/${problem.id}`}>
+                                    <div>{problem.title}</div>
+                                </Link>
+                            </div>
+                        </div>
+                    ))}
                 </div>
-            ))}
             </div>
         </div>
     )
