@@ -8,7 +8,7 @@ import { addProblemToSolved } from "../../../store/solved";
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { duotoneLight, materialOceanic } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import NavBar from '../../NavBar';
-import '../Arrays/problem.css'
+import './problem.css'
 
 const HashProblems = () => {
     const { problemId } = useParams();
@@ -47,38 +47,49 @@ const HashProblems = () => {
             <div>
                 <NavBar />
             </div>
-            {problems.map((problem) => (
-                <div>
-                    <div>{problem.title}</div>
-                    <div>{problem.category}</div>
-                    <div>{problem.description}</div>
-                    <SyntaxHighlighter
-                        language="python"
-                        wrapLines={true}
-                        style={duotoneLight}
-                    >
-                        {problem.examples}
-                    </SyntaxHighlighter>
-                    <SyntaxHighlighter
-                        language="python"
-                        lineProps={{ style: { wordBreak: 'break-all', whiteSpace: 'pre-wrap' } }}
-                        style={materialOceanic}
-                        showLineNumbers={true}
-                        wrapLines={true}>
-                        {problem.solution}
-                    </SyntaxHighlighter>
-                    <div>
-                        <h3>Solved</h3>
-                        <input type="radio" name="checked" onChange={() => setSolved(true)} />
-                        <button disabled={!solved} onClick={addProblem}>Save Changes</button>
+            <div className="problems-div">
+                {problems.map((problem) => (
+                    <div className="problem-div-container">
+                        <div className="problem-container">
+                            <div className="prob-title">Question: {problem.title}</div>
+                            <div className="prob-cat">Category: {problem.category}</div>
+                            <div className="prob-desc">{problem.description}</div>
+                            <div className="code-blocks">
+                                <div className="examples">
+                                    Example:
+                                <SyntaxHighlighter
+                                        language="python"
+                                        wrapLines={true}
+                                        style={duotoneLight}
+                                    >
+                                        {problem.examples}
+                                    </SyntaxHighlighter>
+                                </div>
+                            </div>
+                            {/* {solvedComponent} */}
+                            <div className="review-mark">
+                                <div className="pill-btn">
+                                    <input className="radio-btn" type="radio" name="checked" onChange={() => setChoice(true)}>
+
+                                    </input>
+                                    <h3 className="label">Review</h3>
+                                </div>
+                                <button disabled={!choice} onClick={addReview}>Review</button>
+                            </div>
+                        </div>
+                        <div className="code-block">
+                            <SyntaxHighlighter
+                                language="python"
+                                lineProps={{ style: { wordBreak: 'break-all', whiteSpace: 'pre-wrap' } }}
+                                style={materialOceanic}
+                                showLineNumbers={true}
+                                wrapLines={true}>
+                                {problem.solution}
+                            </SyntaxHighlighter>
+                        </div>
                     </div>
-                    <div>
-                        <h3>Review</h3>
-                        <input type="radio" name="checked" onChange={() => setChoice(true)} />
-                        <button disabled={!choice} onClick={addReview}>Save Changes</button>
-                    </div>
-                </div>
-            ))}
+                ))}
+            </div>
         </div>
     )
 }
