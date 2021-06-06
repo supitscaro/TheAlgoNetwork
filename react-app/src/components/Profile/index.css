@@ -25,3 +25,51 @@
     color: #3E3C50;
     font-size: 20px;
 }
+
+.fa-times {
+    justify-content: flex-end;
+}
+
+.prob-review {
+    background-color: #FFFFFF;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    margin-left: 30px;
+    height: 30px;
+    width: 350px;
+    display: flex;
+    flex-direction: row;
+}
+
+.review-prof-title {
+    font-family: 'Lato', sans-serif;
+    text-decoration: none;
+    color: #000;
+    font-weight: light;
+}
+
+.easy-button {
+    padding: 20px;
+    border-radius: 30%;
+    background-color: #C5F2C7;
+    margin-right: 20px;
+    margin-top: -5px;
+}
+
+.medium-button {
+    padding: 20px;
+    border-radius: 30%;
+    background-color: #FFE575;
+    margin-right: 20px;
+    margin-top: -5px;
+}
+
+.hard-button {
+    padding: 20px;
+    border-radius: 30%;
+    background-color: #FF908D;
+    margin-right: 20px;
+    margin-top: -5px;
+}
