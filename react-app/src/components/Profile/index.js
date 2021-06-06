@@ -27,24 +27,15 @@ const Profile = () => {
         probSolved.push(val);
     }
 
-    let easyColor;
-    let mediumColor;
-    let hardColor;
-    reviews.map((review) => {
-        if (review.difficulty === 'Easy') {
-            easyColor = (
-                <div className="easy-button"></div>
-            )
-        } else if (review.difficulty === 'Medium') {
-            mediumColor = (
-                <div className="medium-button"></div>
-            )
-        } else if (review.difficulty === 'Hard') {
-            hardColor = (
-                <div className="hard-button"></div>
-            )
+    const difficultyRender = (difficulty) => {
+        if (difficulty === 'Easy') {
+            return <div className="easy-button"></div>
+        } else if (difficulty === 'Medium') {
+            return <div className="medium-button"></div>
+        } else if (difficulty === 'Hard') {
+            return <div className="hard-button"></div>
         }
-    });
+    }
 
     useEffect(() => {
         dispatch(getAllReviews(id))
@@ -70,6 +61,7 @@ const Profile = () => {
                 <h2 className="prob-review-title">Problems To Review:</h2>
                 {reviews.map((review) => (
                     <div className="prob-review">
+                        {difficultyRender(review.difficulty)}
                         <Link className="review-prof-title" to={`/${review.category}/${review.id}`}>
                             <div>{review.title}</div>
                         </Link>
