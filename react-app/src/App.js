@@ -7,13 +7,13 @@ import TopNavBar from "./components/NavBar/TopNavBar";
 import { authenticate } from "./store/session";
 import Dashboard from "./components/Dashboard";
 import ArraysComponent from "./components/Dashboard/Arrays";
-import ArrayProblems from "./components/Dashboard/Arrays/FullArraysProblems";
+import ArrayProblems from "./components/Dashboard/Arrays/ArrayProblem";
 import StringsComponent from "./components/Dashboard/Strings";
 import HashComponent from "./components/Dashboard/Hash";
-import StringsProblems from "./components/Dashboard/Strings/FullStringProblems";
-import HashProblems from "./components/Dashboard/Hash/FullHashProblems";
+import StringsProblems from "./components/Dashboard/Strings/StringProblem";
+import HashProblems from "./components/Dashboard/Hash/HashProblem";
 import TreesComponent from "./components/Dashboard/Trees";
-import TreesProblems from "./components/Dashboard/Trees/FullTreesProblems";
+import TreesProblems from "./components/Dashboard/Trees/TreeProblem";
 import Profile from "./components/Profile";
 
 import './index.css';
