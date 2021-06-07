@@ -18,7 +18,7 @@ const StringsProblems = () => {
     const history = useHistory();
     const user = useSelector(state => state.session.user);
     const all_problems = useSelector(state => state.problems.problem);
-    const problemsSolvedList = useSelector(state => state.solvedLists.allSolvedLists);
+    const problemsSolvedList = useSelector(state => state.solvedLists?.allSolvedLists);
 
     const [choice, setChoice] = useState(false);
     const [solved, setSolved] = useState(false);
@@ -62,7 +62,7 @@ const StringsProblems = () => {
         problem = problemsSolvedList[item];
     }
 
-    if ((parseInt(userId) === problem.users_id) && (parseInt(problemId) === problem.problems_id)) {
+    if ((parseInt(userId) === problem?.users_id) && (parseInt(problemId) === problem?.problems_id)) {
         console.log('solved')
         solvedComponent = (
             <div>You've marked this problem as solved!</div>
