@@ -98,3 +98,20 @@
     margin-right: 20px;
     margin-top: -5px;
 }
+
+.user-name {
+    font-family: 'Lato', sans-serif;
+    color: #000;
+    font-weight: light;
+}
+
+
+.profile-body {
+    display: flex;
+    flex-direction: column;
+}
+
+.user-stats {
+    display: flex;
+    flex-direction: row;
+}

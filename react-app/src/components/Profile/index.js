@@ -11,6 +11,7 @@ import './index.css';
 const Profile = () => {
     const { id } = useParams();
     const dispatch = useDispatch();
+    const user = useSelector(state => state.session.user);
     const allProblemsToReview = useSelector(state => state.reviews.reviews);
     const problemsSolvedList = useSelector(state => state.solvedLists.solvedList);
 
@@ -57,33 +58,40 @@ const Profile = () => {
     return (
         <div className="profile-outer-div">
             <NavBar />
-            <div className="problem-review">
-                <h2 className="prob-review-title">Problems To Review:</h2>
-                {reviews.map((review) => (
-                    <div className="prob-review">
-                        <div className="prob-title-diff">
-                            {difficultyRender(review.difficulty)}
-                            <Link className="review-prof-title" to={`/${review.category}/${review.id}`}>
-                                <div>{review.title}</div>
-                            </Link>
-                        </div>
-                        <div onClick={() => deleteProblem(review.id)}><i class="fas fa-times"></i></div>
+            <div className="profile-body">
+                <div className="user-intro">
+                    <h3 className="user-name">Hi, {user.fname} {user.lname} 👋🏼</h3>
+                </div>
+                <div className="user-stats">
+                    <div className="problem-review">
+                        <h2 className="prob-review-title">Problems To Review:</h2>
+                        {reviews.map((review) => (
+                            <div className="prob-review">
+                                <div className="prob-title-diff">
+                                    {difficultyRender(review.difficulty)}
+                                    <Link className="review-prof-title" to={`/${review.category}/${review.id}`}>
+                                        <div>{review.title}</div>
+                                    </Link>
+                                </div>
+                                <div onClick={() => deleteProblem(review.id)}><i class="fas fa-times"></i></div>
+                            </div>
+                        ))}
                     </div>
-                ))}
-            </div>
-            <div className="prob-solved-div">
-                <h2 className="prob-solved-title">Problems Solved:</h2>
-                {probSolved.map((problem) => (
-                    <div className="prob-solved">
-                        <div className="prob-title-diff">
-                            {difficultyRender(problem.difficulty)}
-                            <Link className="solved-prof-title" to={`/${problem.category}/${problem.id}`}>
-                                <div>{problem.title}</div>
-                            </Link>
-                        </div>
-                        <div onClick={() => deleteSolved(problem.id)}><i class="fas fa-times"></i></div>
+                    <div className="prob-solved-div">
+                        <h2 className="prob-solved-title">Problems Solved:</h2>
+                        {probSolved.map((problem) => (
+                            <div className="prob-solved">
+                                <div className="prob-title-diff">
+                                    {difficultyRender(problem.difficulty)}
+                                    <Link className="solved-prof-title" to={`/${problem.category}/${problem.id}`}>
+                                        <div>{problem.title}</div>
+                                    </Link>
+                                </div>
+                                <div onClick={() => deleteSolved(problem.id)}><i class="fas fa-times"></i></div>
+                            </div>
+                        ))}
                     </div>
-                ))}
+                </div>
             </div>
         </div>
     )
