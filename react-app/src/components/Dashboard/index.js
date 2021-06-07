@@ -91,17 +91,29 @@ const Dashboard = () => {
                     domainPadding={20}
                     height={400}
                 >
-                    <VictoryBar
-                        style={{ data: { fill: "#B18CD9" } }}
-                        barWidth={() => 18}
-                        cornerRadius={{ topLeft: () => 10, topRight: () => 10, bottomRight: () => 10, bottomLeft: () => 10 }}
-                        data={[
-                            { x: 'arrays', y: arraysProblems.length / arraysTotal.length * 100 },
-                            { x: 'trees', y: treesProblems.length / treesTotal.length * 100 },
-                            { x: 'hash', y: hashProblems.length / hashTotal.length * 100 },
-                            { x: 'strings', y: stringsProblems.length / stringsTotal.length * 100 },
-                        ]}
-                    />
+                    <VictoryStack
+                        colorScale={["#cea2fd", "#7851a9"]}
+                        height={400}
+                    >
+                        <VictoryBar
+                            barWidth={() => 24}
+                            data={[
+                                { x: 'arrays', y: arraysProblems.length / arraysTotal.length * 100 },
+                                { x: 'trees', y: treesProblems.length / treesTotal.length * 100 },
+                                { x: 'hash', y: hashProblems.length / hashTotal.length * 100 },
+                                { x: 'strings', y: stringsProblems.length / stringsTotal.length * 100 },
+                            ]}
+                        />
+                        <VictoryBar
+                            barWidth={() => 24}
+                            data={[
+                                { x: 'arrays', y: arraysTotal.length },
+                                { x: 'trees', y: treesTotal.length },
+                                { x: 'hash', y: hashTotal.length },
+                                { x: 'strings', y: stringsTotal.length },
+                            ]}
+                        />
+                    </VictoryStack>
                 </VictoryChart>
             </div>
         );
@@ -112,31 +124,24 @@ const Dashboard = () => {
                     height={400}
                 >
                     <VictoryStack
-                        colorScale={["#B18CD9", "#D8BFD8"]}
+                        colorScale={["#D8BFD8", "#B18CD9"]}
                         height={400}
                     >
                         <VictoryBar horizontal
-                            // style={{ data: { fill: "#B18CD9" } }}
+                            barWidth={() => 25}
+                            data={[
+                                { x: 'easy', y: easyProblems.length / easyTotal.length * 100 },
+                                { x: 'med.', y: mediumProblems.length / mediumTotal.length * 100 },
+                                { x: 'hard', y: hardProblems.length / hardTotal.length * 100 },
+                            ]}
+                        />
+                        <VictoryBar horizontal
                             barWidth={() => 25}
                             data={[
                                 { x: 'easy', y: easyTotal.length },
                                 { x: 'med.', y: mediumTotal.length },
                                 { x: 'hard', y: hardTotal.length },
                             ]}
-                        />
-                        <VictoryBar horizontal
-                            // style={{ data: { fill: "#B18CD9" } }}
-                            barWidth={() => 25}
-                            data={[
-                                { x: 'med.', y: mediumProblems.length / mediumTotal.length * 100 },
-                                { x: 'med.', y: mediumProblems.length / mediumTotal.length * 100 },
-                                { x: 'hard', y: hardProblems.length / hardTotal.length * 100 },
-                            ]}
-                        />
-                        <VictoryBar horizontal
-                            // style={{ data: { fill: "#B18CD9" } }}
-                            barWidth={() => 25}
-                            data={[{ x: 'hard', y: hardProblems.length / hardTotal.length * 100 }]}
                         />
                     </VictoryStack>
                 </VictoryChart>
