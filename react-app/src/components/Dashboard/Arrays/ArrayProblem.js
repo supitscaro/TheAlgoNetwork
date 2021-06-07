@@ -67,7 +67,7 @@ const ArrayProblems = () => {
                 solvedComponent = (
                     <div>You've marked this problem as solved!</div>
                 )
-            } else {
+        } else {
             console.log('not solved')
             solvedComponent = (
                 <div className="solved-mark">
