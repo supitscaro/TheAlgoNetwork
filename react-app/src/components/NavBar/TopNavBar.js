@@ -1,7 +1,5 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { NavLink, Link } from 'react-router-dom';
-import LogoutButton from '../auth/LogoutButton';
 import './topnav.css';
 
 const TopNavBar = () => {
