@@ -37,13 +37,13 @@ const Dashboard = () => {
 
 
     // creating an array of the solved problems' id
-    let problemsSolvedId = []
-    let allSolvedProblems;
+    let problemsSolvedId = [];
+    let allSolvedProblems = [];
     for (let item in problemsSolvedList) {
         let problem = problemsSolvedList[item];
         if (user?.id === problem?.users_id) {
             problemsSolvedId.push(problem.problems_id);
-            allSolvedProblems = Object.values(problemsSolvedList).length;
+            allSolvedProblems.push(problem);
         }
     }
 
@@ -80,7 +80,7 @@ const Dashboard = () => {
                 <VictoryPie
                     colorScale={["#B18CD9", "#CFD8DC"]}
                     data={[
-                        { x: 1, y: allSolvedProblems, label: "solved" },
+                        { x: 1, y: allSolvedProblems.length, label: "solved" },
                         { x: 2, y: listOfProblems, label: "all problems" },
                     ]}
                     innerRadius={100}
