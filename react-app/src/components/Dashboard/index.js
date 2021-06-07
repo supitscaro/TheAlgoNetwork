@@ -149,6 +149,63 @@ const Dashboard = () => {
                 </VictoryChart>
             </div>
         );
+    } else {
+        pieChart = (
+            <div className="pie">
+                <VictoryPie
+                    colorScale={["#CFD8DC"]}
+                    data={[
+                        { x: 2, y: listOfProblems, label: "all problems" },
+                    ]}
+                    innerRadius={100}
+                />
+            </div>
+        );
+        barChart = (
+            <div className="bar">
+                <VictoryChart
+                    domainPadding={20}
+                    height={400}
+                >
+                    <VictoryStack
+                        colorScale={["#cea2fd", "#7851a9"]}
+                        height={400}
+                    >
+                        <VictoryBar
+                            barWidth={() => 24}
+                            data={[
+                                { x: 'arrays', y: arraysTotal.length },
+                                { x: 'trees', y: treesTotal.length },
+                                { x: 'hash', y: hashTotal.length },
+                                { x: 'strings', y: stringsTotal.length },
+                            ]}
+                        />
+                    </VictoryStack>
+                </VictoryChart>
+            </div>
+        );
+        horizontalGraph = (
+            <div className="horizontal">
+                <VictoryChart
+                    domainPadding={30}
+                    height={400}
+                >
+                    <VictoryStack
+                        colorScale={["#D8BFD8", "#B18CD9"]}
+                        height={400}
+                    >
+                        <VictoryBar horizontal
+                            barWidth={() => 25}
+                            data={[
+                                { x: 'easy', y: easyTotal.length },
+                                { x: 'med.', y: mediumTotal.length },
+                                { x: 'hard', y: hardTotal.length },
+                            ]}
+                        />
+                    </VictoryStack>
+                </VictoryChart>
+            </div>
+        );
     }
 
     return (
