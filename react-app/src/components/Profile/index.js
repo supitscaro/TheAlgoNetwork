@@ -60,7 +60,7 @@ const Profile = () => {
             <NavBar />
             <div className="profile-body">
                 <div className="user-intro">
-                    <h3 className="user-name">Hi, {user.username} {user.lname} 👋🏼</h3>
+                    <h3 className="user-name">Hi, {user.fname} {user.lname} 👋🏼</h3>
                 </div>
                 <div className="user-stats">
                     <div className="problem-review">

@@ -18,6 +18,8 @@ const ArrayProblems = () => {
     const all_problems = useSelector(state => state.problems?.problem);
     const problemsSolvedList = useSelector(state => state.solvedLists?.allSolvedLists);
 
+    console.log('butthole', problemsSolvedList);
+
     const [choice, setChoice] = useState(false);
     const [solved, setSolved] = useState(false);
     const [isSolved, setIsSolved] = useState(false);
@@ -55,20 +57,20 @@ const ArrayProblems = () => {
         history.push("/");
     }
 
-    let problem;
-    let solvedComponent;
+    const isProblemSolved = (id) => {
+        let problem;
 
-    // grabs each individual problem from the list of solved problems
-    for (let item in problemsSolvedList) {
-        problem = problemsSolvedList[item];
+        // grabs each individual problem from the list of solved problems
+        for (let item in problemsSolvedList) {
+            problem = problemsSolvedList[item];
+        }
+
         // if the logged in user's id matches the id in the solved joins table
         // and the current problem's id (grabbed from the url) matches the problems_id in the solved joins table
-        if ((parseInt(userId) === problem?.users_id) && (parseInt(problemId) === problem?.problems_id)) {
-            solvedComponent = (
-                <div>You've marked this problem as solved!</div>
-            )
+        if ((id === problem?.problems_id)) {
+            return <div>You've marked this problem as solved!</div>
         } else {
-            solvedComponent = (
+            return (
                 <div className="solved-mark">
                     <label className="pill-btn">
                         <input className="radio-btn" type="radio" name="checked" onChange={() => [setSolved(true), setIsSolved(true)]} />
@@ -104,7 +106,7 @@ const ArrayProblems = () => {
                                     </SyntaxHighlighter>
                                 </div>
                             </div>
-                            {solvedComponent}
+                            {isProblemSolved(problem.id)}
                             <div className="review-mark">
                                 <div className="pill-btn">
                                     <input className="radio-btn" type="radio" name="checked" onChange={() => setChoice(true)}>

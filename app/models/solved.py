@@ -16,7 +16,7 @@ class Solved(db.Model):
     def to_dict(self):
         return {
             "id": self.id,
-            "problem_solved": self.problems_id,
+            "problem_solved": self.problem_solved,
             "users_id": self.users_id,
             "problems_id": self.problems_id
         }
