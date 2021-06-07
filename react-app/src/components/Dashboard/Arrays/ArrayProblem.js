@@ -57,29 +57,27 @@ const ArrayProblems = () => {
         history.push("/");
     }
 
-    const isProblemSolved = (id) => {
-        let problem;
+    let problemIsSolved = false;
+    let problem;
 
-        // grabs each individual problem from the list of solved problems
-        for (let item in problemsSolvedList) {
-            problem = problemsSolvedList[item];
+    // grabs each individual problem from the list of solved problems
+    for (let item in problemsSolvedList) {
+        problem = problemsSolvedList[item];
+        if ((parseInt(userId) === problem?.users_id) && (parseInt(problemId) === problem?.problems_id)) {
+            problemIsSolved = true;
         }
+    }
 
-        // if the logged in user's id matches the id in the solved joins table
-        // and the current problem's id (grabbed from the url) matches the problems_id in the solved joins table
-        if ((id === problem?.problems_id)) {
-            return <div>You've marked this problem as solved!</div>
-        } else {
-            return (
-                <div className="solved-mark">
-                    <label className="pill-btn">
-                        <input className="radio-btn" type="radio" name="checked" onChange={() => [setSolved(true), setIsSolved(true)]} />
-                        <h3 className="label">Solved</h3>
-                    </label>
-                    <button disabled={!solved} onClick={redirectAfterSolved}>Solved</button>
-                </div>
-            )
-        }
+    let solvedComponent = () => {
+        return (
+            <div className="solved-mark">
+                <label className="pill-btn">
+                    <input className="radio-btn" type="radio" name="checked" onChange={() => [setSolved(true), setIsSolved(true)]} />
+                    <h3 className="label">Solved</h3>
+                </label>
+                <button disabled={!solved} onClick={redirectAfterSolved}>Solved</button>
+            </div>
+        );
     }
 
     return (
@@ -106,7 +104,8 @@ const ArrayProblems = () => {
                                     </SyntaxHighlighter>
                                 </div>
                             </div>
-                            {isProblemSolved(problem.id)}
+                            {problemIsSolved ? <div>You've marked this as solved!</div> : solvedComponent()}
+                            {/* {isProblemSolved(problem.id)} */}
                             <div className="review-mark">
                                 <div className="pill-btn">
                                     <input className="radio-btn" type="radio" name="checked" onChange={() => setChoice(true)}>
