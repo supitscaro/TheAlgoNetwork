@@ -14,11 +14,9 @@ const ArrayProblems = () => {
     const { problemId } = useParams();
     const dispatch = useDispatch();
     const history = useHistory();
-    const user = useSelector(state => state.session.user);
-    const all_problems = useSelector(state => state.problems.problem);
+    const user = useSelector(state => state.session?.user);
+    const all_problems = useSelector(state => state.problems?.problem);
     const problemsSolvedList = useSelector(state => state.solvedLists?.allSolvedLists);
-
-    console.log('probleeeeems', problemsSolvedList);
 
     const [choice, setChoice] = useState(false);
     const [solved, setSolved] = useState(false);
@@ -57,27 +55,32 @@ const ArrayProblems = () => {
     }
 
     let problem;
-    let solvedComponent;
+    // let solvedComponent;
     for (let item in problemsSolvedList) {
         problem = problemsSolvedList[item];
     }
 
-    if ((parseInt(userId) === problem?.users_id) && (parseInt(problemId) === problem?.problems_id)) {
-            console.log('solved')
-            solvedComponent = (
-                <div>You've marked this problem as solved!</div>
-            )
+    console.log('userId', problem?.users_id);
+    console.log('users id ', parseInt(userId));
+
+    let solvedList = (problemsId) => {
+        if ((parseInt(userId) === problem?.users_id) && (parseInt(problemId) === problemsId)) {
+            // solvedComponent = (
+            return <div>You've marked this problem as solved!</div>
+            // )
         } else {
-        console.log('not solved')
-        solvedComponent = (
-            <div className="solved-mark">
-                <label className="pill-btn">
-                    <input className="radio-btn" type="radio" name="checked" onChange={() => [setSolved(true), setIsSolved(true)]} />
-                    <h3 className="label">Solved</h3>
-                </label>
-                <button disabled={!solved} onClick={redirectAfterSolved}>Solved</button>
-            </div>
-        )
+            let solvedComponent = (
+                <div className="solved-mark">
+                    <label className="pill-btn">
+                        <input className="radio-btn" type="radio" name="checked" onChange={() => [setSolved(true), setIsSolved(true)]} />
+                        <h3 className="label">Solved</h3>
+                    </label>
+                    <button disabled={!solved} onClick={redirectAfterSolved}>Solved</button>
+                </div>
+            )
+
+            return solvedComponent;
+        }
     }
 
     return (
@@ -104,7 +107,7 @@ const ArrayProblems = () => {
                                     </SyntaxHighlighter>
                                 </div>
                             </div>
-                            {solvedComponent}
+                            {solvedList(problem.id)}
                             <div className="review-mark">
                                 <div className="pill-btn">
                                     <input className="radio-btn" type="radio" name="checked" onChange={() => setChoice(true)}>
