@@ -61,10 +61,12 @@ const Profile = () => {
                 <h2 className="prob-review-title">Problems To Review:</h2>
                 {reviews.map((review) => (
                     <div className="prob-review">
-                        {difficultyRender(review.difficulty)}
-                        <Link className="review-prof-title" to={`/${review.category}/${review.id}`}>
-                            <div>{review.title}</div>
-                        </Link>
+                        <div className="prob-title-diff">
+                            {difficultyRender(review.difficulty)}
+                            <Link className="review-prof-title" to={`/${review.category}/${review.id}`}>
+                                <div>{review.title}</div>
+                            </Link>
+                        </div>
                         <div onClick={() => deleteProblem(review.id)}><i class="fas fa-times"></i></div>
                     </div>
                 ))}
@@ -72,11 +74,14 @@ const Profile = () => {
             <div className="prob-solved-div">
                 <h2 className="prob-solved-title">Problems Solved:</h2>
                 {probSolved.map((problem) => (
-                    <div>
-                        <Link to={`/${problem.category}/${problem.id}`}>
-                            <div>{problem.title}</div>
-                        </Link>
-                        <button onClick={() => deleteSolved(problem.id)}>Delete</button>
+                    <div className="prob-solved">
+                        <div className="prob-title-diff">
+                            {difficultyRender(problem.difficulty)}
+                            <Link className="solved-prof-title" to={`/${problem.category}/${problem.id}`}>
+                                <div>{problem.title}</div>
+                            </Link>
+                        </div>
+                        <div onClick={() => deleteSolved(problem.id)}><i class="fas fa-times"></i></div>
                     </div>
                 ))}
             </div>
