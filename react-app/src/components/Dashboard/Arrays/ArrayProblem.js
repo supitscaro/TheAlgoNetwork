@@ -23,8 +23,8 @@ const ArrayProblems = () => {
     const [isSolved, setIsSolved] = useState(false);
     let userId = user?.id
 
+    // stores all problems into an array to iterate through
     let problems = [];
-
     for (let key in all_problems) {
         problems.push(all_problems[key])
     }
@@ -49,27 +49,26 @@ const ArrayProblems = () => {
         await dispatch(addProblemToSolved(problemId, userId, problemSolved))
     };
 
+    // redirect user after they submit a problem as solved
     const redirectAfterSolved = () => {
         addProblem();
         history.push("/");
     }
 
     let problem;
-    // let solvedComponent;
+    let solvedComponent;
+
+    // grabs each individual problem from the list of solved problems
     for (let item in problemsSolvedList) {
         problem = problemsSolvedList[item];
-    }
-
-    console.log('userId', problem?.users_id);
-    console.log('users id ', parseInt(userId));
-
-    let solvedList = (problemsId) => {
-        if ((parseInt(userId) === problem?.users_id) && (parseInt(problemId) === problemsId)) {
-            // solvedComponent = (
-            return <div>You've marked this problem as solved!</div>
-            // )
+        // if the logged in user's id matches the id in the solved joins table
+        // and the current problem's id (grabbed from the url) matches the problems_id in the solved joins table
+        if ((parseInt(userId) === problem?.users_id) && (parseInt(problemId) === problem?.problems_id)) {
+            solvedComponent = (
+                <div>You've marked this problem as solved!</div>
+            )
         } else {
-            let solvedComponent = (
+            solvedComponent = (
                 <div className="solved-mark">
                     <label className="pill-btn">
                         <input className="radio-btn" type="radio" name="checked" onChange={() => [setSolved(true), setIsSolved(true)]} />
@@ -78,8 +77,6 @@ const ArrayProblems = () => {
                     <button disabled={!solved} onClick={redirectAfterSolved}>Solved</button>
                 </div>
             )
-
-            return solvedComponent;
         }
     }
 
@@ -107,7 +104,7 @@ const ArrayProblems = () => {
                                     </SyntaxHighlighter>
                                 </div>
                             </div>
-                            {solvedList(problem.id)}
+                            {solvedComponent}
                             <div className="review-mark">
                                 <div className="pill-btn">
                                     <input className="radio-btn" type="radio" name="checked" onChange={() => setChoice(true)}>
