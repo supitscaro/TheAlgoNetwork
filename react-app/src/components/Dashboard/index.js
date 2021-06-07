@@ -13,11 +13,11 @@ import { VictoryPie, VictoryBar, VictoryChart, VictoryStack } from "victory";
 
 const Dashboard = () => {
     const dispatch = useDispatch();
-    const allProblems = useSelector(state => state.problems.allProblems);
-    const problemsSolvedList = useSelector(state => state.solvedLists.allSolvedLists);
-    const user = useSelector(state => state.session.user);
+    const allProblems = useSelector(state => state.problems?.allProblems);
+    const problemsSolvedList = useSelector(state => state.solvedLists?.allSolvedLists);
+    const user = useSelector(state => state.session?.user);
 
-    let allSolvedProblems = Object.values(problemsSolvedList).length;
+    // let allSolvedProblems = Object.values(problemsSolvedList).length;
     let listOfProblems = Object.values(allProblems).length;
 
     console.log('list of problems', problemsSolvedList)
@@ -38,11 +38,13 @@ const Dashboard = () => {
 
     // creating an array of the solved problems' id
     let problemsSolvedId = []
+    let allSolvedProblems;
     for (let item in problemsSolvedList) {
         let problem = problemsSolvedList[item];
-        // if (user.id === problem.users_id) {
-        problemsSolvedId.push(problem.problems_id);
-        // }
+        if (user?.id === problem?.users_id) {
+            problemsSolvedId.push(problem.problems_id);
+            allSolvedProblems = Object.values(problemsSolvedList).length;
+        }
     }
 
     // Filtering the list of problems based on which have been solved
