@@ -54,20 +54,19 @@ const HashProblems = () => {
         history.push("/");
     }
 
+    let problemIsSolved = false;
     let problem;
-    let solvedComponent;
+
+    // grabs each individual problem from the list of solved problems
     for (let item in problemsSolvedList) {
         problem = problemsSolvedList[item];
+        if ((parseInt(userId) === problem?.users_id) && (parseInt(problemId) === problem?.problems_id)) {
+            problemIsSolved = true;
+        }
     }
 
-    if ((parseInt(userId) === problem?.users_id) && (parseInt(problemId) === problem?.problems_id)) {
-        console.log('solved')
-        solvedComponent = (
-            <div>You've marked this problem as solved!</div>
-        )
-    } else {
-        console.log('not solved')
-        solvedComponent = (
+    let solvedComponent = () => {
+        return (
             <div className="solved-mark">
                 <label className="pill-btn">
                     <input className="radio-btn" type="radio" name="checked" onChange={() => [setSolved(true), setIsSolved(true)]} />
@@ -75,7 +74,7 @@ const HashProblems = () => {
                 </label>
                 <button disabled={!solved} onClick={redirectAfterSolved}>Solved</button>
             </div>
-        )
+        );
     }
 
     return (
@@ -102,7 +101,7 @@ const HashProblems = () => {
                                     </SyntaxHighlighter>
                                 </div>
                             </div>
-                            {solvedComponent}
+                            {problemIsSolved ? <div>You've marked this as solved!</div> : solvedComponent()}
                             <div className="review-mark">
                                 <div className="pill-btn">
                                     <input className="radio-btn" type="radio" name="checked" onChange={() => setChoice(true)}>
