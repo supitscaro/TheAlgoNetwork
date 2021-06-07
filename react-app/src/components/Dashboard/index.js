@@ -40,9 +40,9 @@ const Dashboard = () => {
     let problemsSolvedId = []
     for (let item in problemsSolvedList) {
         let problem = problemsSolvedList[item];
-        if (user.id === problem.users_id) {
-            problemsSolvedId.push(problem.problems_id);
-        }
+        // if (user.id === problem.users_id) {
+        problemsSolvedId.push(problem.problems_id);
+        // }
     }
 
     // Filtering the list of problems based on which have been solved

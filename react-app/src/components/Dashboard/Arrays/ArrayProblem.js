@@ -23,9 +23,6 @@ const ArrayProblems = () => {
     const [isSolved, setIsSolved] = useState(false);
     let userId = user?.id
 
-
-    console.log('list of problems', problemsSolvedList);
-
     let problems = [];
 
     for (let key in all_problems) {
@@ -57,28 +54,28 @@ const ArrayProblems = () => {
         history.push("/");
     }
 
+    let problem;
     let solvedComponent;
     for (let item in problemsSolvedList) {
-        let problem = problemsSolvedList[item];
+        problem = problemsSolvedList[item];
+    }
 
-
-        if ((parseInt(userId) === problem.users_id) && (parseInt(problemId) === problem.problems_id)) {
-                console.log('solved')
-                solvedComponent = (
-                    <div>You've marked this problem as solved!</div>
-                )
-        } else {
-            console.log('not solved')
-            solvedComponent = (
-                <div className="solved-mark">
-                    <label className="pill-btn">
-                        <input className="radio-btn" type="radio" name="checked" onChange={() => [setSolved(true), setIsSolved(true)]} />
-                        <h3 className="label">Solved</h3>
-                    </label>
-                    <button disabled={!solved} onClick={redirectAfterSolved}>Solved</button>
-                </div>
-            )
-        }
+    if ((parseInt(userId) === problem.users_id) && (parseInt(problemId) === problem.problems_id)) {
+        console.log('solved')
+        solvedComponent = (
+            <div>You've marked this problem as solved!</div>
+        )
+    } else {
+        console.log('not solved')
+        solvedComponent = (
+            <div className="solved-mark">
+                <label className="pill-btn">
+                    <input className="radio-btn" type="radio" name="checked" onChange={() => [setSolved(true), setIsSolved(true)]} />
+                    <h3 className="label">Solved</h3>
+                </label>
+                <button disabled={!solved} onClick={redirectAfterSolved}>Solved</button>
+            </div>
+        )
     }
 
     return (
