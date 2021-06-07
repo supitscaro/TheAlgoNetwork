@@ -7,6 +7,7 @@ const TopNavBar = () => {
 
     return (
         <nav className="nav-top">
+            <div className="logo-box"><i class="fas fa-code"></i></div>
             <div className="logo">
                 The Algo Network.
             </div>

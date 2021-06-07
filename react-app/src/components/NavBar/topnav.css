@@ -7,9 +7,23 @@
     background-color: #F6F7FB;
     font-family: 'Lato', sans-serif;
     font-weight: bold;
+    display: flex;
+    flex-direction: row;
 }
 
 .logo {
     padding-top: 31px;
-    padding-left: 219px;
+    padding-left: 50px;
+}
+
+.logo-box {
+    height: 113px;
+    width: 131px;
+    background-color: #393D46;
+}
+
+.fa-code {
+    color: #fff;
+    margin-left: 45px;
+    margin-top: 30px;
 }
