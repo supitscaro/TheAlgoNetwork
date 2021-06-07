@@ -16,7 +16,9 @@ const ArrayProblems = () => {
     const history = useHistory();
     const user = useSelector(state => state.session.user);
     const all_problems = useSelector(state => state.problems.problem);
-    const problemsSolvedList = useSelector(state => state.solvedLists.allSolvedLists);
+    const problemsSolvedList = useSelector(state => state.solvedLists?.allSolvedLists);
+
+    console.log('probleeeeems', problemsSolvedList);
 
     const [choice, setChoice] = useState(false);
     const [solved, setSolved] = useState(false);
@@ -60,12 +62,12 @@ const ArrayProblems = () => {
         problem = problemsSolvedList[item];
     }
 
-    if ((parseInt(userId) === problem.users_id) && (parseInt(problemId) === problem.problems_id)) {
-        console.log('solved')
-        solvedComponent = (
-            <div>You've marked this problem as solved!</div>
-        )
-    } else {
+    if ((parseInt(userId) === problem?.users_id) && (parseInt(problemId) === problem?.problems_id)) {
+            console.log('solved')
+            solvedComponent = (
+                <div>You've marked this problem as solved!</div>
+            )
+        } else {
         console.log('not solved')
         solvedComponent = (
             <div className="solved-mark">

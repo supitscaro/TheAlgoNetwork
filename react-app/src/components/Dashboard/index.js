@@ -20,7 +20,7 @@ const Dashboard = () => {
     let allSolvedProblems = Object.values(problemsSolvedList).length;
     let listOfProblems = Object.values(allProblems).length;
 
-    // console.log('list of problems', problemsSolvedList)
+    console.log('list of problems', problemsSolvedList)
 
     let problemsArr = Object.values(allProblems);
 
