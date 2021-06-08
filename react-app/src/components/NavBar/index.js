@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import { logout } from "../../store/session";
 import DemoButton from '../auth/Demo';
 import './navbar.css';
@@ -8,10 +8,17 @@ import './navbar.css';
 const NavBar = () => {
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const onLogout = async (e) => {
     dispatch(logout());
+    history.push("/");
   };
+
+  //   const redirectLogout = () => {
+  //     addProblem();
+  //     history.push("/");
+  // }
 
   let sessionNav;
   if (user) {
@@ -31,7 +38,7 @@ const NavBar = () => {
                 Profile
           </div>
         </div>
-        <div className="logout-btn">
+        <div className="logout-btn" >
           <div className="nav-link" onClick={onLogout}>
             <i className="fas fa-power-off"></i>
           </div>
