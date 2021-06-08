@@ -53,12 +53,12 @@ const TreesComponent = () => {
             <div className="outer-div">
                 <div>
                     <div className="category-title">Easy ✨</div>
-                    {easyProblems.map((problem) => (
-                        <div className="problem-div">
+                    {easyProblems.map((problem, i) => (
+                        <div className="problem-div" key={i}>
                             {easyColor}
-                            <div>
-                                <Link className="problem-title" to={`/${problem.category}/${problem.id}`}>
-                                    <div>{problem.title}</div>
+                            <div key={i}>
+                                <Link key={i} className="problem-title" to={`/${problem.category}/${problem.id}`}>
+                                    <div key={i}>{problem.title}</div>
                                 </Link>
                             </div>
                         </div>
@@ -67,12 +67,12 @@ const TreesComponent = () => {
             </div>
             <div>
                 <div className="category-title">Medium 🙏🏼</div>
-                {mediumProblems.map((problem) => (
-                    <div className="problem-div">
+                {mediumProblems.map((problem, i) => (
+                    <div className="problem-div" key={i}>
                         {mediumColor}
-                        <div>
-                            <Link className="problem-title" to={`/${problem.category}/${problem.id}`}>
-                                <div>{problem.title}</div>
+                        <div key={i}>
+                            <Link key={i} className="problem-title" to={`/${problem.category}/${problem.id}`}>
+                                <div key={i}>{problem.title}</div>
                             </Link>
                         </div>
                     </div>
@@ -80,12 +80,12 @@ const TreesComponent = () => {
             </div>
             <div>
                 <div className="category-title">Hard 🔥</div>
-                {hardProblems.map((problem) => (
-                    <div className="problem-div">
+                {hardProblems.map((problem, i) => (
+                    <div className="problem-div" key={i}>
                         {hardColor}
-                        <div>
-                            <Link className="problem-title" to={`/${problem.category}/${problem.id}`}>
-                                <div>{problem.title}</div>
+                        <div key={i}>
+                            <Link key={i} className="problem-title" to={`/${problem.category}/${problem.id}`}>
+                                <div key={i}>{problem.title}</div>
                             </Link>
                         </div>
                     </div>

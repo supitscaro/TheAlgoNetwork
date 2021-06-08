@@ -33,7 +33,7 @@ const NavBar = () => {
         </div>
         <div className="logout-btn">
           <div className="nav-link" onClick={onLogout}>
-            <i class="fas fa-power-off"></i>
+            <i className="fas fa-power-off"></i>
           </div>
           Logout
         </div>

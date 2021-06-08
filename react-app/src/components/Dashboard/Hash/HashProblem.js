@@ -83,8 +83,8 @@ const HashProblems = () => {
                 <NavBar />
             </div>
             <div className="problems-div">
-                {problems.map((problem) => (
-                    <div className="problem-div-container">
+                {problems.map((problem, i) => (
+                    <div className="problem-div-container" key={i}>
                         <div className="problem-container">
                             <div className="prob-title">Question: {problem.title}</div>
                             <div className="prob-cat">Category: {problem.category}</div>
