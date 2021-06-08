@@ -11,10 +11,12 @@ def get_problems():
     problems = Problem.query.all()
     print(problems)
 
-    problems_dict_ = {}
+    problems_list_ = []
 
     for problem in problems:
         problem_dict = problem.to_dict()
-        problems_dict_[problem_dict['id']] = problem_dict
 
-    return problems_dict_
+        problems_list_.append(
+            {"problem_title": problem_dict['title'], "category": problem_dict['category']})
+
+    return {'search_types': problems_list_}
