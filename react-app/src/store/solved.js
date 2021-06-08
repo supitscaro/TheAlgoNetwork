@@ -57,7 +57,6 @@ export const addProblemToSolved = (problemId, userId, checked) => async (dispatc
 
 
 export const deleteProblemFromSolved = (problemId) => async (dispatch) => {
-    console.log('problem id in thunk', problemId);
     const res = await fetch(`/api/solved/${problemId}`, {
         method: 'DELETE'
     });
@@ -76,7 +75,6 @@ export const allSolved = () => async (dispatch) => {
     if (res.ok) {
         let data = await res.json();
 
-        // console.log('dataaaaa', data)
         dispatch(allSolvedList(data))
     }
 }

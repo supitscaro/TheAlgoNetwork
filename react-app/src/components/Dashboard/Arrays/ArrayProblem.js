@@ -18,8 +18,6 @@ const ArrayProblems = () => {
     const all_problems = useSelector(state => state.problems?.problem);
     const problemsSolvedList = useSelector(state => state.solvedLists?.allSolvedLists);
 
-    console.log('butthole', problemsSolvedList);
-
     const [choice, setChoice] = useState(false);
     const [solved, setSolved] = useState(false);
     const [isSolved, setIsSolved] = useState(false);
