@@ -11,6 +11,7 @@ from .api.auth_routes import auth_routes
 from .api.problems_routes import problems_routes
 from .api.reviews_routes import reviews_routes
 from .api.solved_routes import solved_routes
+from .api.search_routes import search_routes
 
 from .seeds import seed_commands
 
@@ -37,6 +38,7 @@ app.register_blueprint(auth_routes, url_prefix='/api/auth')
 app.register_blueprint(problems_routes, url_prefix='/api/problems')
 app.register_blueprint(reviews_routes, url_prefix='/api/reviews')
 app.register_blueprint(solved_routes, url_prefix='/api/solved')
+app.register_blueprint(search_routes, url_prefix='/api/search')
 db.init_app(app)
 Migrate(app, db)
 
