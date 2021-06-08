@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux"
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import { signUp } from '../../store/session';
 import NavBar from "../NavBar";
 
@@ -118,11 +118,7 @@ const SignUpForm = () => {
                   required={true}
                   placeholder="Confirm password"
                 ></input>
-              </div>
-            </div>
-            <div className="signup-btns">
-              <button className="submit-btn" type="submit">Sign Up</button>
-              <div className="demo-btn-signup">
+                <button className="submit-btn" type="submit">Sign Up</button>
                 <DemoButton />
               </div>
             </div>
@@ -130,6 +126,11 @@ const SignUpForm = () => {
         </div>
         <div className="signup-img">
           <img src={signup} />
+          <h3 className="slogan">Keep track of how you're doing on Leetcode</h3>
+          <h3 className="has-account">
+            Already have an account?
+            <Link className="link-login" to="/login">Log In!</Link>
+          </h3>
         </div>
       </div>
     </div>

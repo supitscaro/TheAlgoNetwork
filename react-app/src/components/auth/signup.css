@@ -8,9 +8,9 @@
 .signup-form {
     display: flex;
     flex-direction: column;
-    width: 50%;
+    width: 100%;
     justify-content: center;
-    margin-left: 50px;
+    margin-left: 80px;
 }
 
 .input-div {
@@ -32,7 +32,7 @@
 
 .submit-btn {
     margin-top: 20px;
-    width: 70%;
+    width: 100%;
     font-family: 'Lato', sans-serif;
     background-color: #BFB9FA;
     border: none;
@@ -41,6 +41,7 @@
     border-radius: 10px;
     font-size: 20px;
     font-weight: lighter;
+    margin-bottom: 20px;
 }
 
 .signup-component {
@@ -63,7 +64,7 @@
 .signup-img {
     margin-right: 20px;
     height: 60%;
-    width: 50%;
+    width: 100%;
 }
 
 .signup-img img{
@@ -72,15 +73,24 @@
     width: 100%;
 }
 
-.signup-btns {
-    /* text-align: center; */
-    /* justify-content: center; */
-}
-
-.demo-btn-signup {
-    /* text-align: center; */
-}
-
 .inputs {
-    justify-content: center;
+    width: 100%;
+    text-align: center;
+}
+
+.slogan {
+    font-family: 'Lato', sans-serif;
+    text-align: center;
+}
+
+.has-account {
+    font-family: 'Lato', sans-serif;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.link-login {
+    text-decoration: none;
+    color: #3E3C50;;
 }
