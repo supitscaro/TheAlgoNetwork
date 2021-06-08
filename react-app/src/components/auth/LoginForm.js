@@ -7,6 +7,7 @@ import NavBar from "../NavBar";
 import './login.css';
 
 import loginpic from '../../images/login.png';
+import DemoButton from "./Demo";
 
 const LoginForm = () => {
   const [errors, setErrors] = useState([]);
@@ -44,7 +45,7 @@ const LoginForm = () => {
         <div className="login-form">
           <form onSubmit={onLogin}>
             <div className="inputs">
-              <div>
+              <div className="errors">
                 {errors.map((error) => (
                   <div>{error}</div>
                 ))}
@@ -68,6 +69,7 @@ const LoginForm = () => {
                     onChange={updatePassword}
                   />
                   <button className="login-btn" type="submit">Login</button>
+                  <DemoButton />
                 </div>
               </div>
             </div>
