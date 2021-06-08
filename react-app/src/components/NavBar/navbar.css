@@ -13,6 +13,17 @@
     flex-direction: column;
     font-family: 'Lato', sans-serif;
     font-weight: lighter;
+    /* text-align: center; */
+}
+
+.login-link {
+    margin-bottom: 20px;
+    /* margin-left: 30px; */
+    display: flex;
+    flex-direction: column;
+    font-family: 'Lato', sans-serif;
+    font-weight: lighter;
+    text-align: center;
 }
 
 .fa-home {
@@ -41,6 +52,7 @@
 
 .nav-link {
     text-decoration: none;
+    margin-left: 10px;
     background-color: #BFB9FA;
     width: 50px;
     height: 50px;
@@ -50,6 +62,25 @@
     box-shadow: 0 19px 38px rgba(191,185,250,0.30), 0 15px 12px rgba(191,185,250,0.22);
 
     /* justify-content: center; */
+}
+
+.nav-login {
+    margin-top: 20px;
+    text-decoration: none;
+    color: #3E3C50;
+}
+
+.nav-login:hover {
+    font-weight: 400;
+}
+
+.nav-signup {
+    text-decoration: none;
+    color: #3E3C50;
+}
+
+.nav-signup:hover {
+    font-weight: 400;
 }
 
 .sidebar-nav-outer {

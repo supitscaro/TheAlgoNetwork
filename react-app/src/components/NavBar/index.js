@@ -2,6 +2,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { NavLink, Link } from 'react-router-dom';
 import { logout } from "../../store/session";
+import DemoButton from '../auth/Demo';
 import './navbar.css';
 
 const NavBar = () => {
@@ -40,16 +41,20 @@ const NavBar = () => {
     );
   } else {
     sessionNav = (<div>
-      <div className="link">
-        <NavLink className="nav-link" to="/login" exact={true} activeClassName="active">
+      <div className="login-link">
+        <NavLink className="nav-login" to="/login" exact={true} activeClassName="active">
+          Login
         </NavLink>
-            Login
-        </div>
-      <div className="link">
-        <NavLink className="nav-link" to="/sign-up" exact={true} activeClassName="active">
+      </div>
+      <div className="login-link">
+        Don't have an account?
+        <NavLink className="nav-signup" to="/sign-up" exact={true} activeClassName="active">
+          Sign Up
         </NavLink>
-            Sign Up
-        </div>
+      </div>
+      <div className="login-link">
+        <DemoButton />
+      </div>
     </div>
     )
   }
