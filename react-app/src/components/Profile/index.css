@@ -115,3 +115,7 @@
     display: flex;
     flex-direction: row;
 }
+
+.user-intro {
+    margin-left: 40px;
+}
