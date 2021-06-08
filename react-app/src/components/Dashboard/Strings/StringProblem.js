@@ -23,6 +23,7 @@ const StringsProblems = () => {
     const [choice, setChoice] = useState(false);
     const [solved, setSolved] = useState(false);
     const [isSolved, setIsSolved] = useState(false);
+    const [showSolution, setShowSolution] = useState(false);
     let userId = user?.id;
 
     let problems = [];
@@ -77,7 +78,20 @@ const StringsProblems = () => {
                 <button disabled={!solved} onClick={redirectAfterSolved}>Solved</button>
             </div>
         );
-    }
+    };
+
+    let solution = (problem) => {
+        return (
+            <SyntaxHighlighter
+                language="python"
+                lineProps={{ style: { wordBreak: 'break-all', whiteSpace: 'pre-wrap' } }}
+                style={materialOceanic}
+                showLineNumbers={true}
+                wrapLines={true}>
+                {problem.solution}
+            </SyntaxHighlighter>
+        );
+    };
 
     return (
         <div className="problems-outer-div">
@@ -113,15 +127,9 @@ const StringsProblems = () => {
                                 <button disabled={!choice} onClick={addReview}>Review</button>
                             </div>
                         </div>
-                        <div className="code-block" >
-                            <SyntaxHighlighter
-                                language="python"
-                                lineProps={{ style: { wordBreak: 'break-all', whiteSpace: 'pre-wrap' } }}
-                                style={materialOceanic}
-                                showLineNumbers={true}
-                                wrapLines={true}>
-                                {problem.solution}
-                            </SyntaxHighlighter>
+                        <div className="code-block">
+                            <h2 onClick={() => setShowSolution(true)}>Think you have it solved? Click on me</h2>
+                            {showSolution ? solution(problem) : null}
                         </div>
                     </div>
                 ))}

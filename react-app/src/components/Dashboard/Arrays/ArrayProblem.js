@@ -21,6 +21,7 @@ const ArrayProblems = () => {
     const [choice, setChoice] = useState(false);
     const [solved, setSolved] = useState(false);
     const [isSolved, setIsSolved] = useState(false);
+    const [showSolution, setShowSolution] = useState(false);
     let userId = user?.id
 
     // stores all problems into an array to iterate through
@@ -78,6 +79,19 @@ const ArrayProblems = () => {
         );
     }
 
+    let solution = (problem) => {
+        return (
+            <SyntaxHighlighter
+                language="python"
+                lineProps={{ style: { wordBreak: 'break-all', whiteSpace: 'pre-wrap' } }}
+                style={materialOceanic}
+                showLineNumbers={true}
+                wrapLines={true}>
+                {problem.solution}
+            </SyntaxHighlighter>
+        );
+    }
+
     return (
         <div className="problems-outer-div">
             <div>
@@ -93,7 +107,7 @@ const ArrayProblems = () => {
                             <div className="code-blocks" >
                                 <div className="examples">
                                     Example:
-                                <SyntaxHighlighter
+                                    <SyntaxHighlighter
                                         language="python"
                                         wrapLines={true}
                                         style={duotoneLight}
@@ -103,7 +117,6 @@ const ArrayProblems = () => {
                                 </div>
                             </div>
                             {problemIsSolved ? <div>You've marked this as solved!</div> : solvedComponent()}
-                            {/* {isProblemSolved(problem.id)} */}
                             <div className="review-mark" >
                                 <div className="pill-btn" >
                                     <input className="radio-btn" type="radio" name="checked" onChange={() => setChoice(true)}></input>
@@ -112,15 +125,9 @@ const ArrayProblems = () => {
                                 <button disabled={!choice} onClick={addReview}>Review</button>
                             </div>
                         </div>
-                        <div className="code-block" >
-                            <SyntaxHighlighter
-                                language="python"
-                                lineProps={{ style: { wordBreak: 'break-all', whiteSpace: 'pre-wrap' } }}
-                                style={materialOceanic}
-                                showLineNumbers={true}
-                                wrapLines={true}>
-                                {problem.solution}
-                            </SyntaxHighlighter>
+                        <div className="code-block">
+                            <h2 onClick={() => setShowSolution(true)}>Think you have it solved? Click on me</h2>
+                            {showSolution ? solution(problem) : null}
                         </div>
                     </div>
                 ))}
