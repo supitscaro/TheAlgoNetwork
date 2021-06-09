@@ -11,7 +11,7 @@
 </h1>
 
 <div align="center">
-  [Check the Website](http://thealgonetwork.herokuapp.com/)
+ 👉🏻 Check it out <a href="http://thealgonetwork.herokuapp.com/">here</a>.
 </div>
 
 <h2 align="center">
