@@ -27,3 +27,36 @@
     margin-left: 45px;
     margin-top: 30px;
 }
+
+.creator {
+    font-family: 'Lato', sans-serif;
+    font-weight: lighter;
+    font-size: 14px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    padding-top: 31px;
+    padding-left: 1200px;
+}
+
+.links {
+    display: flex;
+    flex-direction: row;
+    margin: 0 auto;
+}
+
+.fa-linkedin-in {
+    font-size: 20px;
+    margin-right: 20px;
+    margin-top: 10px;
+    color: #BFB9FA;
+    margin-bottom: 20px;
+}
+
+.fa-github-alt {
+    font-size: 20px;
+    /* margin-right: 20px; */
+    margin-top: 10px;
+    color: #BFB9FA;
+    margin-bottom: 20px;
+}
