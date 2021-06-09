@@ -29,20 +29,20 @@ const NavBar = () => {
             <NavLink className="nav-link" to="/" exact={true} activeClassName="active">
               <i className="fas fa-home"></i>
             </NavLink>
-                Dashboard
+            <h2 className="btn-dash">Dashboard</h2>
           </div>
           <div className="link">
             <NavLink className="nav-link" to={`/${user.id}`} exact={true} activeClassName="active">
               <i className="far fa-user"></i>
             </NavLink>
-                Profile
+            <h2 className="btn-profile">Profile</h2>
           </div>
         </div>
         <div className="logout-btn" >
           <div className="nav-link" onClick={onLogout}>
             <i className="fas fa-power-off"></i>
           </div>
-          Logout
+          <h2 className="btn-logout">Logout</h2>
         </div>
       </div>
     );
