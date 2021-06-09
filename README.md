@@ -41,5 +41,5 @@
 </h4>
 
 <p align="center">
-  <img href="https://user-images.githubusercontent.com/55109108/121413062-ee5fd780-c92a-11eb-9188-17f12ddda24d.gif"></img>
+  <img src="https://user-images.githubusercontent.com/55109108/121413062-ee5fd780-c92a-11eb-9188-17f12ddda24d.gif"></img>
 </p>
