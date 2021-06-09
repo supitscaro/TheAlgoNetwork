@@ -14,6 +14,20 @@ def user_exists(form, field):
         raise ValidationError("User is already registered.")
 
 
+def username_taken(form, field):
+    username = filed.data
+    user = User.query.filter(User.username == username).first()
+    if user:
+        raise ValidationError("Username is already taken.")
+
+
+def email_taken(form, field):
+    email = field.data
+    user = User.query.filter(User.email == email).first()
+    if user:
+        raise ValidationError("Email is already in use.")
+
+
 class SignUpForm(FlaskForm):
     fname = StringField('first name', validators=[DataRequired()])
     lname = StringField('last name', validators=[DataRequired()])
