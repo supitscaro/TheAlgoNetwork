@@ -31,5 +31,6 @@
   Mark a problem as solved!
 </h1>
 
+<p align="center">
 <img src="https://user-images.githubusercontent.com/55109108/121412294-274b7c80-c92a-11eb-957f-cf67afdfbea2.gif"></img>
-![add_problem](https://user-images.githubusercontent.com/55109108/121412294-274b7c80-c92a-11eb-957f-cf67afdfbea2.gif)
+</p>
