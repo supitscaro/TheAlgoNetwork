@@ -6,9 +6,9 @@
   A website meant to help you get deeper statistics based on category and difficulty levels for Leetcode problems.
 </p>
 
-<h3 align="center">
+<h2 align="center">
   💻 Live Site: 
-</h3>
+</h2>
 
 <div align="center">
  👉🏻 Check it out <a href="http://thealgonetwork.herokuapp.com/">here</a>.
