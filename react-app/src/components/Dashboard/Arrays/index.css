@@ -1,7 +1,7 @@
 .arrays-outer-div {
     display: flex;
     flex-direction: row;
-    height: 110vh;
+    height: 100vh;
     /* margin: 0 auto; */
 }
 
@@ -10,6 +10,7 @@
     flex-direction: row;
     justify-content: center;
     margin-left: 170px;
+    /* height: 90px; */
 }
 
 .problem-div {
@@ -41,7 +42,6 @@
     margin-bottom: 20px;
     margin-top: 20px;
 }
-
 
 .easy-button {
     padding: 20px;
@@ -89,4 +89,30 @@
     font-weight: regular;
     height: 30px;
     color: #fff;
+}
+
+.easy-div {
+    overflow-y:auto;
+    height: 800px;
+    width: 480px;
+    padding-top: 20px;
+}
+
+.medium-div {
+    overflow-y:auto;
+    height: 800px;
+    width: 480px;
+    padding-top: 20px;
+}
+
+.hard-div {
+    overflow-y:auto;
+    height: 800px;
+    width: 480px;
+    padding-top: 20px;
+}
+
+.easy-component {
+    display: flex;
+    flex-direction: column;
 }
