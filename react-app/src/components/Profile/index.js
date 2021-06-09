@@ -62,9 +62,12 @@ const Profile = () => {
                 <div className="user-intro">
                     <h3 className="user-name">Hi, {user.fname} {user.lname} 👋🏼</h3>
                 </div>
+                {/* <div>
+                    <h2></h2>
+                </div> */}
                 <div className="user-stats">
                     <div className="problem-review">
-                        <h2 className="prob-review-title">Problems To Review:</h2>
+                        <h2 className="prob-review-title">The problems you want to review:</h2>
                         {reviews.map((review, i) => (
                             <div className="prob-review" key={i}>
                                 <div className="prob-title-diff">
@@ -78,7 +81,7 @@ const Profile = () => {
                         ))}
                     </div>
                     <div className="prob-solved-div">
-                        <h2 className="prob-solved-title">Problems Solved:</h2>
+                        <h2 className="prob-solved-title">The problems you've solved:</h2>
                         {probSolved.map((problem, i) => (
                             <div className="prob-solved" key={i}>
                                 <div className="prob-title-diff">
