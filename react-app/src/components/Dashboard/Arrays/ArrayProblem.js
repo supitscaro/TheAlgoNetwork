@@ -17,10 +17,12 @@ const ArrayProblems = () => {
     const user = useSelector(state => state.session?.user);
     const all_problems = useSelector(state => state.problems?.problem);
     const problemsSolvedList = useSelector(state => state.solvedLists?.allSolvedLists);
+    const reviewsList = useSelector(state => state.reviews?.reviews);
 
     const [choice, setChoice] = useState(false);
     const [solved, setSolved] = useState(false);
     const [isSolved, setIsSolved] = useState(false);
+    const [review, setReview] = useState(false);
     const [showSolution, setShowSolution] = useState(false);
     let userId = user?.id
 
@@ -56,7 +58,13 @@ const ArrayProblems = () => {
         history.push("/");
     }
 
+    const redirectAfterReview = () => {
+        addReview();
+        history.push(`/${userId}`);
+    }
+
     let problemIsSolved = false;
+    let problemToReview = false;
     let problem;
 
     // grabs each individual problem from the list of solved problems
@@ -67,6 +75,8 @@ const ArrayProblems = () => {
         }
     }
 
+
+
     let solvedComponent = () => {
         return (
             <div className="solved-mark">
@@ -74,9 +84,21 @@ const ArrayProblems = () => {
                     <input className="radio-btn" type="radio" name="checked" onChange={() => [setSolved(true), setIsSolved(true)]} />
                     <h3 className="label">Solved</h3>
                 </label>
-                <button disabled={!solved} onClick={redirectAfterSolved}>Solved</button>
+                <button className="solved-btn" disabled={!solved} onClick={redirectAfterSolved}>Solved</button>
             </div>
         );
+    }
+
+    let reviewComponent = () => {
+        return (
+            <div className="review-mark" >
+                <div className="pill-btn" >
+                    <input className="radio-btn" type="radio" name="checked" onChange={() => setChoice(true)}></input>
+                    <h3 className="label">Review</h3>
+                </div>
+                <button className="review-btn" disabled={!choice} onClick={redirectAfterReview}>Review</button>
+            </div>
+        )
     }
 
     let solution = (problem) => {
@@ -122,7 +144,7 @@ const ArrayProblems = () => {
                                     <input className="radio-btn" type="radio" name="checked" onChange={() => setChoice(true)}></input>
                                     <h3 className="label">Review</h3>
                                 </div>
-                                <button className="review-btn" disabled={!choice} onClick={addReview}>Review</button>
+                                <button className="review-btn" disabled={!choice} onClick={redirectAfterReview}>Review</button>
                             </div>
                         </div>
                         <div className="code-block">
