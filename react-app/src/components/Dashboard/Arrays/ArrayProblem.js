@@ -17,12 +17,10 @@ const ArrayProblems = () => {
     const user = useSelector(state => state.session?.user);
     const all_problems = useSelector(state => state.problems?.problem);
     const problemsSolvedList = useSelector(state => state.solvedLists?.allSolvedLists);
-    const reviewsList = useSelector(state => state.reviews?.reviews);
 
     const [choice, setChoice] = useState(false);
     const [solved, setSolved] = useState(false);
     const [isSolved, setIsSolved] = useState(false);
-    const [review, setReview] = useState(false);
     const [showSolution, setShowSolution] = useState(false);
     let userId = user?.id
 
@@ -64,7 +62,6 @@ const ArrayProblems = () => {
     }
 
     let problemIsSolved = false;
-    let problemToReview = false;
     let problem;
 
     // grabs each individual problem from the list of solved problems
@@ -74,8 +71,6 @@ const ArrayProblems = () => {
             problemIsSolved = true;
         }
     }
-
-
 
     let solvedComponent = () => {
         return (
@@ -87,18 +82,6 @@ const ArrayProblems = () => {
                 <button className="solved-btn" disabled={!solved} onClick={redirectAfterSolved}>Solved</button>
             </div>
         );
-    }
-
-    let reviewComponent = () => {
-        return (
-            <div className="review-mark" >
-                <div className="pill-btn" >
-                    <input className="radio-btn" type="radio" name="checked" onChange={() => setChoice(true)}></input>
-                    <h3 className="label">Review</h3>
-                </div>
-                <button className="review-btn" disabled={!choice} onClick={redirectAfterReview}>Review</button>
-            </div>
-        )
     }
 
     let solution = (problem) => {
@@ -138,7 +121,7 @@ const ArrayProblems = () => {
                                     </SyntaxHighlighter>
                                 </div>
                             </div>
-                            {problemIsSolved ? <div>You've marked this as solved!</div> : solvedComponent()}
+                            {problemIsSolved ? <div className="is-solved">You've marked this as solved! 🎉</div> : solvedComponent()}
                             <div className="review-mark" >
                                 <div className="pill-btn" >
                                     <input className="radio-btn" type="radio" name="checked" onChange={() => setChoice(true)}></input>
@@ -148,7 +131,7 @@ const ArrayProblems = () => {
                             </div>
                         </div>
                         <div className="code-block">
-                            <h2 onClick={() => setShowSolution(true)}>Need some help? Click on me!</h2>
+                            <h2 className="show-solution" onClick={() => setShowSolution(true)}>Need some help? Click on me!</h2>
                             {showSolution ? solution(problem) : null}
                         </div>
                     </div>
