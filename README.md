@@ -10,8 +10,9 @@
   💻 Live Site: 
 </h1>
 
-[Go to Site](http://thealgonetwork.herokuapp.com/)
-
+<div align="center">
+  [Check the Website](http://thealgonetwork.herokuapp.com/)
+</div>
 
 <h2 align="center">
   🛠 Built With: 
