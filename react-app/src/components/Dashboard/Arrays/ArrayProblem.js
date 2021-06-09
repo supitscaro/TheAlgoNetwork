@@ -122,11 +122,11 @@ const ArrayProblems = () => {
                                     <input className="radio-btn" type="radio" name="checked" onChange={() => setChoice(true)}></input>
                                     <h3 className="label">Review</h3>
                                 </div>
-                                <button disabled={!choice} onClick={addReview}>Review</button>
+                                <button className="review-btn" disabled={!choice} onClick={addReview}>Review</button>
                             </div>
                         </div>
                         <div className="code-block">
-                            <h2 onClick={() => setShowSolution(true)}>Think you have it solved? Click on me</h2>
+                            <h2 onClick={() => setShowSolution(true)}>Need some help? Click on me!</h2>
                             {showSolution ? solution(problem) : null}
                         </div>
                     </div>
