@@ -58,7 +58,7 @@ const ArrayProblems = () => {
 
     const redirectAfterReview = () => {
         addReview();
-        history.push(`/${userId}`);
+        history.push("/arrays");
     }
 
     let problemIsSolved = false;

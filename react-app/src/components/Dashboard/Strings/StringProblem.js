@@ -57,6 +57,11 @@ const StringsProblems = () => {
         history.push("/");
     }
 
+    const redirectAfterReview = () => {
+        addReview();
+        history.push("/strings");
+    }
+
     let problemIsSolved = false;
     let problem;
 
@@ -75,7 +80,7 @@ const StringsProblems = () => {
                     <input className="radio-btn" type="radio" name="checked" onChange={() => [setSolved(true), setIsSolved(true)]} />
                     <h3 className="label">Solved</h3>
                 </label>
-                <button disabled={!solved} onClick={redirectAfterSolved}>Solved</button>
+                <button className="solved-btn" disabled={!solved} onClick={redirectAfterSolved}>Solved</button>
             </div>
         );
     };
@@ -118,17 +123,16 @@ const StringsProblems = () => {
                                 </div>
                             </div>
                             {problemIsSolved ? <div>You've marked this as solved!</div> : solvedComponent()}
-                            {/* {isProblemSolved(problem.id)} */}
                             <div className="review-mark" >
                                 <div className="pill-btn" >
                                     <input className="radio-btn" type="radio" name="checked" onChange={() => setChoice(true)}></input>
                                     <h3 className="label">Review</h3>
                                 </div>
-                                <button disabled={!choice} onClick={addReview}>Review</button>
+                                <button className="review-btn" disabled={!choice} onClick={redirectAfterReview}>Review</button>
                             </div>
                         </div>
                         <div className="code-block">
-                            <h2 onClick={() => setShowSolution(true)}>Think you have it solved? Click on me</h2>
+                            <h2 className="show-solution" onClick={() => setShowSolution(true)}>Need some help? Click on me!</h2>
                             {showSolution ? solution(problem) : null}
                         </div>
                     </div>
