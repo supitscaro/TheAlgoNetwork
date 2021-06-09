@@ -10,7 +10,7 @@
   💻 Live Site: 
 </h1>
 
-[![Go to Site](http://thealgonetwork.herokuapp.com/)
+[Go to Site](http://thealgonetwork.herokuapp.com/)
 
 
 <h2 align="center">
