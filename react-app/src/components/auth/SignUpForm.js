@@ -11,18 +11,23 @@ import DemoButton from "./Demo";
 
 const SignUpForm = () => {
   const [username, setUsername] = useState("");
-  const [fname, setFname] = useState("");
-  const [lname, setLname] = useState("");
+  const [firstname, setFname] = useState("");
+  const [lastname, setLname] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
+  const [errors, setErrors] = useState([]);
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
 
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
-      await dispatch(signUp(fname, lname, username, email, password));
+      await dispatch(signUp(firstname, lastname, username, email, password));
+    }
+    const data = await dispatch(signUp(firstname, lastname, username, email, password))
+    if (data.errors) {
+      setErrors(data.errors);
     }
   };
 
@@ -63,22 +68,27 @@ const SignUpForm = () => {
         <div className="signup-form">
           <h2 className="signup-title">Create An Account:</h2>
           <form onSubmit={onSignUp}>
+            <div className="errors">
+              {errors.map((error, i) => (
+                <div key={i}>{error}</div>
+              ))}
+            </div>
             <div className="inputs">
               <div className="input-div">
                 <input
                   type="text"
-                  name="username"
+                  name="first name"
                   onChange={updateFname}
-                  value={fname}
+                  value={firstname}
                   placeholder="First name"
                 ></input>
               </div>
               <div className="input-div">
                 <input
                   type="text"
-                  name="username"
+                  name="last name"
                   onChange={updateLname}
-                  value={lname}
+                  value={lastname}
                   placeholder="Last name"
                 ></input>
               </div>
