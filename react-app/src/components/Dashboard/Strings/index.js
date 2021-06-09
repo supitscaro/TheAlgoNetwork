@@ -50,44 +50,50 @@ const StringsComponent = () => {
         <div className="strings-outer-div">
             <NavBar />
             <div className="outer-div">
-                <div>
+                <div className="easy-component">
                     <div className="category-title">Easy ✨</div>
-                    {easyProblems.map((problem, i) => (
-                        <div className="problem-div" key={i}>
-                            {easyColor}
-                            <div key={i}>
-                                <Link key={i} className="problem-title" to={`/${problem.category}/${problem.id}`}>
-                                    <div key={i}>{problem.title}</div>
-                                </Link>
+                    <div className="easy-div">
+                        {easyProblems.map((problem, i) => (
+                            <div className="problem-div" key={i}>
+                                {easyColor}
+                                <div key={i}>
+                                    <Link key={i} className="problem-title" to={`/${problem.category}/${problem.id}`}>
+                                        <div key={i}>{problem.title}</div>
+                                    </Link>
+                                </div>
                             </div>
-                        </div>
-                    ))}
+                        ))}
+                    </div>
                 </div>
-                <div>
+                <div className="medium-component">
                     <div className="category-title">Medium 🙏🏼</div>
-                    {mediumProblems.map((problem, i) => (
-                        <div className="problem-div" key={i}>
-                            {mediumColor}
-                            <div key={i}>
-                                <Link key={i} className="problem-title" to={`/${problem.category}/${problem.id}`}>
-                                    <div key={i}>{problem.title}</div>
-                                </Link>
+                    <div className="medium-div">
+                        {mediumProblems.map((problem, i) => (
+                            <div className="problem-div" key={i}>
+                                {mediumColor}
+                                <div key={i}>
+                                    <Link key={i} className="problem-title" to={`/${problem.category}/${problem.id}`}>
+                                        <div key={i}>{problem.title}</div>
+                                    </Link>
+                                </div>
                             </div>
-                        </div>
-                    ))}
+                        ))}
+                    </div>
                 </div>
-                <div>
+                <div className="hard-component">
                     <div className="category-title">Hard 🔥</div>
-                    {hardProblems.map((problem, i) => (
-                        <div className="problem-div" key={i}>
-                            {hardColor}
-                            <div key={i}>
-                                <Link key={i} className="problem-title" to={`/${problem.category}/${problem.id}`}>
-                                    <div key={i}>{problem.title}</div>
-                                </Link>
+                    <div className="hard-div">
+                        {hardProblems.map((problem, i) => (
+                            <div className="problem-div" key={i}>
+                                {hardColor}
+                                <div key={i}>
+                                    <Link key={i} className="problem-title" to={`/${problem.category}/${problem.id}`}>
+                                        <div key={i}>{problem.title}</div>
+                                    </Link>
+                                </div>
                             </div>
-                        </div>
-                    ))}
+                        ))}
+                    </div>
                 </div>
             </div>
         </div>
