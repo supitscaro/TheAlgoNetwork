@@ -62,37 +62,38 @@ const Profile = () => {
                 <div className="user-intro">
                     <h3 className="user-name">Hi, {user.fname} {user.lname} 👋🏼</h3>
                 </div>
-                {/* <div>
-                    <h2></h2>
-                </div> */}
                 <div className="user-stats">
-                    <div className="problem-review">
+                    <div className="reviews-component">
                         <h2 className="prob-review-title">The problems you want to review:</h2>
-                        {reviews.map((review, i) => (
-                            <div className="prob-review" key={i}>
-                                <div className="prob-title-diff">
-                                    {difficultyRender(review.difficulty)}
-                                    <Link className="review-prof-title" to={`/${review.category}/${review.id}`}>
-                                        <div>{review.title}</div>
-                                    </Link>
+                        <div className="problem-review">
+                            {reviews.map((review, i) => (
+                                <div className="prob-review" key={i}>
+                                    <div className="prob-title-diff">
+                                        {difficultyRender(review.difficulty)}
+                                        <Link className="review-prof-title" to={`/${review.category}/${review.id}`}>
+                                            <div>{review.title}</div>
+                                        </Link>
+                                    </div>
+                                    <div onClick={() => deleteProblem(review.id)}><i className="fas fa-times"></i></div>
                                 </div>
-                                <div onClick={() => deleteProblem(review.id)}><i className="fas fa-times"></i></div>
-                            </div>
-                        ))}
+                            ))}
+                        </div>
                     </div>
-                    <div className="prob-solved-div">
-                        <h2 className="prob-solved-title">The problems you've solved:</h2>
-                        {probSolved.map((problem, i) => (
-                            <div className="prob-solved" key={i}>
-                                <div className="prob-title-diff">
-                                    {difficultyRender(problem.difficulty)}
-                                    <Link className="solved-prof-title" to={`/${problem.category}/${problem.id}`}>
-                                        <div>{problem.title}</div>
-                                    </Link>
+                    <div className="solved-component">
+                        <div className="prob-solved-div">
+                            <h2 className="prob-solved-title">The problems you've solved:</h2>
+                            {probSolved.map((problem, i) => (
+                                <div className="prob-solved" key={i}>
+                                    <div className="prob-title-diff">
+                                        {difficultyRender(problem.difficulty)}
+                                        <Link className="solved-prof-title" to={`/${problem.category}/${problem.id}`}>
+                                            <div>{problem.title}</div>
+                                        </Link>
+                                    </div>
+                                    <div onClick={() => deleteSolved(problem.id)}><i className="fas fa-times"></i></div>
                                 </div>
-                                <div onClick={() => deleteSolved(problem.id)}><i className="fas fa-times"></i></div>
-                            </div>
-                        ))}
+                            ))}
+                        </div>
                     </div>
                 </div>
             </div>
