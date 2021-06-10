@@ -31,14 +31,12 @@
     margin-bottom: 20px;
 }
 
-
 .prob-cat {
     font-family: 'Lato', sans-serif;
     color: #3E3C50;
     font-size: 18px;
     margin-bottom: 20px;
 }
-
 
 .prob-desc {
     font-family: 'Lato', sans-serif;
@@ -66,7 +64,6 @@
     max-width: 90%;
     margin-right: 90px;
 }
-
 
 .review-mark {
     display: flex;
@@ -115,6 +112,7 @@
     color: #3E3C50;
     font-size: 20px;
     margin-left: 20px;
+    cursor: pointer;
 }
 
 .is-solved {
@@ -122,4 +120,39 @@
     color: #3E3C50;
     font-size: 20px;
     margin-top: 30px;
+}
+
+.review-btn {
+    font-family: 'Lato', sans-serif;
+    background-color: #BFB9FA;
+    border: none;
+    box-shadow: 0 19px 38px rgba(191,185,250,0.30), 0 15px 12px rgba(191,185,250,0.22);
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: regular;
+    height: 30px;
+    color: #fff;
+}
+
+.review-btn:hover {
+    height: 38px;
+    font-size: 18px;
+}
+
+.solved-btn {
+    font-family: 'Lato', sans-serif;
+    background-color: #BFB9FA;
+    border: none;
+    box-shadow: 0 19px 38px rgba(191,185,250,0.30), 0 15px 12px rgba(191,185,250,0.22);
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: regular;
+    height: 30px;
+    color: #fff;
+}
+
+
+.solved-btn:hover {
+    height: 38px;
+    font-size: 18px;
 }

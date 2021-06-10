@@ -17,6 +17,6 @@ def get_problems():
         problem_dict = problem.to_dict()
 
         problems_list_.append(
-            {"problem_title": problem_dict['title'], "category": problem_dict['category']})
+            {"problem_title": problem_dict['title'], "category": problem_dict['category', "difficulty": problem_dict["difficulty"]]})
 
     return {'search_types': problems_list_}

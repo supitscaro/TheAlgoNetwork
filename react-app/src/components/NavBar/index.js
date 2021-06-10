@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { NavLink, useHistory } from 'react-router-dom';
 import { logout } from "../../store/session";
 import DemoButton from '../auth/Demo';
+import RandomProblem from '../Dashboard/RandomSelector';
 import './navbar.css';
 
 const NavBar = () => {
@@ -36,6 +37,9 @@ const NavBar = () => {
               <i className="far fa-user"></i>
             </NavLink>
             <h2 className="btn-profile">Profile</h2>
+          </div>
+          <div>
+            <RandomProblem />
           </div>
         </div>
         <div className="logout-btn" >

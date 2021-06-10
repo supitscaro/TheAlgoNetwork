@@ -45,8 +45,6 @@ const Dashboard = () => {
         }
     }
 
-    console.log('my user', allSolvedProblems)
-
     // Filtering the list of problems based on which have been solved
     let setOfProblems = new Set(problemsSolvedId);
     let filterById = problemsArr.filter((item) => setOfProblems.has(item.id));
