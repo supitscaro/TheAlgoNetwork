@@ -60,7 +60,6 @@ const Dashboard = () => {
     let mediumProblems = filterById.filter((item) => item.difficulty === 'Medium');
     let hardProblems = filterById.filter((item) => item.difficulty === 'Hard');
 
-
     useEffect(() => {
         dispatch(getEveryProblem())
     }, [dispatch])
@@ -78,8 +77,8 @@ const Dashboard = () => {
                 <VictoryPie
                     colorScale={["#B18CD9", "#CFD8DC"]}
                     data={[
-                        { x: 1, y: allSolvedProblems.length, label: "solved" },
-                        { x: 2, y: listOfProblems, label: "all problems" },
+                        { x: 1, y: (allSolvedProblems.length).toFixed(0), label: "solved" },
+                        { x: 2, y: listOfProblems.toFixed(0), label: "all problems" },
                     ]}
                     innerRadius={100}
                 />
@@ -98,19 +97,19 @@ const Dashboard = () => {
                         <VictoryBar
                             barWidth={() => 24}
                             data={[
-                                { x: 'arrays', y: arraysProblems.length / arraysTotal.length * 100 },
-                                { x: 'trees', y: treesProblems.length / treesTotal.length * 100 },
-                                { x: 'hash', y: hashProblems.length / hashTotal.length * 100 },
-                                { x: 'strings', y: stringsProblems.length / stringsTotal.length * 100 },
+                                { x: 'arrays', y: arraysTotal.length.toFixed(0) },
+                                { x: 'trees', y: treesTotal.length.toFixed(0) },
+                                { x: 'hash', y: hashTotal.length.toFixed(0) },
+                                { x: 'strings', y: stringsTotal.length.toFixed(0) },
                             ]}
                         />
                         <VictoryBar
                             barWidth={() => 24}
                             data={[
-                                { x: 'arrays', y: arraysTotal.length },
-                                { x: 'trees', y: treesTotal.length },
-                                { x: 'hash', y: hashTotal.length },
-                                { x: 'strings', y: stringsTotal.length },
+                                { x: 'arrays', y: (arraysProblems.length / arraysTotal.length * 100).toFixed(0) },
+                                { x: 'trees', y: (treesProblems.length / treesTotal.length * 100).toFixed(0) },
+                                { x: 'hash', y: (hashProblems.length / hashTotal.length * 100).toFixed(0) },
+                                { x: 'strings', y: (stringsProblems.length / stringsTotal.length * 100).toFixed(0) },
                             ]}
                         />
                     </VictoryStack>
@@ -130,17 +129,17 @@ const Dashboard = () => {
                         <VictoryBar horizontal
                             barWidth={() => 25}
                             data={[
-                                { x: 'easy', y: easyProblems.length / easyTotal.length * 100 },
-                                { x: 'med.', y: mediumProblems.length / mediumTotal.length * 100 },
-                                { x: 'hard', y: hardProblems.length / hardTotal.length * 100 },
+                                { x: 'easy', y: (easyProblems.length / easyTotal.length * 100).toFixed(0) },
+                                { x: 'med.', y: (mediumProblems.length / mediumTotal.length * 100).toFixed(0) },
+                                { x: 'hard', y: (hardProblems.length / hardTotal.length * 100).toFixed(0) },
                             ]}
                         />
                         <VictoryBar horizontal
                             barWidth={() => 25}
                             data={[
-                                { x: 'easy', y: easyTotal.length },
-                                { x: 'med.', y: mediumTotal.length },
-                                { x: 'hard', y: hardTotal.length },
+                                { x: 'easy', y: (easyTotal.length).toFixed(0) },
+                                { x: 'med.', y: (mediumTotal.length).toFixed(0) },
+                                { x: 'hard', y: (hardTotal.length).toFixed(0) },
                             ]}
                         />
                     </VictoryStack>

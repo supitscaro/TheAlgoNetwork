@@ -19,7 +19,6 @@ import Profile from "./components/Profile";
 import './index.css';
 
 function App() {
-  const user = useSelector(state => state.session.user)
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
 
