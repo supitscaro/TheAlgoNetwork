@@ -138,8 +138,8 @@ const Dashboard = () => {
                     <VictoryPie
                         colorScale={["#B18CD9", "#CFD8DC"]}
                         data={[
-                            { x: 1, y: (allSolvedProblems.length).toFixed(0), label: "solved" },
-                            { x: 2, y: listOfProblems.toFixed(0), label: "all problems" },
+                            { x: 1, y: (allSolvedProblems.length), label: "solved" },
+                            { x: 2, y: listOfProblems, label: "all problems" },
                         ]}
                         innerRadius={100}
                     />
