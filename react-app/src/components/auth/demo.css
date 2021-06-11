@@ -1,11 +1,11 @@
 .demo-btn {
     font-family: 'Lato', sans-serif;
-    font-weight: lighter;
+    font-weight: regular;
     cursor: pointer;
     color: #3E3C50;
 }
 
 .demo-btn:hover {
-    font-weight: 400;
+    font-weight: 800;
     color: #3E3C50;
 }

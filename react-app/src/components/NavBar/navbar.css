@@ -19,12 +19,16 @@
 
 .login-link {
     margin-bottom: 20px;
-    /* margin-left: 30px; */
+    margin-left: 20px;
     display: flex;
     flex-direction: column;
     font-family: 'Lato', sans-serif;
-    font-weight: lighter;
+    font-weight: regular;
     text-align: center;
+}
+
+.login-div {
+    margin-left: -15px;
 }
 
 .fa-home {
@@ -61,8 +65,6 @@
     font-weight: lighter;
     border-radius: 10px;
     box-shadow: 0 19px 38px rgba(191,185,250,0.30), 0 15px 12px rgba(191,185,250,0.22);
-
-    /* justify-content: center; */
 }
 
 .nav-login {
@@ -98,6 +100,7 @@
     flex-direction: column;
     font-family: 'Lato', sans-serif;
     font-weight: lighter;
+    cursor: pointer;
 }
 
 .btn-dash {

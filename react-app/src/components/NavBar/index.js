@@ -51,22 +51,23 @@ const NavBar = () => {
       </div>
     );
   } else {
-    sessionNav = (<div>
-      <div className="login-link">
-        <NavLink className="nav-login" to="/login" exact={true} activeClassName="active">
-          Login
-        </NavLink>
+    sessionNav = (
+      <div className="login-div">
+        <div className="login-link">
+          <NavLink className="nav-login" to="/login" exact={true} activeClassName="active">
+            Login
+          </NavLink>
+        </div>
+        <div className="login-link">
+          Don't have an account?
+          <NavLink className="nav-signup" to="/sign-up" exact={true} activeClassName="active">
+            Sign Up
+          </NavLink>
+        </div>
+        <div className="login-link">
+          <DemoButton />
+        </div>
       </div>
-      <div className="login-link">
-        Don't have an account?
-        <NavLink className="nav-signup" to="/sign-up" exact={true} activeClassName="active">
-          Sign Up
-        </NavLink>
-      </div>
-      <div className="login-link">
-        <DemoButton />
-      </div>
-    </div>
     )
   }
 
