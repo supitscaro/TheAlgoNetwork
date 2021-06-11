@@ -23,35 +23,30 @@ const RandomProblem = () => {
             listOfSolved.push(problem.problems_id);
         }
     }
+    // console.log('list of problems solved', listOfSolved);
 
-    console.log('list of problems solved', listOfSolved);
-
-    console.log('all problems', allProblems);
+    listOfSolved.sort();
 
     let unsolvedProblems = []
 
     for (let i in allProblems) {
         let problem = allProblems[i];
-        console.log('probleeeeeems', problem.id);
-
+        unsolvedProblems.push(problem.id);
     }
 
-    // let randomProblem = Math.floor(Math.random() * listOfSolved.length);
+    console.log('butthole', unsolvedProblems);
 
-    // console.log('randomproblem', listOfSolved[randomProblem]);
+    let problemsToStudy = [];
 
-    // let problems = listOfSolved[randomProblem]; // returns a number
+    for (let i = 0; i < unsolvedProblems.length; i++) {
+        let id = unsolvedProblems[i];
+        let bool = listOfSolved.includes(id);
+        if (!bool) {
+            problemsToStudy.push(id);
+        }
+    }
 
-    // for (let problem in problems) {
-    //     console.log('problem id?', problem);
-    //     let id;
-    //     if (problem === 'problems_id') {
-    //         id = problem;
-    //     }
-
-    //     console.log('is this the id????', problems.id);
-    // }
-    // // console.log('random problem id', randomProblem.id)
+    console.log('butt', problemsToStudy);
 
     useEffect(() => {
         dispatch(allSolved())
