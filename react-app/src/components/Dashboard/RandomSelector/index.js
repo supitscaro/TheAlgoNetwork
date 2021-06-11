@@ -2,10 +2,10 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 
-
 import { getEveryProblem } from "../../../store/problems";
-import { addProblemToReview } from "../../../store/reviews";
 import { allSolved } from "../../../store/solved";
+
+import './random.css';
 
 const RandomProblem = () => {
     const dispatch = useDispatch();
@@ -78,7 +78,7 @@ const RandomProblem = () => {
     }
 
     return (
-        <div onClick={onClick}>Get Random Problem</div>
+        <div className="rand-btn" onClick={onClick}>Generate a Random Problem</div>
     )
 
 }
