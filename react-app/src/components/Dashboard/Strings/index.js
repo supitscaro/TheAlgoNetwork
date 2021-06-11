@@ -54,14 +54,14 @@ const StringsComponent = () => {
                     <div className="category-title">Easy ✨</div>
                     <div className="easy-div">
                         {easyProblems.map((problem, i) => (
-                            <div className="problem-div" key={i}>
+                            <Link className="problem-div" key={i} to={`/${problem.category}/${problem.id}`}>
                                 {easyColor}
                                 <div key={i}>
-                                    <Link key={i} className="problem-title" to={`/${problem.category}/${problem.id}`}>
+                                    <div key={i} className="problem-title">
                                         <div key={i}>{problem.title}</div>
-                                    </Link>
+                                    </div>
                                 </div>
-                            </div>
+                            </Link>
                         ))}
                     </div>
                 </div>
@@ -69,14 +69,14 @@ const StringsComponent = () => {
                     <div className="category-title">Medium 🙏🏼</div>
                     <div className="medium-div">
                         {mediumProblems.map((problem, i) => (
-                            <div className="problem-div" key={i}>
+                            <Link className="problem-div" key={i} to={`/${problem.category}/${problem.id}`}>
                                 {mediumColor}
                                 <div key={i}>
-                                    <Link key={i} className="problem-title" to={`/${problem.category}/${problem.id}`}>
+                                    <div key={i} className="problem-title">
                                         <div key={i}>{problem.title}</div>
-                                    </Link>
+                                    </div>
                                 </div>
-                            </div>
+                            </Link>
                         ))}
                     </div>
                 </div>
@@ -84,14 +84,14 @@ const StringsComponent = () => {
                     <div className="category-title">Hard 🔥</div>
                     <div className="hard-div">
                         {hardProblems.map((problem, i) => (
-                            <div className="problem-div" key={i}>
+                            <Link className="problem-div" key={i} to={`/${problem.category}/${problem.id}`}>
                                 {hardColor}
                                 <div key={i}>
-                                    <Link key={i} className="problem-title" to={`/${problem.category}/${problem.id}`}>
+                                    <Link key={i} className="problem-title">
                                         <div key={i}>{problem.title}</div>
                                     </Link>
                                 </div>
-                            </div>
+                            </Link>
                         ))}
                     </div>
                 </div>
