@@ -22,6 +22,7 @@
     width: 350px;
     display: flex;
     flex-direction: row;
+    text-decoration: none;
 }
 
 .problem-title {
