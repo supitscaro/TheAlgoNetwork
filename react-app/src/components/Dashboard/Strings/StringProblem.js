@@ -113,7 +113,7 @@ const StringsProblems = () => {
                             <div className="code-blocks" >
                                 <div className="examples">
                                     Example:
-                                <SyntaxHighlighter
+                                    <SyntaxHighlighter
                                         language="python"
                                         wrapLines={true}
                                         style={duotoneLight}
@@ -122,7 +122,7 @@ const StringsProblems = () => {
                                     </SyntaxHighlighter>
                                 </div>
                             </div>
-                            {problemIsSolved ? <div>You've marked this as solved!</div> : solvedComponent()}
+                            {problemIsSolved ? <div className="is-solved">You've marked this as solved! 🎉</div> : solvedComponent()}
                             <div className="review-mark" >
                                 <div className="pill-btn" >
                                     <input className="radio-btn" type="radio" name="checked" onChange={() => setChoice(true)}></input>
