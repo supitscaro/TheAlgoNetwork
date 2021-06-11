@@ -14,6 +14,7 @@ const RandomProblem = () => {
     const allProblems = useSelector(state => state.problems?.allProblems);
     const problemsSolvedList = useSelector(state => state.solvedLists?.allSolvedLists);
 
+    // create a list of the problem's id a user has solved
     let listOfSolved = []
 
     for (let i in problemsSolvedList) {
@@ -23,10 +24,9 @@ const RandomProblem = () => {
             listOfSolved.push(problem.problems_id);
         }
     }
-    // console.log('list of problems solved', listOfSolved);
 
     listOfSolved.sort();
-
+    // create a list of every problem's id to then filter if the id is present in listOfSolved
     let unsolvedProblems = []
 
     for (let i in allProblems) {
@@ -34,8 +34,9 @@ const RandomProblem = () => {
         unsolvedProblems.push(problem.id);
     }
 
-    console.log('butthole', unsolvedProblems);
+    console.log('unsolved problems', unsolvedProblems);
 
+    // create a new list of all the id's not present in user's solved list
     let problemsToStudy = [];
 
     for (let i = 0; i < unsolvedProblems.length; i++) {
@@ -44,9 +45,24 @@ const RandomProblem = () => {
         if (!bool) {
             problemsToStudy.push(id);
         }
-    }
+    };
 
-    console.log('butt', problemsToStudy);
+    console.log('problems to study', problemsToStudy);
+
+    // randomly get an id of the problems the user has left to study
+    let randomProblemId = Math.floor(Math.random() * problemsToStudy.length);
+
+    // grab the category and id to redirect a user to that problem they haven't solved
+    let category;
+    let id;
+    for (let i in allProblems) {
+        let problem = allProblems[i];
+
+        if (problem.id === problemsToStudy[randomProblemId]) {
+            category = problem.category;
+            id = problem.id;
+        }
+    }
 
     useEffect(() => {
         dispatch(allSolved())
@@ -58,6 +74,7 @@ const RandomProblem = () => {
 
     const onClick = () => {
         console.log('button works');
+        history.push(`/${category}/${id}`);
     }
 
     return (
