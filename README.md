@@ -7,15 +7,7 @@
 </p>
 
 <h2 align="center">
-  💻 Live Site: 
-</h2>
-
-<div align="center">
- 👉🏻 Check it out <a href="http://thealgonetwork.herokuapp.com/">here</a>.
-</div>
-
-<h2 align="center">
-  🛠 Built With: 
+  🛠 Built With:
 </h2>
 
 <p align="center">
@@ -25,7 +17,7 @@
   🔹 CSS
   🔹 SQLAlchemy
   🔹 Postgres
-</p> 
+</p>
 
 <h4 align="center">
   Mark a problem as solved and see changes in your progress!
@@ -34,7 +26,6 @@
 <p align="center">
   <img src="https://user-images.githubusercontent.com/55109108/121412294-274b7c80-c92a-11eb-957f-cf67afdfbea2.gif"></img>
 </p>
-
 
 <h4 align="center">
   Add a problem to your review list and access it on your home page!
