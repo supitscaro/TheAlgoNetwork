@@ -1,5 +1,6 @@
 from flask import Blueprint, jsonify
 import json
+from flask_login import login_required
 from app.models import db, Problem, Solved, Review
 
 problems_routes = Blueprint("problems", __name__)
@@ -7,6 +8,7 @@ problems_routes = Blueprint("problems", __name__)
 
 # Gets all array problems
 @problems_routes.route('/<string:category>')
+@login_required
 def get_problems(category):
     problems = Problem.query.filter(
         Problem.category == category.capitalize()).all()
@@ -21,6 +23,7 @@ def get_problems(category):
 
 # get specific problems for each category
 @problems_routes.route('/<string:category>/<int:id>')
+@login_required
 def get_specific_problem(category, id):
     problems = Problem.query.filter(
         Problem.category == category.capitalize()).filter(Problem.id == id).all()
@@ -35,6 +38,7 @@ def get_specific_problem(category, id):
 
 
 @problems_routes.route('/')
+@login_required
 def get_all_problems():
     problems = Problem.query.all()
 
