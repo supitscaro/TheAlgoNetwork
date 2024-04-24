@@ -22,7 +22,6 @@ def get_problems(category):
 # get specific problems for each category
 @problems_routes.route('/<string:category>/<int:id>')
 def get_specific_problem(category, id):
-    print('category', category)
     problems = Problem.query.filter(
         Problem.category == category.capitalize()).filter(Problem.id == id).all()
 

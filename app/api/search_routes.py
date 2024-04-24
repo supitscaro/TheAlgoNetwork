@@ -9,7 +9,6 @@ search_routes = Blueprint("search", __name__)
 @search_routes.route('/', methods=["GET"])
 def get_problems():
     problems = Problem.query.all()
-    print(problems)
 
     problems_list_ = []
 
